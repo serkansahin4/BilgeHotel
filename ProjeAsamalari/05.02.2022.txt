@@ -1,0 +1,13 @@
+1- RepositoryDesign Patterninin yanlış kullanıldığı fark edildi.
+2- RepositoryDesign Patterninin doğru kullanımı öğrenildi.
+3- Projeye Başlandı
+4- Katmanlar Oluşturuldu.
+5- Entityler Oluşturuldu.
+4- RepositoryDesign Patterninin doğru kullanımı projeye uygulandı
+5- Onion Mimari ve N-Tier Mimari karışımı birşey ortaya çıkarıldı :)
+6- Asp.Net MVC Core Sunum katmanında proje bağlantılarının doğru çalışıp çalışmadığı test edildi.
+7- Projenin, şuanki işlemlere kadar yapılan kısımlarının doğru çalıştığı tespit edildi.
+8- Sonraki aşamanın varlık haritalandırması olduğuna karar verildi.
+
+
+Sonraki Gün Devam Edilecek Konu => Entity Relation(mapping işlemleri)
