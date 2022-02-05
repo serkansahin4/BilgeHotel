@@ -1,0 +1,17 @@
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\bin\Debug\net5.0\BilgeHotel.Business.deps.json
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\bin\Debug\net5.0\BilgeHotel.Business.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\bin\Debug\net5.0\ref\BilgeHotel.Business.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\bin\Debug\net5.0\BilgeHotel.Business.pdb
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\obj\Debug\net5.0\BilgeHotel.Business.csproj.AssemblyReference.cache
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\obj\Debug\net5.0\BilgeHotel.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\obj\Debug\net5.0\BilgeHotel.Business.AssemblyInfoInputs.cache
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\obj\Debug\net5.0\BilgeHotel.Business.AssemblyInfo.cs
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\obj\Debug\net5.0\BilgeHotel.Business.csproj.CoreCompileInputs.cache
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\obj\Debug\net5.0\BilgeHotel.Business.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\obj\Debug\net5.0\ref\BilgeHotel.Business.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\obj\Debug\net5.0\BilgeHotel.Business.pdb
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\bin\Debug\net5.0\BilgeHotel.DataAccess.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\bin\Debug\net5.0\BilgeHotel.Entities.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\bin\Debug\net5.0\BilgeHotel.DataAccess.pdb
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\bin\Debug\net5.0\BilgeHotel.Entities.pdb
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.Business\obj\Debug\net5.0\BilgeHotel.Business.csproj.CopyComplete
