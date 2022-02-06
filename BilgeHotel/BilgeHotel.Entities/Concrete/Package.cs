@@ -12,7 +12,7 @@ namespace BilgeHotel.Entities.Concrete
     {
         public int Id { get; set; }
         public string PackageName { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
 
         public virtual List<ReservationDetail> ReservationDetails { get; set; }
     }

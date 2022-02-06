@@ -14,7 +14,7 @@ namespace BilgeHotel.Entities.ComplexType
         public int RoomId { get; set; }
         public int PackageId { get; set; }
         public double Discount { get; set; }
-        public decimal DiscountedPrice { get; set; }
+        public double DiscountedPrice { get; set; }
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public DateTime CreatedDate { get; set; }

@@ -17,6 +17,8 @@ namespace BilgeHotel.DataAccess.EntityFramework.Maps
             builder.ToTable("ReservationOutHotelExtras");
             builder.HasOne(x => x.HotelExtra).WithMany(x => x.ReservationOutHotelExtras).HasForeignKey(x => x.HotelExtraId).HasPrincipalKey(x => x.Id);
             builder.HasOne(x => x.Reservation).WithMany(x => x.ReservationOutHotelExtras).HasForeignKey(x => x.ReservationId).HasPrincipalKey(x => x.Id);
+
+            builder.Property(x => x.TotalPrice).HasColumnType("money");
         }
     }
 }

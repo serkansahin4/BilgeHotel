@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace BilgeHotel.DataAccess.EntityFramework.Maps.Concrete
 {
-    public class RoomMap : IEntityTypeConfiguration<Room>
+    public class RoomTypeMap : IEntityTypeConfiguration<RoomType>
     {
-        public void Configure(EntityTypeBuilder<Room> builder)
+        public void Configure(EntityTypeBuilder<RoomType> builder)
         {
-            builder.HasKey(x => x.RoomName);
-
-            builder.Property(x => x.RoomSize).IsRequired(true);
-
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.RoomTypeName).HasMaxLength(50).IsRequired(true);
+            builder.Property(x => x.Price).HasColumnType("money");
         }
     }
 }

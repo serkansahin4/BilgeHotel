@@ -14,7 +14,7 @@ namespace BilgeHotel.Entities.Concrete
         public string LastName { get; set; }
         public string Phone { get; set; }
         public string Adress { get; set; }
-        public decimal Salary { get; set; }
+        public double Salary { get; set; }
 
         public virtual List<Reservation> Reservations { get; set; }
         public virtual List<Shift> Shifts { get; set; }

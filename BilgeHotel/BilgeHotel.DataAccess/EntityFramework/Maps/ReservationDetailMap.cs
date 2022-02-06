@@ -18,7 +18,8 @@ namespace BilgeHotel.DataAccess.EntityFramework.Maps
             builder.HasOne(x => x.Package).WithMany(x => x.ReservationDetails).HasForeignKey(x => x.PackageId).HasPrincipalKey(x => x.Id);
             builder.HasOne(x => x.Reservation).WithMany(x => x.ReservationDetails).HasForeignKey(x => x.ReservationId).HasPrincipalKey(x => x.Id);
             builder.HasOne(x => x.Room).WithMany(x => x.ReservationDetails).HasForeignKey(x => x.RoomId).HasPrincipalKey(x => x.RoomName);
-            
+
+            builder.Property(x => x.DiscountedPrice).HasColumnType("money");
         }
     }
 }

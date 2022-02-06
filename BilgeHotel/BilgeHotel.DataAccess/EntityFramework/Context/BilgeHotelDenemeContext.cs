@@ -26,8 +26,27 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new RoomBedMap());
             modelBuilder.ApplyConfiguration(new RoomTypeExtraMap());
 
+
             //Concrete
+            modelBuilder.ApplyConfiguration(new BedMap());
             modelBuilder.ApplyConfiguration(new RoomMap());
+            modelBuilder.ApplyConfiguration(new ExtraMap());
+            modelBuilder.ApplyConfiguration(new RoomTypeMap());
+            modelBuilder.ApplyConfiguration(new RoomViewMap());
+            modelBuilder.ApplyConfiguration(new PackageMap());
+            modelBuilder.ApplyConfiguration(new ReservationMap());
+            modelBuilder.ApplyConfiguration(new CustomerMap());
+            modelBuilder.ApplyConfiguration(new HotelExtraMap());
+            modelBuilder.ApplyConfiguration(new DepartmentMap());
+            modelBuilder.ApplyConfiguration(new ShiftMap());
+            
+
+
+            //İdentity İle tekrardan düzenlenecekler.
+            modelBuilder.ApplyConfiguration(new RoleMap());
+            modelBuilder.ApplyConfiguration(new EmployeeMap());
+
+
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<Bed> Beds { get; set; }
