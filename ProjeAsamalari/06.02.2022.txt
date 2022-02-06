@@ -1,0 +1,2 @@
+1- CodeFirst ile tablo ilişkileri oluşturuldu
+2- Veritabanında tasarlanmış tablo ve CodeFirst ile oluşturulan tablo karşılaştırıldı. İlişkilerin doğru kurulduğu onaylandı.
