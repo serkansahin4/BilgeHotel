@@ -13,7 +13,10 @@ namespace BilgeHotel.DataAccess.EntityFramework.Maps
     {
         public void Configure(EntityTypeBuilder<ReservationOutHotelExtra> builder)
         {
-            builder.HasKey(x => x.HotelExtraId);
+            builder.HasKey(x => new { x.HotelExtraId,x.ReservationId });
+            builder.ToTable("ReservationOutHotelExtras");
+            builder.HasOne(x => x.HotelExtra).WithMany(x => x.ReservationOutHotelExtras).HasForeignKey(x => x.HotelExtraId).HasPrincipalKey(x => x.Id);
+            builder.HasOne(x => x.Reservation).WithMany(x => x.ReservationOutHotelExtras).HasForeignKey(x => x.ReservationId).HasPrincipalKey(x => x.Id);
         }
     }
 }

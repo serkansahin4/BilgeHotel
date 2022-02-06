@@ -14,6 +14,7 @@ namespace BilgeHotel.DataAccess.EntityFramework.Maps.Concrete
         public void Configure(EntityTypeBuilder<Room> builder)
         {
             builder.HasKey(x => x.RoomName);
+            
         }
     }
 }

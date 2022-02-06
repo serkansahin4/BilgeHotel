@@ -13,7 +13,11 @@ namespace BilgeHotel.DataAccess.EntityFramework.Maps
     {
         public void Configure(EntityTypeBuilder<RoomBed> builder)
         {
-            builder.HasKey(x => x.BedId);
+            builder.ToTable("RoomBeds");
+            builder.HasKey(x => new { x.BedId, x.RoomId });
+            builder.HasOne(x => x.Bed).WithMany(x => x.RoomBeds).HasForeignKey(x => x.BedId).HasPrincipalKey(x => x.Id);
+            builder.HasOne(x => x.Room).WithMany(x => x.RoomBeds).HasForeignKey(x => x.RoomId).HasPrincipalKey(x => x.RoomName);
+            
         }
     }
 }

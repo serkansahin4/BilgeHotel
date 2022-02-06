@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BilgeHotel.WebUI.Migrations
 {
-    public partial class basliyorum : Migration
+    public partial class basliyoruz : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -125,7 +125,7 @@ namespace BilgeHotel.WebUI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoomTypeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Price = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -177,26 +177,24 @@ namespace BilgeHotel.WebUI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoomTypeExtras",
+                name: "RoomTypeExtra",
                 columns: table => new
                 {
-                    RoomTypeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ExtraId = table.Column<int>(type: "int", nullable: false),
-                    RoomTypeId1 = table.Column<int>(type: "int", nullable: false)
+                    RoomTypeId = table.Column<int>(type: "int", nullable: false),
+                    ExtraId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomTypeExtras", x => x.RoomTypeId);
+                    table.PrimaryKey("PK_RoomTypeExtra", x => new { x.RoomTypeId, x.ExtraId });
                     table.ForeignKey(
-                        name: "FK_RoomTypeExtras_Extras_ExtraId",
+                        name: "FK_RoomTypeExtra_Extras_ExtraId",
                         column: x => x.ExtraId,
                         principalTable: "Extras",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_RoomTypeExtras_RoomTypes_RoomTypeId1",
-                        column: x => x.RoomTypeId1,
+                        name: "FK_RoomTypeExtra_RoomTypes_RoomTypeId",
+                        column: x => x.RoomTypeId,
                         principalTable: "RoomTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -290,17 +288,15 @@ namespace BilgeHotel.WebUI.Migrations
                 name: "RoomBeds",
                 columns: table => new
                 {
-                    BedId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     RoomId = table.Column<int>(type: "int", nullable: false),
-                    BedId1 = table.Column<int>(type: "int", nullable: false)
+                    BedId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomBeds", x => x.BedId);
+                    table.PrimaryKey("PK_RoomBeds", x => new { x.BedId, x.RoomId });
                     table.ForeignKey(
-                        name: "FK_RoomBeds_Beds_BedId1",
-                        column: x => x.BedId1,
+                        name: "FK_RoomBeds_Beds_BedId",
+                        column: x => x.BedId,
                         principalTable: "Beds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -352,19 +348,17 @@ namespace BilgeHotel.WebUI.Migrations
                 name: "ReservationOutHotelExtras",
                 columns: table => new
                 {
-                    HotelExtraId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HotelExtraId = table.Column<int>(type: "int", nullable: false),
                     ReservationId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<short>(type: "smallint", nullable: false),
-                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    HotelExtraId1 = table.Column<int>(type: "int", nullable: false)
+                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReservationOutHotelExtras", x => x.HotelExtraId);
+                    table.PrimaryKey("PK_ReservationOutHotelExtras", x => new { x.HotelExtraId, x.ReservationId });
                     table.ForeignKey(
-                        name: "FK_ReservationOutHotelExtras_HotelExtras_HotelExtraId1",
-                        column: x => x.HotelExtraId1,
+                        name: "FK_ReservationOutHotelExtras_HotelExtras_HotelExtraId",
+                        column: x => x.HotelExtraId,
                         principalTable: "HotelExtras",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -397,11 +391,6 @@ namespace BilgeHotel.WebUI.Migrations
                 column: "RoomId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ReservationOutHotelExtras_HotelExtraId1",
-                table: "ReservationOutHotelExtras",
-                column: "HotelExtraId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ReservationOutHotelExtras_ReservationId",
                 table: "ReservationOutHotelExtras",
                 column: "ReservationId");
@@ -415,11 +404,6 @@ namespace BilgeHotel.WebUI.Migrations
                 name: "IX_Reservations_EmployeeId",
                 table: "Reservations",
                 column: "EmployeeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RoomBeds_BedId1",
-                table: "RoomBeds",
-                column: "BedId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoomBeds_RoomId",
@@ -442,14 +426,9 @@ namespace BilgeHotel.WebUI.Migrations
                 column: "RoomViewId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomTypeExtras_ExtraId",
-                table: "RoomTypeExtras",
+                name: "IX_RoomTypeExtra_ExtraId",
+                table: "RoomTypeExtra",
                 column: "ExtraId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RoomTypeExtras_RoomTypeId1",
-                table: "RoomTypeExtras",
-                column: "RoomTypeId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Shifts_EmployeeId",
@@ -469,7 +448,7 @@ namespace BilgeHotel.WebUI.Migrations
                 name: "RoomBeds");
 
             migrationBuilder.DropTable(
-                name: "RoomTypeExtras");
+                name: "RoomTypeExtra");
 
             migrationBuilder.DropTable(
                 name: "Shifts");
