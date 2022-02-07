@@ -39,10 +39,10 @@ namespace BilgeHotel.WebUI.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("Discount")
+                    b.Property<double?>("Discount")
                         .HasColumnType("float");
 
-                    b.Property<decimal>("DiscountedPrice")
+                    b.Property<decimal?>("DiscountedPrice")
                         .HasColumnType("money");
 
                     b.HasKey("ReservationId", "PackageId", "RoomId");
@@ -264,6 +264,28 @@ namespace BilgeHotel.WebUI.Migrations
                     b.ToTable("HotelExtras");
                 });
 
+            modelBuilder.Entity("BilgeHotel.Entities.Concrete.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("RoomTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomTypeId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Package", b =>
                 {
                     b.Property<int>("Id")
@@ -294,10 +316,10 @@ namespace BilgeHotel.WebUI.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("ExtraTotalPrice")
+                    b.Property<decimal?>("ExtraTotalPrice")
                         .HasColumnType("money");
 
                     b.HasKey("Id");
@@ -378,6 +400,9 @@ namespace BilgeHotel.WebUI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
@@ -418,10 +443,10 @@ namespace BilgeHotel.WebUI.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<short>("ExtraShift")
+                    b.Property<short?>("ExtraShift")
                         .HasColumnType("smallint");
 
-                    b.Property<DateTime>("ShiftDate")
+                    b.Property<DateTime?>("ShiftDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("StartShift")
@@ -540,6 +565,17 @@ namespace BilgeHotel.WebUI.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("BilgeHotel.Entities.Concrete.Image", b =>
+                {
+                    b.HasOne("BilgeHotel.Entities.Concrete.RoomType", "RoomType")
+                        .WithMany("Images")
+                        .HasForeignKey("RoomTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RoomType");
+                });
+
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Reservation", b =>
                 {
                     b.HasOne("BilgeHotel.Entities.Concrete.Customer", "Customer")
@@ -550,9 +586,7 @@ namespace BilgeHotel.WebUI.Migrations
 
                     b.HasOne("BilgeHotel.Entities.Concrete.Employee", "Employee")
                         .WithMany("Reservations")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.Navigation("Customer");
 
@@ -660,6 +694,8 @@ namespace BilgeHotel.WebUI.Migrations
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.RoomType", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("Rooms");
 
                     b.Navigation("RoomTypeExtras");

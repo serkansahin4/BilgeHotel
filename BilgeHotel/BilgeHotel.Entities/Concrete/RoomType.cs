@@ -12,8 +12,10 @@ namespace BilgeHotel.Entities.Concrete
     {
         public int Id { get; set; }
         public string RoomTypeName { get; set; }
+        public string Name { get; set; }
         public double Price { get; set; }
 
+        public virtual List<Image> Images { get; set; }
         public virtual List<Room> Rooms { get; set; }
         public virtual List<RoomTypeExtra> RoomTypeExtras { get; set; }
     }

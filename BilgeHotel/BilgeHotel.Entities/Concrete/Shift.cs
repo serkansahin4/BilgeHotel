@@ -13,8 +13,8 @@ namespace BilgeHotel.Entities.Concrete
         public int EmployeeId { get; set; }
         public DateTime StartShift { get; set; }
         public DateTime StopShift { get; set; }
-        public DateTime ShiftDate { get; set; }
-        public Int16 ExtraShift { get; set; }
+        public DateTime? ShiftDate { get; set; }
+        public Int16? ExtraShift { get; set; }
 
         public virtual Employee Employee { get; set; }
     }

@@ -39,7 +39,8 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new HotelExtraMap());
             modelBuilder.ApplyConfiguration(new DepartmentMap());
             modelBuilder.ApplyConfiguration(new ShiftMap());
-            
+            modelBuilder.ApplyConfiguration(new ImageMap());
+
 
 
             //İdentity İle tekrardan düzenlenecekler.
@@ -66,6 +67,7 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
         public DbSet<RoomType> RoomTypes { get; set; }
         public DbSet<RoomView> RoomViews { get; set; }
         public DbSet<Shift> Shifts { get; set; }
+        public DbSet<Image> Images { get; set; }
 
 
         public DbSet<ReservationDetail> ReservationDetails { get; set; }

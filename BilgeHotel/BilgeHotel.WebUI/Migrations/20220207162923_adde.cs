@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BilgeHotel.WebUI.Migrations
 {
-    public partial class basla : Migration
+    public partial class adde : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -125,6 +125,7 @@ namespace BilgeHotel.WebUI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoomTypeName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "money", nullable: false)
                 },
                 constraints: table =>
@@ -172,6 +173,26 @@ namespace BilgeHotel.WebUI.Migrations
                         name: "FK_Employees_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoomTypeId = table.Column<int>(type: "int", nullable: false),
+                    Path = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Images_RoomTypes_RoomTypeId",
+                        column: x => x.RoomTypeId,
+                        principalTable: "RoomTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -241,8 +262,8 @@ namespace BilgeHotel.WebUI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false),
-                    ExtraTotalPrice = table.Column<decimal>(type: "money", nullable: false)
+                    EmployeeId = table.Column<int>(type: "int", nullable: true),
+                    ExtraTotalPrice = table.Column<decimal>(type: "money", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -258,7 +279,7 @@ namespace BilgeHotel.WebUI.Migrations
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -270,8 +291,8 @@ namespace BilgeHotel.WebUI.Migrations
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     StartShift = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StopShift = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ShiftDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ExtraShift = table.Column<short>(type: "smallint", nullable: false)
+                    ShiftDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ExtraShift = table.Column<short>(type: "smallint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -315,8 +336,8 @@ namespace BilgeHotel.WebUI.Migrations
                     ReservationId = table.Column<int>(type: "int", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     PackageId = table.Column<int>(type: "int", nullable: false),
-                    Discount = table.Column<double>(type: "float", nullable: false),
-                    DiscountedPrice = table.Column<decimal>(type: "money", nullable: false),
+                    Discount = table.Column<double>(type: "float", nullable: true),
+                    DiscountedPrice = table.Column<decimal>(type: "money", nullable: true),
                     CheckInDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -381,6 +402,11 @@ namespace BilgeHotel.WebUI.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Images_RoomTypeId",
+                table: "Images",
+                column: "RoomTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ReservationDetails_PackageId",
                 table: "ReservationDetails",
                 column: "PackageId");
@@ -438,6 +464,9 @@ namespace BilgeHotel.WebUI.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Images");
+
             migrationBuilder.DropTable(
                 name: "ReservationDetails");
 

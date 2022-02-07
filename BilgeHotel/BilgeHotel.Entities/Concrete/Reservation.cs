@@ -12,8 +12,8 @@ namespace BilgeHotel.Entities.Concrete
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
-        public int EmployeeId { get; set; }
-        public double ExtraTotalPrice { get; set; } //her extradan ne kadar ve kaç adet harcanmışsa
+        public int? EmployeeId { get; set; }
+        public double? ExtraTotalPrice { get; set; } //her extradan ne kadar ve kaç adet harcanmışsa
                                                      //Fiyatı Hesaplanıp toplam fiyatı buraya yazılacaktır.
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
