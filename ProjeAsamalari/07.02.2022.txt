@@ -1,0 +1,6 @@
+1- Yeni tablolar oluşturuldu.
+2- Mapping işlemleri yapıldı.
+3- Web tasarım yapılmaya başlandı.
+4- Header Oluşturuldu.
+5- Sayfa tasarımı çizimi yapıldı.
+6- Sonraki gün, tasarımı, web tasarıma geçireceğim.
