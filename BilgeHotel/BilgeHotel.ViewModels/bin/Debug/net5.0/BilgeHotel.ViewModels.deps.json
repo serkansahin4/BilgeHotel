@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "BilgeHotel.ViewModels/1.0.0": {
+        "dependencies": {
+          "BilgeHotel.Entities": "1.0.0"
+        },
+        "runtime": {
+          "BilgeHotel.ViewModels.dll": {}
+        }
+      },
+      "BilgeHotel.Entities/1.0.0": {
+        "runtime": {
+          "BilgeHotel.Entities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BilgeHotel.ViewModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BilgeHotel.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

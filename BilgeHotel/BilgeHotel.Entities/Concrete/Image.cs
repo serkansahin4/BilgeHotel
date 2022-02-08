@@ -13,6 +13,6 @@ namespace BilgeHotel.Entities.Concrete
         public int RoomTypeId { get; set; }
         public string Path { get; set; }
 
-        public RoomType RoomType { get; set; }
+        public virtual RoomType RoomType { get; set; }
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\bin\Debug\net5.0\BilgeHotel.ViewModels.deps.json
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\bin\Debug\net5.0\BilgeHotel.ViewModels.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\bin\Debug\net5.0\ref\BilgeHotel.ViewModels.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\bin\Debug\net5.0\BilgeHotel.ViewModels.pdb
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\bin\Debug\net5.0\BilgeHotel.Entities.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\bin\Debug\net5.0\BilgeHotel.Entities.pdb
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\obj\Debug\net5.0\BilgeHotel.ViewModels.csproj.AssemblyReference.cache
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\obj\Debug\net5.0\BilgeHotel.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\obj\Debug\net5.0\BilgeHotel.ViewModels.AssemblyInfoInputs.cache
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\obj\Debug\net5.0\BilgeHotel.ViewModels.AssemblyInfo.cs
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\obj\Debug\net5.0\BilgeHotel.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\obj\Debug\net5.0\BilgeHotel.ViewModels.csproj.CopyComplete
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\obj\Debug\net5.0\BilgeHotel.ViewModels.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\obj\Debug\net5.0\ref\BilgeHotel.ViewModels.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.ViewModels\obj\Debug\net5.0\BilgeHotel.ViewModels.pdb

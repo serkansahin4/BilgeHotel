@@ -14,17 +14,16 @@ namespace BilgeHotel.WebUI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IBedService _bedService;
-        public HomeController(ILogger<HomeController> logger, IBedService bedService)
+        
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _bedService = bedService;
+            
         }
 
         public IActionResult Index()
         {
-            List<Bed> beds =  _bedService.GetAll();
-            return View(beds);
+            return View();
         }
 
         public IActionResult Privacy()

@@ -1,0 +1,5 @@
+1- Algoritma kuruldu
+2- Web sitesinin anasayfa tasarımı yapıldı
+3- web sitesi anasayfasına veritabanından çekilmesi gereken veriler çekildi.
+4- bir algoritmada hata alındı.
+5- Oda tipleri çekilirken index dışına çıkıldığı fark edildi.

@@ -17,6 +17,7 @@ namespace BilgeHotel.Entities.Concrete
 
         public virtual List<Image> Images { get; set; }
         public virtual List<Room> Rooms { get; set; }
+        public virtual List<RoomBed> RoomBeds { get; set; }
         public virtual List<RoomTypeExtra> RoomTypeExtras { get; set; }
     }
 }

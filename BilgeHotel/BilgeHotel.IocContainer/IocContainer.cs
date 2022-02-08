@@ -25,12 +25,14 @@ namespace BilgeHotel.IocContainer
 
             services.AddTransient<IBedService, BedManager>();                        //Servisler İstekler doğrultusunda
                                                                                      //Ayağa Kaldırıldığı için Transient
-                                                                                     //New Instance   New Instance
+                                                                                     //New Instance
+                                                                                     //New Instance
+            services.AddTransient<IRoomTypeService, RoomTypeManager>();
         }
 
         public static void DbConfigurationAdd(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<BilgeHotelDenemeContext>(x => x.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), x => x.MigrationsAssembly("BilgeHotel.WebUI")));
+            services.AddDbContext<BilgeHotelDenemeContext>(x => x.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), x => x.MigrationsAssembly("BilgeHotel.WebUI")).UseLazyLoadingProxies());
 
         }
     }

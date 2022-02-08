@@ -9,6 +9,6 @@ namespace BilgeHotel.Business.Abstract
 {
     public interface IBedService
     {
-        List<Bed> GetAll();
+         List<Bed> GetAll();
     }
 }

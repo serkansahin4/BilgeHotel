@@ -16,7 +16,7 @@ namespace BilgeHotel.Business.Concrete
         {
             _repository = repository;
         }
-        public List<Bed> GetAll()
+        public List<Bed>GetAll() 
         {
             return _repository.GetAll();
         }

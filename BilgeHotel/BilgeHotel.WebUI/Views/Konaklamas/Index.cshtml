@@ -1,0 +1,97 @@
+﻿@using BilgeHotel.Entities.ComplexType
+@using BilgeHotel.Entities.Concrete
+@model RoomType
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    
+}
+
+<div id="Konaklama" class="position-relative">
+
+    <div class="p-3" id="odaGorselAciklama" style="opacity:0.5; position:absolute; right:10px; bottom:10px; background-color:gray; border-radius:10px;">
+        <div class="text-white">
+
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1 class="text-danger">@Model.Name</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <span class="btn btn-dark float-left">Geri</span>
+                    <span id="Ileri" class="btn btn-dark float-right">İleri</span>
+                    @Html.ActionLink("Ileri", "Ileri", "Konaklamas",new { id=Model.Id })
+                    
+                </div>
+            </div>
+            <hr />
+
+            <div>
+                @Model.RoomTypeName
+                <span style="float:right;">@Model.Price.ToString("C2")</span>
+            </div>
+
+            <hr />
+
+            <h2>Mevcut Yataklar</h2>
+            <p>
+                @foreach (RoomBed Beds in Model.RoomBeds)
+                {
+                    @Beds.Bed.BedType
+                    @Html.Raw(", ")
+                }
+            </p>
+            <hr />
+            <h2>Oda Görüntüleri</h2>
+            <p>
+                @foreach (Image ımage in Model.Images)
+                {
+                    <img src="~/png/@ımage.Path" width="60" height="60" />
+                }
+            </p>
+            <hr />
+            <h2>Standart Eşyalar</h2>
+            <p>
+                @foreach (RoomTypeExtra extra in Model.RoomTypeExtras)
+                {
+                    @extra.Extra.ExtraName
+                    @Html.Raw(", ")
+                }
+            </p>
+        </div>
+
+    </div>
+
+    <img id="odaGorsel" src="~/png/@Model.Images.Take(1).First().Path" style="width: 100%; max-height: 650px; height: 100%; " />
+
+
+
+
+</div>
+<script src="~/jquery/jquery.js"></script>
+<script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#odaGorsel").hover(function () {
+
+            $("#odaGorselAciklama").css("opacity", "1")
+
+        }).mouseout(function () {
+            $("#odaGorselAciklama").css("opacity", "0.5")
+        })
+        $("#odaGorselAciklama").hover(function () {
+            $("#odaGorselAciklama").css("opacity", "1")
+        })
+
+
+        $("#odaGorselAciklama").on("click", "img", function () {
+            var currentId = $(this).attr("src")
+            $("#odaGorsel").attr("src", currentId)
+        })
+
+
+    });
+</script>

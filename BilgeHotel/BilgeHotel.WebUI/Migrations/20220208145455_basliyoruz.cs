@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BilgeHotel.WebUI.Migrations
 {
-    public partial class adde : Migration
+    public partial class basliyoruz : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -198,6 +198,30 @@ namespace BilgeHotel.WebUI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RoomBeds",
+                columns: table => new
+                {
+                    RoomTypeId = table.Column<int>(type: "int", nullable: false),
+                    BedId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoomBeds", x => new { x.BedId, x.RoomTypeId });
+                    table.ForeignKey(
+                        name: "FK_RoomBeds_Beds_BedId",
+                        column: x => x.BedId,
+                        principalTable: "Beds",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RoomBeds_RoomTypes_RoomTypeId",
+                        column: x => x.RoomTypeId,
+                        principalTable: "RoomTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RoomTypeExtra",
                 columns: table => new
                 {
@@ -306,30 +330,6 @@ namespace BilgeHotel.WebUI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoomBeds",
-                columns: table => new
-                {
-                    RoomId = table.Column<int>(type: "int", nullable: false),
-                    BedId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RoomBeds", x => new { x.BedId, x.RoomId });
-                    table.ForeignKey(
-                        name: "FK_RoomBeds_Beds_BedId",
-                        column: x => x.BedId,
-                        principalTable: "Beds",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_RoomBeds_Rooms_RoomId",
-                        column: x => x.RoomId,
-                        principalTable: "Rooms",
-                        principalColumn: "RoomName",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ReservationDetails",
                 columns: table => new
                 {
@@ -432,9 +432,9 @@ namespace BilgeHotel.WebUI.Migrations
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomBeds_RoomId",
+                name: "IX_RoomBeds_RoomTypeId",
                 table: "RoomBeds",
-                column: "RoomId");
+                column: "RoomTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rooms_RoomSituationId",
@@ -486,6 +486,9 @@ namespace BilgeHotel.WebUI.Migrations
                 name: "Packages");
 
             migrationBuilder.DropTable(
+                name: "Rooms");
+
+            migrationBuilder.DropTable(
                 name: "HotelExtras");
 
             migrationBuilder.DropTable(
@@ -495,16 +498,7 @@ namespace BilgeHotel.WebUI.Migrations
                 name: "Beds");
 
             migrationBuilder.DropTable(
-                name: "Rooms");
-
-            migrationBuilder.DropTable(
                 name: "Extras");
-
-            migrationBuilder.DropTable(
-                name: "Customers");
-
-            migrationBuilder.DropTable(
-                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "RoomSituations");
@@ -514,6 +508,12 @@ namespace BilgeHotel.WebUI.Migrations
 
             migrationBuilder.DropTable(
                 name: "RoomViews");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
+
+            migrationBuilder.DropTable(
+                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "Departments");

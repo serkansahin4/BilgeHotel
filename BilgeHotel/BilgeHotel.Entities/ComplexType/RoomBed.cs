@@ -10,10 +10,10 @@ namespace BilgeHotel.Entities.ComplexType
 {
     public class RoomBed : IEntity
     {
-        public int RoomId { get; set; }
+        public int RoomTypeId { get; set; }
         public int BedId { get; set; }
 
-        public virtual Room Room { get; set; }
+        public virtual RoomType RoomType { get; set; }
         public virtual Bed Bed { get; set; }
     }
 }

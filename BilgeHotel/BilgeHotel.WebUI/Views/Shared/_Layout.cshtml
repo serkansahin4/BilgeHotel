@@ -6,19 +6,25 @@
     <title>@ViewData["Title"] - BilgeHotel.WebUI</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
 <body>
-    
-    
+
+
     @await Html.PartialAsync("_LayoutHeader.cshtml")
 
-    <div>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+
+    <div id="Tanıtım">
+        @await Html.PartialAsync("_TanıtımPartial.cshtml")
     </div>
 
-    @await Html.PartialAsync("_LayoutFooter.cshtml") 
+    @await Html.PartialAsync("_LayoutFooter.cshtml")
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

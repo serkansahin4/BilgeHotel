@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeHotel.Entities", "BilgeHotel.Entities\BilgeHotel.Entities.csproj", "{F6B31730-2191-4653-9318-E9AD31F2885A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeHotel.Entities", "BilgeHotel.Entities\BilgeHotel.Entities.csproj", "{F6B31730-2191-4653-9318-E9AD31F2885A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeHotel.DataAccess", "BilgeHotel.DataAccess\BilgeHotel.DataAccess.csproj", "{0B28DEE9-4C93-4567-9685-51EC1AAE2E91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeHotel.DataAccess", "BilgeHotel.DataAccess\BilgeHotel.DataAccess.csproj", "{0B28DEE9-4C93-4567-9685-51EC1AAE2E91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeHotel.Business", "BilgeHotel.Business\BilgeHotel.Business.csproj", "{4B4F5237-77FB-4BA9-B403-66892C1915C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeHotel.Business", "BilgeHotel.Business\BilgeHotel.Business.csproj", "{4B4F5237-77FB-4BA9-B403-66892C1915C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeHotel.WebUI", "BilgeHotel.WebUI\BilgeHotel.WebUI.csproj", "{E7BEFCE9-4D3C-451E-A27B-A68EA98266DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeHotel.WebUI", "BilgeHotel.WebUI\BilgeHotel.WebUI.csproj", "{E7BEFCE9-4D3C-451E-A27B-A68EA98266DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeHotel.IocContainer", "BilgeHotel.IocContainer\BilgeHotel.IocContainer.csproj", "{6C519E42-3893-4CC7-A772-ED03A03C0D96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeHotel.IocContainer", "BilgeHotel.IocContainer\BilgeHotel.IocContainer.csproj", "{6C519E42-3893-4CC7-A772-ED03A03C0D96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeHotel.ViewModels", "BilgeHotel.ViewModels\BilgeHotel.ViewModels.csproj", "{D7EA1DDF-EB6F-4DC7-888A-8F51BE34778E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6C519E42-3893-4CC7-A772-ED03A03C0D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C519E42-3893-4CC7-A772-ED03A03C0D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C519E42-3893-4CC7-A772-ED03A03C0D96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7EA1DDF-EB6F-4DC7-888A-8F51BE34778E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7EA1DDF-EB6F-4DC7-888A-8F51BE34778E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7EA1DDF-EB6F-4DC7-888A-8F51BE34778E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7EA1DDF-EB6F-4DC7-888A-8F51BE34778E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

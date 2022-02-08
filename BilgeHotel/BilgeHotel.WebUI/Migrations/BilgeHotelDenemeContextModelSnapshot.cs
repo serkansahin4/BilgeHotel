@@ -80,12 +80,12 @@ namespace BilgeHotel.WebUI.Migrations
                     b.Property<int>("BedId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoomId")
+                    b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
 
-                    b.HasKey("BedId", "RoomId");
+                    b.HasKey("BedId", "RoomTypeId");
 
-                    b.HasIndex("RoomId");
+                    b.HasIndex("RoomTypeId");
 
                     b.ToTable("RoomBeds");
                 });
@@ -516,15 +516,15 @@ namespace BilgeHotel.WebUI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BilgeHotel.Entities.Concrete.Room", "Room")
+                    b.HasOne("BilgeHotel.Entities.Concrete.RoomType", "RoomType")
                         .WithMany("RoomBeds")
-                        .HasForeignKey("RoomId")
+                        .HasForeignKey("RoomTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Bed");
 
-                    b.Navigation("Room");
+                    b.Navigation("RoomType");
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.ComplexType.RoomTypeExtra", b =>
@@ -683,8 +683,6 @@ namespace BilgeHotel.WebUI.Migrations
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Room", b =>
                 {
                     b.Navigation("ReservationDetails");
-
-                    b.Navigation("RoomBeds");
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.RoomSituation", b =>
@@ -695,6 +693,8 @@ namespace BilgeHotel.WebUI.Migrations
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.RoomType", b =>
                 {
                     b.Navigation("Images");
+
+                    b.Navigation("RoomBeds");
 
                     b.Navigation("Rooms");
 
