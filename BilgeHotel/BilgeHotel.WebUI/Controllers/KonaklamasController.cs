@@ -32,7 +32,7 @@ namespace BilgeHotel.WebUI.Controllers
             if (roomType!=null)
             {
                 int dizidekiSirasi = roomTypes.IndexOf(roomType);
-                if (dizidekiSirasi-1<roomTypes.Count)
+                if (dizidekiSirasi<roomTypes.Count-1)
                 {
                     return View("Index", roomTypes[dizidekiSirasi + 1]);
                 }
@@ -50,7 +50,7 @@ namespace BilgeHotel.WebUI.Controllers
             if (roomType != null)
             {
                 int dizidekiSirasi = roomTypes.IndexOf(roomType);
-                if (dizidekiSirasi > roomTypes.Count)
+                if (dizidekiSirasi-1 > 0)
                 {
                     return View("Index", roomTypes[dizidekiSirasi -1]);
                 }

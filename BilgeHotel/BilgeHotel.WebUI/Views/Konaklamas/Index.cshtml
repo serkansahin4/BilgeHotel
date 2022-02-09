@@ -20,11 +20,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <span class="btn btn-dark float-left">Geri</span>
-                    <span id="Ileri" class="btn btn-dark float-right">İleri</span>
-                    @Html.ActionLink("Ileri", "Ileri", "Konaklamas",new { id=Model.Id })
-                    
+                <div class="col-12">                    
+                    @Html.ActionLink("Geri", "Geri", "Konaklamas", new { id = Model.Id }, new { @class = "btn btn-dark float-left" })
+                    @Html.ActionLink("Ileri", "Ileri", "Konaklamas", new { id = Model.Id }, new { @class = "btn btn-dark float-right" })
                 </div>
             </div>
             <hr />
