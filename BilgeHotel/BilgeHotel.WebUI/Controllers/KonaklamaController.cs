@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace BilgeHotel.WebUI.Controllers
 {
-    public class KonaklamasController : Controller
+    public class KonaklamaController : Controller
     {
         private readonly IRoomTypeService _roomTypeService;
-        public KonaklamasController(IRoomTypeService roomTypeService)
+        public KonaklamaController(IRoomTypeService roomTypeService)
         {
             _roomTypeService = roomTypeService;
         }

@@ -83,6 +83,9 @@ namespace BilgeHotel.WebUI.Migrations
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.HasKey("BedId", "RoomTypeId");
 
                     b.HasIndex("RoomTypeId");

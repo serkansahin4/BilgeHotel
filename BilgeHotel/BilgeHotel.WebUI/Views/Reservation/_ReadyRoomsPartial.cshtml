@@ -1,0 +1,75 @@
+﻿@model List<Room>
+@{
+    Layout = null;
+}
+
+<section>
+    @foreach (var item in Model)
+    {
+        <div class="card mt-2">
+            <div class="card-header text-white bg-dark">
+                <div class="row">
+                    <div class="col-8">
+                        <h2 class="text-warning">@item.RoomName Numaralı Oda (@item.RoomType.RoomTypeName)</h2>
+                        <sub>@item.RoomType.Name</sub>
+                    </div>
+                    <div class="col-4 text-right">
+                        <h3>@item.RoomType.Price.ToString("C2")</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <p>
+
+                    <strong>Oda Genişliği M2 : </strong> @item.RoomSize
+                    <hr />
+                    <strong>Manzara : </strong> @item.RoomView.ViewName
+                    <hr />
+                    <strong>Yataklar:</strong> @foreach (var beds in item.RoomType.RoomBeds)
+                    {
+                        @Html.Raw(beds.Bed.BedType + " (" + beds.Quantity + ") " + " ,")
+                    }
+                    <hr />
+                    <strong>Extralar</strong> : @foreach (var extras in item.RoomType.RoomTypeExtras)
+                    {
+                        @Html.Raw(extras.Extra.ExtraName + ", ")
+                    }
+                </p>
+                <hr />
+                <div class="row">
+                    <div class="col-12">
+                        @foreach (var images in item.RoomType.Images)
+                        {
+                            <img src="~/png/@images.Path" width="70" height="70" />
+                        }
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="Rezervasyon" class="col-4 float-right btn btn-success mt-2">Rezervasyon</div>
+                    </div>
+                </div>
+                <div>
+                    <hr />
+                    <form asp-action="">
+                        <div class="row mt-2">
+
+                            <div class="col-6 border-right">sadas</div>
+                            <div class="col-6">fasfsa</div>
+
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12 text-right">
+                                <button class="btn btn-primary">Rezervasyon Yap</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    }
+</section>

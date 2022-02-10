@@ -54,7 +54,7 @@ namespace BilgeHotel.WebUI
                 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Konaklamas}/{action=Index}/{id?}");
+                    pattern: "{controller=Konaklama}/{action=Index}/{id?}");
             });
         }
     }

@@ -21,8 +21,8 @@
             </div>
             <div class="row">
                 <div class="col-12">                    
-                    @Html.ActionLink("Geri", "Geri", "Konaklamas", new { id = Model.Id }, new { @class = "btn btn-dark float-left" })
-                    @Html.ActionLink("Ileri", "Ileri", "Konaklamas", new { id = Model.Id }, new { @class = "btn btn-dark float-right" })
+                    @Html.ActionLink("Geri", "Geri", "Konaklama", new { id = Model.Id }, new { @class = "btn btn-dark float-left" })
+                    @Html.ActionLink("Ileri", "Ileri", "Konaklama", new { id = Model.Id }, new { @class = "btn btn-dark float-right" })
                 </div>
             </div>
             <hr />
@@ -70,7 +70,6 @@
 
 </div>
 <script src="~/jquery/jquery.js"></script>
-<script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
 <script>
     $(document).ready(function () {
         $("#odaGorsel").hover(function () {

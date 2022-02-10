@@ -28,6 +28,8 @@ namespace BilgeHotel.IocContainer
                                                                                      //New Instance
                                                                                      //New Instance
             services.AddTransient<IRoomTypeService, RoomTypeManager>();
+            services.AddTransient<IRoomService, RoomManager>();
+            services.AddTransient<ICustomerService, CustomerManager>();
         }
 
         public static void DbConfigurationAdd(this IServiceCollection services, IConfiguration configuration)
