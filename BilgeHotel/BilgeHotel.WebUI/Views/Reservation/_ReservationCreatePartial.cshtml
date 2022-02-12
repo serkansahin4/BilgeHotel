@@ -1,5 +1,46 @@
-﻿@model ReservationCreateVM 
+﻿@model ReservationCreateVM
+@{
+    Layout = null;
+}
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-<h2>asdasfs</h2>
+
+<div class="col-12">
+    <div class="row">
+        <div class="col-6">
+            @* BURADA KALDIM *@
+
+            @*<select asp-for="CheckInDate" class="form-control mt-2">
+                @foreach (var item in Model)
+                {
+                    <option value="@item.Id">@Html.Raw(item.Name + " ( " + item.RoomTypeName + " ) ")</option>
+                }
+            </select>*@
+        </div>
+        <div class="col-6">
+            <h2>Sign Up</h2>
+            <form asp-controller="Reservation" asp-action="_ReservationCreatePartial">
+                <label asp-for="Customer.FirstName"></label>
+                <input type="text" asp-for="Customer.FirstName" class="form-control" />
+                <label asp-for="Customer.LastName"></label>
+                <input type="text" asp-for="Customer.LastName" class="form-control" />
+                <label asp-for="Customer.Phone"></label>
+                <input type="text" asp-for="Customer.Phone" class="form-control" />
+                <label asp-for="Customer.Email"></label>
+                <input type="email" asp-for="Customer.Email" class="form-control" />
+                <label asp-for="Customer.TcIdentityNo"></label>
+                <input type="number" asp-for="Customer.TcIdentityNo" class="form-control" />
+                <label asp-for="Customer.BirthDate"></label>
+                <input type="datetime" asp-for="Customer.BirthDate" class="form-control" />
+
+
+            </form>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <button class="btn btn-primary float-right">Rezervasyon Yap</button>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,7 @@
     Layout = null;
 }
 
-<section>
+<section id="roomDetail">
     @foreach (var item in Model)
     {
         <div class="card mt-2">
@@ -46,33 +46,56 @@
                     </div>
 
                 </div>
+
                 <div class="row">
                     <div class="col-12">
-                        <div id="Rezervasyon" class="col-4 float-right btn btn-success mt-2">Rezervasyon</div>
+
+                        <button onclick="RezervasyonGetir(@item.RoomName);" name="Rezervasyon" class="col-4 float-right btn btn-success mt-2">Rezervasyon</button>
                     </div>
                 </div>
 
 
-
-                <hr />
-                <div class="row" id="RezervasyonOlustur">
-                    <div class="col-6">
-                        <div class="">
-                            asfassad
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="">
-                        ryrtr
-                        </div>
-
-                    </div>
-                </div>
                 
-                @*@Html.PartialAsync("_ReadyRoomsPartial",1)*@
+                
+                <div class="row border-top mt-3" name="rezervasyon" id="@item.RoomName">
+
+                </div>
             </div>
 
         </div>
 
     }
+
+
 </section>
+
+<script>
+    function RezervasyonGetir(id) {
+        $.get({
+            type: "Get",
+            url: "/Reservation/_ReservationCreatePartial/" + id,
+            success: function (data) {
+                $("#" + id).html(data)
+            }
+
+        })
+    }
+    $(document).ready(function () {
+        
+        //$("#roomDetail").on('click', 'button', function () {
+
+        //    if (true) {
+
+        //    }
+        //    var id = $(this).attr('id')
+        //    alert(id)
+        //})
+        //$.ajax({
+        //    type: 'GET',
+        //    url: '/Reservation/_ReadyRoomsPartial/' + currentId,
+        //    success: function (result) {
+        //        $('#Icerik').html(result);
+        //    }
+        //});
+    });
+</script>

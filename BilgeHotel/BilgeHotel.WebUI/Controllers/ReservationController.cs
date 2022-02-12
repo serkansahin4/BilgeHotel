@@ -1,6 +1,7 @@
 ﻿using BilgeHotel.Business.Abstract;
 using BilgeHotel.Entities.Concrete;
 using BilgeHotel.ViewModels.ViewModels;
+using BilgeHotel.WebUI.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -35,10 +36,18 @@ namespace BilgeHotel.WebUI.Controllers
             return View("Index");
         }
 
+        [HttpGet]
         public IActionResult _ReservationCreatePartial(int id)
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult _ReservationCreatePartial(ReservationCreateVM reservationCreateVM)
+        {
+            return View();
+        }
+
         //public IActionResult Create(Customer customer,Room room, Reservation reservation) //Burda takıldık. rezervasyon oluşturacağız.
         //{
 

@@ -8,6 +8,10 @@ namespace BilgeHotel.WebUI.Models.ViewModels
 {
     public class ReservationCreateVM
     {
+        public ReservationCreateVM()
+        {
+            CreatedDate = DateTime.Now;
+        }
         public Customer Customer { get; set; }
         public int RoomId { get; set; }
         public int PackageId { get; set; }
@@ -16,5 +20,7 @@ namespace BilgeHotel.WebUI.Models.ViewModels
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public DateTime CreatedDate { get; set; }
+
+        //public List<DateTime>  { get; set; }
     }
 }
