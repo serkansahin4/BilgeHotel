@@ -35,9 +35,13 @@ namespace BilgeHotel.WebUI.Controllers
             return View("Index");
         }
 
-        public IActionResult Create(Customer customer,Room room, Reservation reservation) //Burda takıldık. rezervasyon oluşturacağız.
+        public IActionResult _ReservationCreatePartial(int id)
         {
-
+            return View();
         }
+        //public IActionResult Create(Customer customer,Room room, Reservation reservation) //Burda takıldık. rezervasyon oluşturacağız.
+        //{
+
+        //}
     }
 }

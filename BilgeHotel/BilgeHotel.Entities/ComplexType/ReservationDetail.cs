@@ -10,7 +10,7 @@ namespace BilgeHotel.Entities.ComplexType
 {
     public class ReservationDetail : IEntity
     {
-        public int ReservationId { get; set; }
+        public Guid ReservationId { get; set; }
         public int RoomId { get; set; }
         public int PackageId { get; set; }
         public double? Discount { get; set; }

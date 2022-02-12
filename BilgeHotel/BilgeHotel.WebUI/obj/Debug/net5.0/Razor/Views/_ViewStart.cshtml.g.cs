@@ -40,8 +40,15 @@ using BilgeHotel.Entities.Concrete;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\Views\_ViewImports.cshtml"
+using BilgeHotel.WebUI.Models.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"01bfb0cfba8fd392986d2f1e0e56d273d9cc28ec", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3bcc0cf655cc92ef2d8e75992352c95fa45c1864", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

@@ -40,8 +40,15 @@ using BilgeHotel.Entities.Concrete;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\Views\_ViewImports.cshtml"
+using BilgeHotel.WebUI.Models.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f3db2e45e4d16e988f91a5de7227e8f152930323", @"/Views/Shared/_LayoutFooter.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"01bfb0cfba8fd392986d2f1e0e56d273d9cc28ec", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3bcc0cf655cc92ef2d8e75992352c95fa45c1864", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__LayoutFooter : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("form-group"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -78,7 +85,7 @@ using BilgeHotel.Entities.Concrete;
                 <h2 class=""text-white"">Eposta Bildirimleri</h2>
 
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3db2e45e4d16e988f91a5de7227e8f1529303234357", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3db2e45e4d16e988f91a5de7227e8f1529303234573", async() => {
                 WriteLiteral("\r\n                    <label class=\"mt-2\">E-Posta</label>\r\n                    <input type=\"text\" class=\"form-control mt-2\" />\r\n                    <button class=\"btn btn-primary form-control mt-2\">Bildirim Al</button>\r\n                ");
             }
             );

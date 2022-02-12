@@ -1,4 +1,5 @@
-﻿using BilgeHotel.DataAccess.EntityFramework.Maps;
+﻿using BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions;
+using BilgeHotel.DataAccess.EntityFramework.Maps;
 using BilgeHotel.DataAccess.EntityFramework.Maps.Concrete;
 using BilgeHotel.Entities.ComplexType;
 using BilgeHotel.Entities.Concrete;
@@ -47,6 +48,7 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new RoleMap());
             modelBuilder.ApplyConfiguration(new EmployeeMap());
 
+            modelBuilder.Seed();
 
             base.OnModelCreating(modelBuilder);
         }
@@ -74,6 +76,8 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
         public DbSet<ReservationOutHotelExtra> ReservationOutHotelExtras { get; set; }
         public DbSet<RoomBed> RoomBeds { get; set; }
         public DbSet<RoomTypeExtra> RoomTypeExtras { get; set; }
+
+        
 
     }
 }

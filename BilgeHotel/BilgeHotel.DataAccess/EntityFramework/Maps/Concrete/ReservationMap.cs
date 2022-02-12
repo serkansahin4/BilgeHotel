@@ -14,7 +14,6 @@ namespace BilgeHotel.DataAccess.EntityFramework.Maps.Concrete
         public void Configure(EntityTypeBuilder<Reservation> builder)
         {
             builder.HasKey(x => x.Id);
-
             builder.Property(x => x.ExtraTotalPrice).HasColumnType("money");
         }
     }

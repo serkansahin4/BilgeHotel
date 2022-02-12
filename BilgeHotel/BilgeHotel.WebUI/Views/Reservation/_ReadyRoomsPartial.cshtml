@@ -51,22 +51,7 @@
                         <div id="Rezervasyon" class="col-4 float-right btn btn-success mt-2">Rezervasyon</div>
                     </div>
                 </div>
-                <div>
-                    <hr />
-                    <form asp-action="">
-                        <div class="row mt-2">
-
-                            <div class="col-6 border-right">sadas</div>
-                            <div class="col-6">fasfsa</div>
-
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-12 text-right">
-                                <button class="btn btn-primary">Rezervasyon Yap</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                @Html.PartialAsync("_ReadyRoomsPartial",1)
             </div>
 
         </div>

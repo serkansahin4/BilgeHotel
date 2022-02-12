@@ -40,8 +40,15 @@ using BilgeHotel.Entities.Concrete;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\Views\_ViewImports.cshtml"
+using BilgeHotel.WebUI.Models.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7a6c42f23432837d9662fc9fbb84cedb5fe2ead3", @"/Views/Shared/_LayoutHeader.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"01bfb0cfba8fd392986d2f1e0e56d273d9cc28ec", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3bcc0cf655cc92ef2d8e75992352c95fa45c1864", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__LayoutHeader : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,7 +93,7 @@ using BilgeHotel.Entities.Concrete;
     </div>
     <div class=""col-lg-2 col-md-12 text-center mt-1"">
         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7a6c42f23432837d9662fc9fbb84cedb5fe2ead35542", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7a6c42f23432837d9662fc9fbb84cedb5fe2ead35758", async() => {
                 WriteLiteral("Rezervasyon");
             }
             );
