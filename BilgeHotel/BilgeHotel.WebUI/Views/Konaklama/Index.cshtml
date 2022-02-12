@@ -38,8 +38,8 @@
             <p>
                 @foreach (RoomBed Beds in Model.RoomBeds)
                 {
-                    @Beds.Bed.BedType
-                    @Html.Raw(", ")
+                    
+                    @Html.Raw(@Beds.Bed.BedType+" ("+Beds.Quantity+") "+", ")
                 }
             </p>
             <hr />

@@ -55,7 +55,7 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
                   new RoomBed { RoomTypeId = 6, BedId = 2, Quantity = 1 },
                   new RoomBed { RoomTypeId = 6, BedId = 1, Quantity = 1 },
 
-                    new RoomBed { RoomTypeId = 7, BedId = 2, Quantity = 2 },
+                    new RoomBed { RoomTypeId = 7, BedId = 2, Quantity = 1 },
                      new RoomBed { RoomTypeId = 7, BedId = 1, Quantity = 2 },
 
                       new RoomBed { RoomTypeId = 8, BedId = 2, Quantity = 1 }
