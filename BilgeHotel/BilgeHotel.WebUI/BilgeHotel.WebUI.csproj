@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BilgeHotel.Business\BilgeHotel.Business.csproj" />
+    <ProjectReference Include="..\BilgeHotel.Core\BilgeHotel.Core.csproj" />
     <ProjectReference Include="..\BilgeHotel.IocContainer\BilgeHotel.IocContainer.csproj" />
     <ProjectReference Include="..\BilgeHotel.ViewModels\BilgeHotel.ViewModels.csproj" />
   </ItemGroup>

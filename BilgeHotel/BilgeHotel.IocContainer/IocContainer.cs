@@ -1,5 +1,7 @@
 ﻿using BilgeHotel.Business.Abstract;
 using BilgeHotel.Business.Concrete;
+using BilgeHotel.Core.MyTools.Abstract;
+using BilgeHotel.Core.MyTools.Concrete;
 using BilgeHotel.DataAccess.Abstract;
 using BilgeHotel.DataAccess.EntityFramework;
 using BilgeHotel.DataAccess.EntityFramework.Context;
@@ -30,6 +32,8 @@ namespace BilgeHotel.IocContainer
             services.AddTransient<IRoomTypeService, RoomTypeManager>();
             services.AddTransient<IRoomService, RoomManager>();
             services.AddTransient<ICustomerService, CustomerManager>();
+            services.AddTransient<IReservationDetailService, ReservationDetailManager>();
+            services.AddTransient<IDateManagementExtension, DateManagementExtension>();
         }
 
         public static void DbConfigurationAdd(this IServiceCollection services, IConfiguration configuration)

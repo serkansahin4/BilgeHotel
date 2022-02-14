@@ -26,7 +26,11 @@ namespace BilgeHotel.WebUI
         {
             services.IocConfiguration();
             services.DbConfigurationAdd(Configuration);
-            services.AddControllersWithViews();
+
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+            services.AddControllersWithViews().AddSessionStateTempDataProvider();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +50,7 @@ namespace BilgeHotel.WebUI
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

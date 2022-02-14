@@ -1,22 +1,32 @@
 ﻿@model ReservationCreateVM
+@using BilgeHotel.Core.MyTools.Concrete
 @{
-    Layout = null;
+    int? roomId = ViewData["RoomId"] as int?;
+
+
+    List<DateTime> ReservationDates = TempData["ReservationGetir"] as List<DateTime>;
+    Layout = null; 
+   
+
 }
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
 
 <div class="col-12">
     <div class="row">
         <div class="col-6">
             @* BURADA KALDIM *@
 
-            @*<select asp-for="CheckInDate" class="form-control mt-2">
-                @foreach (var item in Model)
+            <h2>Rezervasyon Seçenekleri</h2>
+
+            <select id="checkIn_@roomId"class="form-control mt-2 dropdown">
+                @foreach (var item in ReservationDates)
                 {
-                    <option value="@item.Id">@Html.Raw(item.Name + " ( " + item.RoomTypeName + " ) ")</option>
+                    <option>@item</option>
                 }
-            </select>*@
+            </select>
+
+            <select id="checkOut_@roomId">
+            </select>
         </div>
         <div class="col-6">
             <h2>Sign Up</h2>
@@ -33,8 +43,6 @@
                 <input type="number" asp-for="Customer.TcIdentityNo" class="form-control" />
                 <label asp-for="Customer.BirthDate"></label>
                 <input type="datetime" asp-for="Customer.BirthDate" class="form-control" />
-
-
             </form>
         </div>
     </div>
@@ -44,3 +52,81 @@
         </div>
     </div>
 </div>
+<script src="~/jquery/jquery.js"></script>
+<script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+<script>
+
+
+
+    @*function odaGetir(id) {
+        alert("sd")-->
+        $("#checkOut+" +@roomId).append("<option>sadas</option>")
+
+        <!--$("#checkOut_" +@roomId).append($('<option>', {
+            value: 1,
+            text: 'My option'
+        }));
+    }*@
+
+    $(document).ready(function () {
+
+        $("#checkIn_@roomId").change(function () {
+
+
+            var currentDate = $("#checkIn_@roomId").children(":selected").val().toString()
+            var a = currentDate.replace(" ", ".")
+            var b = a.replace(":", ".")
+            var c = b.replace(":", ".")
+            var ayristir = c.split(".")
+
+            var day = ayristir[0]
+            var month = ayristir[1]
+            var year = ayristir[2]
+            var hour = ayristir[3]
+            var minute = ayristir[4]
+            var second = ayristir[5]
+
+           $.ajax({
+             type: "Get",
+               url: "/Reservation/GetOutDate/",
+               dataType: "json",
+               data: {
+                   Year: year,
+                   Month: month,
+                   Day: day,
+                   Hour: hour,
+                   Minute: minute,
+                   Second: second
+               },
+               success: function (data) {
+                   
+                   $.each(data, function (index, item) {
+                       //BURDA KALDIM. TARİHLER GELİYOR ANCAK TARİH FORMATINDA DEĞİL
+                       /*https://stackoverflow.com/questions/27314663/asp-net-parse-datetime-result-from-ajax-call-to-javascript-date*/
+                   })
+                   @*$.each(data, function (index, item) {
+                       item.
+                     $("#checkOut_" +@roomId).append(`<option value="${item}">
+                                       ${item}
+                                  </option>`);
+                     item.Json
+                     console.log(item.Year)
+            });*@
+
+
+              }
+           })
+
+
+
+
+
+
+
+
+        })
+
+   })
+
+
+</script>
