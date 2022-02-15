@@ -5,8 +5,8 @@
 
 
     List<DateTime> ReservationDates = TempData["ReservationGetir"] as List<DateTime>;
-    Layout = null; 
-   
+    Layout = null;
+
 
 }
 
@@ -36,24 +36,24 @@
                     </select>
                 </div>
             </div>
-            
+
         </div>
         <div class="col-lg-6 mt-md-5">
             <h2>Sign Up</h2>
             <div class="row mt-5 border-top">
                 <div class="col-12">
                     <form asp-controller="Reservation" asp-action="_ReservationCreatePartial">
-                        <label class="text-success"asp-for="Customer.FirstName"></label>
+                        <label class="text-success" asp-for="Customer.FirstName"></label>
                         <input type="text" asp-for="Customer.FirstName" class="form-control" />
-                        <label class="text-success"asp-for="Customer.LastName"></label>
+                        <label class="text-success" asp-for="Customer.LastName"></label>
                         <input type="text" asp-for="Customer.LastName" class="form-control" />
-                        <label class="text-success"asp-for="Customer.Phone"></label>
+                        <label class="text-success" asp-for="Customer.Phone"></label>
                         <input type="text" asp-for="Customer.Phone" class="form-control" />
-                        <label class="text-success"asp-for="Customer.Email"></label>
+                        <label class="text-success" asp-for="Customer.Email"></label>
                         <input type="email" asp-for="Customer.Email" class="form-control" />
-                        <label class="text-success"asp-for="Customer.TcIdentityNo"></label>
+                        <label class="text-success" asp-for="Customer.TcIdentityNo"></label>
                         <input type="number" asp-for="Customer.TcIdentityNo" class="form-control" />
-                        <label class="text-success"asp-for="Customer.BirthDate"></label>
+                        <label class="text-success" asp-for="Customer.BirthDate"></label>
                         <input type="datetime" asp-for="Customer.BirthDate" class="form-control" />
                     </form>
                 </div>
@@ -69,18 +69,6 @@
 <script src="~/jquery/jquery.js"></script>
 <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
 <script>
-
-
-
-    @*function odaGetir(id) {
-        alert("sd")-->
-        $("#checkOut+" +@roomId).append("<option>sadas</option>")
-
-        <!--$("#checkOut_" +@roomId).append($('<option>', {
-            value: 1,
-            text: 'My option'
-        }));
-    }*@
 
     $(document).ready(function () {
 
@@ -113,17 +101,12 @@
                    Second: second
                },
                success: function (data) {
-                   
                    $.each(data, function (index, item) {
-                       //BURDA KALDIM. TARİHLER GELİYOR ANCAK TARİH FORMATINDA DEĞİL
-                       /*https://stackoverflow.com/questions/27314663/asp-net-parse-datetime-result-from-ajax-call-to-javascript-date*/
-                   })
-                   $.each(data, function (index, item) {
-                      
+
                      $("#checkOut_" +@roomId).append(`<option value="${item}">
                                        ${item}
                                   </option>`);
-                     
+
             });
 
 
