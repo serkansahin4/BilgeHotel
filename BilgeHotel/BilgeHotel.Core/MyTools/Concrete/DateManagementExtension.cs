@@ -50,14 +50,16 @@ namespace BilgeHotel.Core.MyTools.Concrete
         {
             #region Rezervasyon başlangıç tarihi seçildiğinde bitiş tarihlerini hesaplayan kısım.
             List<DateTime> bitisTarihleri = new List<DateTime>();
-
+            
             foreach (DateTime item in dates)
             {
-                if (item == seciliTarih.AddDays(1) || item == seciliTarih)
+                if (item == seciliTarih)
                 {
                     seciliTarih = seciliTarih.AddDays(1);
                     bitisTarihleri.Add(new DateTime(item.Year, item.Month, item.AddDays(1).Day, 10, 0, 0));
+                    
                 }
+                
             }
             #endregion
 
