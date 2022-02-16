@@ -5,6 +5,7 @@ using BilgeHotel.Core.MyTools.Concrete;
 using BilgeHotel.DataAccess.Abstract;
 using BilgeHotel.DataAccess.EntityFramework;
 using BilgeHotel.DataAccess.EntityFramework.Context;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,8 @@ namespace BilgeHotel.IocContainer
             services.AddTransient<ICustomerService, CustomerManager>();
             services.AddTransient<IReservationDetailService, ReservationDetailManager>();
             services.AddTransient<IDateManagementExtension, DateManagementExtension>();
+            services.AddTransient<IPackageService, PackageManager>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         public static void DbConfigurationAdd(this IServiceCollection services, IConfiguration configuration)

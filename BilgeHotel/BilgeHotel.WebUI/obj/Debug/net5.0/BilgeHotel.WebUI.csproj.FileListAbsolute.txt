@@ -170,3 +170,9 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\_ReservationCreatePartial.cshtml.g.cs
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.Core.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.Core.pdb
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\Pay.cshtml.g.cs

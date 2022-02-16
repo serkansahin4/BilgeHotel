@@ -27,7 +27,6 @@ namespace BilgeHotel.WebUI
             services.IocConfiguration();
             services.DbConfigurationAdd(Configuration);
 
-
             services.AddDistributedMemoryCache();
             services.AddSession();
             services.AddControllersWithViews().AddSessionStateTempDataProvider();

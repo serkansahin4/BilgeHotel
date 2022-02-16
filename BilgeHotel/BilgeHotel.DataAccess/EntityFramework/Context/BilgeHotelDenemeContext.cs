@@ -19,8 +19,11 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
 
         }
 
+        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             //ComplexType
             modelBuilder.ApplyConfiguration(new ReservationDetailMap());
             modelBuilder.ApplyConfiguration(new ReservationOutHotelExtraMap());

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BilgeHotel.DataAccess.EntityFramework
 {
-    public class EfEntityRepository<T> : IRepository<T> where T : IEntity
+    public class EfEntityRepository<T> : IRepository<T> where T :class,IEntity, new()
     {
         private readonly BilgeHotelDenemeContext _context;
         private readonly DbSet<T> _dbSet;

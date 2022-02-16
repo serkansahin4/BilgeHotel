@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BilgeHotel.Entities.Abstract
 {
-    public class IEntity
+    public interface IEntity
     {
     }
 }

@@ -1,0 +1,7 @@
+7 Gün boyunca araştırma ve hata çözümleri ile uğraşıldı.
+
+1- Kullanıcı rezervasyonu oluşturuldu.
+2- Oluşturulan rezervasyon ödeme sayfasına aktarıldı.
+
+(YARIN YAPILACAK)
+3- Ödeme sitemi entegrasyonu yapılacak.

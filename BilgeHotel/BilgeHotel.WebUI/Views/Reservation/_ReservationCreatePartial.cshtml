@@ -10,61 +10,98 @@
 
 }
 
-
+<div class="row">
+    <div class="col-12 text-center bg-danger text-white">
+        <div asp-validation-summary="All"></div>
+    </div>
+</div>
 <div class="col-lg-12">
     <div class="row">
-        <div class="col-lg-6 mt-md-5">
-            @* BURADA KALDIM *@
-
-            <h2>Rezervasyon Seçenekleri</h2>
-
-            <div class="row border-top mt-5">
-                <div class="col-12">
-                    <h3 class="text-success">Giriş Tarihi</h3>
-                    <select id="checkIn_@roomId" class="form-control mt-2 dropdown">
-                        @foreach (var item in ReservationDates)
-                        {
-                            <option>@item</option>
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-12">
-                    <h3 class="text-success">Çıkış Tarihi</h3>
-                    <select id="checkOut_@roomId" class="dropdown form-control">
-                    </select>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-lg-6 mt-md-5">
-            <h2>Sign Up</h2>
-            <div class="row mt-5 border-top">
-                <div class="col-12">
-                    <form asp-controller="Reservation" asp-action="_ReservationCreatePartial">
-                        <label class="text-success" asp-for="Customer.FirstName"></label>
-                        <input type="text" asp-for="Customer.FirstName" class="form-control" />
-                        <label class="text-success" asp-for="Customer.LastName"></label>
-                        <input type="text" asp-for="Customer.LastName" class="form-control" />
-                        <label class="text-success" asp-for="Customer.Phone"></label>
-                        <input type="text" asp-for="Customer.Phone" class="form-control" />
-                        <label class="text-success" asp-for="Customer.Email"></label>
-                        <input type="email" asp-for="Customer.Email" class="form-control" />
-                        <label class="text-success" asp-for="Customer.TcIdentityNo"></label>
-                        <input type="number" asp-for="Customer.TcIdentityNo" class="form-control" />
-                        <label class="text-success" asp-for="Customer.BirthDate"></label>
-                        <input type="datetime" asp-for="Customer.BirthDate" class="form-control" />
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-2">
         <div class="col-12">
-            <button class="btn btn-primary float-right">Rezervasyon Yap</button>
+            <form asp-controller="Reservation" asp-action="_ReservationCreatePartial">
+                
+                <div class="row">
+                    <div class="col-12 text-center bg-success">
+                        <input type="hidden" value="@roomId" asp-for="RoomId"/>
+                        <p class="text-white card-header"><strong>@roomId</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 mt-md-5">
+                        @* BURADA KALDIM *@
+
+                        <h2>Rezervasyon Seçenekleri</h2>
+
+                        <div class="row border-top mt-5">
+                            <div class="col-12">
+                                <h3 class="text-success">Giriş Tarihi</h3>
+                                <select id="checkIn_@roomId" asp-for="CheckInDate" class="form-control mt-2 dropdown">
+                                   @if (ReservationDates!=null)
+                                   {
+                                    @foreach (var item in ReservationDates)
+                                    {
+                                        <option>@item</option>
+                                    }
+                                   }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-12">
+                                <h3 class="text-success">Çıkış Tarihi</h3>
+                                <select id="checkOut_@roomId" asp-for="CheckOutDate" class="dropdown form-control">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-12">
+                                <h3 class="text-success">Paket Tipi</h3>
+                                <select id="PacketType_@roomId" asp-for="PackageId" class="dropdown form-control">
+                                   @if (TempData["PaketTipi"]!=null)
+                                   {
+
+                                   
+                                    @foreach (Package item in TempData["PaketTipi"] as List<Package>)
+                                    {
+                                        <option value="@item.Id">@item.PackageName</option>
+                                    }
+                                   }
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 mt-md-5">
+                        <h2>Sign Up</h2>
+                        <div class="row mt-5 border-top">
+                            <div class="col-12">
+
+                                <label class="text-success" asp-for="Customer.FirstName"></label>
+                                <input type="text" asp-for="Customer.FirstName" class="form-control" />
+                                <label class="text-success" asp-for="Customer.LastName"></label>
+                                <input type="text" asp-for="Customer.LastName" class="form-control" />
+                                <label class="text-success" asp-for="Customer.Phone"></label>
+                                <input type="text" asp-for="Customer.Phone" class="form-control" />
+                                <label class="text-success" asp-for="Customer.Email"></label>
+                                <input type="email" asp-for="Customer.Email" class="form-control" />
+                                <label class="text-success" asp-for="Customer.TcIdentityNo"></label>
+                                <input type="number" asp-for="Customer.TcIdentityNo" class="form-control" />
+                                <label class="text-success" asp-for="Customer.BirthDate"></label>
+                                <input type="datetime" asp-for="Customer.BirthDate" class="form-control" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <button class="btn btn-primary float-right">Rezervasyon Yap</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+    
 </div>
 <script src="~/jquery/jquery.js"></script>
 <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>

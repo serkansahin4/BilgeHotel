@@ -6,6 +6,7 @@ using BilgeHotel.Entities.Concrete;
 using BilgeHotel.ViewModels.ViewModels;
 using BilgeHotel.WebUI.Models;
 using BilgeHotel.WebUI.Models.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -21,12 +22,16 @@ namespace BilgeHotel.WebUI.Controllers
         private readonly IRoomTypeService _roomTypeService;
         private readonly IReservationDetailService _reservationDetailService;
         private readonly IDateManagementExtension _dateManagementExtension;
-        public ReservationController(IRoomService roomService, IRoomTypeService roomTypeService, IReservationDetailService reservationDetailService, IDateManagementExtension dateManagementExtension)
+        private readonly IPackageService _packageService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public ReservationController(IRoomService roomService, IRoomTypeService roomTypeService, IReservationDetailService reservationDetailService, IDateManagementExtension dateManagementExtension, IPackageService packageService, IHttpContextAccessor httpContextAccessor)
         {
             _roomService = roomService;
             _roomTypeService = roomTypeService;
             _reservationDetailService = reservationDetailService;
             _dateManagementExtension = dateManagementExtension;
+            _packageService = packageService;
+            _httpContextAccessor = httpContextAccessor;
         }
         public IActionResult Index()
         {
@@ -56,6 +61,7 @@ namespace BilgeHotel.WebUI.Controllers
 
             List<DateTime> dateTimes = _dateManagementExtension.BaslangicTarihleri(dates);
 
+            TempData["PaketTipi"] = _packageService.GetAll();
             TempData["ReservationDates"] = JsonConvert.SerializeObject(_dateManagementExtension.BaslangicTarihleri(dates));
             TempData["ReservationGetir"] = _dateManagementExtension.BaslangicTarihleri(dates);
             ViewData["RoomId"] = id;
@@ -77,12 +83,27 @@ namespace BilgeHotel.WebUI.Controllers
         [HttpPost]
         public IActionResult _ReservationCreatePartial(ReservationCreateVM reservationCreateVM)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            CookieOptions cookieOptions = new CookieOptions();
+
+            TempData.Put("ReservationDetail", reservationCreateVM);
+            return RedirectToAction("Pay");
+        }
+
+        public IActionResult Pay()
+        {
+            ReservationCreateVM reservations = TempData.Get<ReservationCreateVM>("ReservationDetail");
             return View();
         }
 
-        //public IActionResult Create(Customer customer,Room room, Reservation reservation) //Burda takıldık. rezervasyon oluşturacağız.
-        //{
-
-        //}
+        //Burda Kaldım 16.02.2022
+        [HttpPost]
+        public IActionResult Pay(PayVM payVM)
+        {
+            return View();
+        }
     }
 }
