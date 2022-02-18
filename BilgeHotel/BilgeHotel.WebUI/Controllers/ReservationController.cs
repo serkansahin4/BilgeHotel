@@ -45,7 +45,7 @@ namespace BilgeHotel.WebUI.Controllers
             {
                 return View(_roomService.GetAll().Where(x => x.RoomTypeId == roomType.Id).ToList());
             }
-            
+
             return View("Index");
         }
 
@@ -71,8 +71,8 @@ namespace BilgeHotel.WebUI.Controllers
         [HttpGet]
         public string GetOutDate(DateFormat dates)
         {
-            DateTime date = new DateTime(dates.Year,dates.Month,dates.Day,dates.Hour,dates.Minute,dates.Second);
-            List<DateTime> dateTimes =JsonConvert.DeserializeObject<List<DateTime>>(TempData["ReservationDates"]as string);
+            DateTime date = new DateTime(dates.Year, dates.Month, dates.Day, dates.Hour, dates.Minute, dates.Second);
+            List<DateTime> dateTimes = JsonConvert.DeserializeObject<List<DateTime>>(TempData["ReservationDates"] as string);
             TempData["ReservationDates"] = null;
             return JsonConvert.SerializeObject(_dateManagementExtension.BitisTarihleri(dateTimes, date));
         }
@@ -87,8 +87,6 @@ namespace BilgeHotel.WebUI.Controllers
             {
                 return View();
             }
-            CookieOptions cookieOptions = new CookieOptions();
-
             TempData.Put("ReservationDetail", reservationCreateVM);
             return RedirectToAction("Pay");
         }
@@ -96,14 +94,20 @@ namespace BilgeHotel.WebUI.Controllers
         public IActionResult Pay()
         {
             ReservationCreateVM reservations = TempData.Get<ReservationCreateVM>("ReservationDetail");
+
+            double discount= _reservationDetailService.Discount(reservations.CheckInDate, reservations.CreatedDate, reservations.PackageId);
+            double discountedPrice = _reservationDetailService.DiscountedPrice(reservations.CheckInDate, reservations.CheckOutDate, discount, _roomService.PriceGetById(reservations.RoomId), _packageService.PriceGetById(reservations.PackageId));
+            ViewBag.Discount = discount;
+            ViewBag.DiscountedPrice = discountedPrice;
+            ViewBag.CardType = "Buraya Kart Tipleri Gelicek";
             return View();
         }
 
-        //Burda Kaldım 16.02.2022
+
         [HttpPost]
         public IActionResult Pay(PayVM payVM)
         {
-            return View();
+            return RedirectToAction("Index", "Confirmation");
         }
     }
 }

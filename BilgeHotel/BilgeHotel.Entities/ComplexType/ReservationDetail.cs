@@ -10,6 +10,10 @@ namespace BilgeHotel.Entities.ComplexType
 {
     public class ReservationDetail : IEntity
     {
+        public ReservationDetail()
+        {
+            CreatedDate = DateTime.Now;
+        }
         public Guid ReservationId { get; set; }
         public int RoomId { get; set; }
         public int PackageId { get; set; }

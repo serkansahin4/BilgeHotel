@@ -20,5 +20,10 @@ namespace BilgeHotel.Business.Concrete
         {
             return _repository.GetAll();
         }
+
+        public double PriceGetById(int RoomName)
+        {
+            return _repository.Get(x => x.RoomName == RoomName).RoomType.Price;
+        }
     }
 }

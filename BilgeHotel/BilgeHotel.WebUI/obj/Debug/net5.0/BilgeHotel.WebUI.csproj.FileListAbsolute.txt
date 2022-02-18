@@ -1,5 +1,6 @@
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\appsettings.json
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\libman.json
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.WebUI.exe
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.WebUI.deps.json
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.WebUI.runtimeconfig.json
@@ -11,6 +12,7 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.WebUI.Views.pdb
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Castle.Core.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Humanizer.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
@@ -19,6 +21,7 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
@@ -28,6 +31,7 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.Identity.Client.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
@@ -44,6 +48,7 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\System.Composition.AttributedModel.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\System.Composition.Convention.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\System.Composition.Hosting.dll
@@ -122,11 +127,13 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.Business.dll
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.Core.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.DataAccess.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.Entities.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.IocContainer.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.ViewModels.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.Business.pdb
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.Core.pdb
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.IocContainer.pdb
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.ViewModels.pdb
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.DataAccess.pdb
@@ -136,6 +143,7 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.AssemblyInfoInputs.cache
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.AssemblyInfo.cs
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.csproj.CoreCompileInputs.cache
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.RazorAssemblyInfo.cache
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.RazorAssemblyInfo.cs
@@ -147,6 +155,11 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.RazorCoreGenerate.cache
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Konaklama\Index.cshtml.g.cs
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\Index.cshtml.g.cs
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\Pay.cshtml.g.cs
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\_ReadyRoomsPartial.cshtml.g.cs
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\_ReservationCreatePartial.cshtml.g.cs
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Shared\_LayoutFooter.cshtml.g.cs
@@ -163,16 +176,3 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\ref\BilgeHotel.WebUI.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.pdb
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.genruntimeconfig.cache
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\libman.json
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Konaklama\Index.cshtml.g.cs
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\Index.cshtml.g.cs
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\_ReadyRoomsPartial.cshtml.g.cs
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\_ReservationCreatePartial.cshtml.g.cs
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.Core.dll
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.Core.pdb
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\Pay.cshtml.g.cs

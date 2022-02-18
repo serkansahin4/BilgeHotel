@@ -10,5 +10,6 @@ namespace BilgeHotel.Business.Abstract
     public interface IPackageService
     {
         List<Package> GetAll();
+        double PriceGetById(int id);
     }
 }

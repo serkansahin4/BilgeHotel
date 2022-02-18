@@ -26,7 +26,5 @@ namespace BilgeHotel.Business.Concrete
         {
             return _repository.GetAll();
         }
-
-
     }
 }
