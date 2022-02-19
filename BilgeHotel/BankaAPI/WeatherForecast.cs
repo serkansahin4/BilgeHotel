@@ -1,6 +1,6 @@
 using System;
 
-namespace BankApi
+namespace BankaAPI
 {
     public class WeatherForecast
     {

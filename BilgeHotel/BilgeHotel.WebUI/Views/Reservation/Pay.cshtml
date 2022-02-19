@@ -24,7 +24,7 @@
                         <label class="form-control bg-success text-white">Total Price : @ViewBag.DiscountedPrice</label>
                         <label class="form-control bg-success text-white">Discount : @ViewBag.Discount</label>
                         <label>Card Type</label>
-                        <select class="form-control" data->@ViewBag.CardType</select>
+                        @Html.DropDownListFor(x => x.CardTypeId, (List<SelectListItem>)ViewBag.CardType, new {@class="form-control" })
                         <label>Card Number</label>
                         <input type="text" asp-for="CardNumber" class="form-control" />
                         <label>CV2</label>
