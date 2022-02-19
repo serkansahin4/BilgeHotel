@@ -1,0 +1,3 @@
+Bankaları temsil edecek apinin algoritmaları kağıt üzerinde kuruldu.
+Kodları önce kağıt üzerinde yazıldı. Sonrasında yazılım ekranına geçirildi.
+
