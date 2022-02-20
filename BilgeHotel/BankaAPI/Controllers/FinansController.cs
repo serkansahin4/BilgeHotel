@@ -11,12 +11,12 @@ namespace BankaAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ZiraatsController : ControllerBase
+    public class FinansController : ControllerBase
     {
         private static List<Card> Cards = new List<Card> {
-        new Card{ KartNo="ABCABCABCABC", CV2="ABC", EndDate="1234", Mail="serkana607@gmail.com", Balance=5000},
-        new Card{ KartNo="DDDDDDDDD", CV2="DDD", EndDate="1234", Mail="serkana607@gmail.com", Balance=3500},
-        new Card{ KartNo="EEEEEEEEE", CV2="EEE", EndDate="1234", Mail="serkana607@gmail.com", Balance=2750}
+        new Card{ KartNo="FFFFFFFFFF", CV2="FFF", EndDate="1234", Mail="serkana607@gmail.com", Balance=35000},
+        new Card{ KartNo="IIIIIIIIII", CV2="III", EndDate="1234", Mail="serkana607@gmail.com", Balance=3500},
+        new Card{ KartNo="NNNNNNNNNN", CV2="NNN", EndDate="1234", Mail="serkana607@gmail.com", Balance=2550}
         };
 
 
@@ -36,7 +36,7 @@ namespace BankaAPI.Controllers
             {
                 Guid confirmationGuid = Guid.NewGuid();
                 data.Add(new Transaction { CardNo = card.KartNo, Amount = payVM.Amount, Confirmation = false, TransactionAdress = confirmationGuid });
-                MailSender.MailSend(card.Mail, "Ziraat Bankası Onaylama Kodu", $"Toplam Tutar = {payVM.Amount} Onaylama Idsi = {confirmationGuid}");
+                MailSender.MailSend(card.Mail, "Finans Bankası Onaylama Kodu", $"Toplam Tutar = {payVM.Amount} Onaylama Idsi = {confirmationGuid}");
                 return Ok();
             }
             else

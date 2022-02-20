@@ -12,6 +12,15 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
+    
+        @if (TempData["Pay"]!=null)
+        {
+    <alert class="alert alert-danger">
+        @TempData["Pay"].ToString()
+    </alert>
+    }
+
+
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
@@ -24,7 +33,7 @@
                         <label class="form-control bg-success text-white">Total Price : @ViewBag.DiscountedPrice</label>
                         <label class="form-control bg-success text-white">Discount : @ViewBag.Discount</label>
                         <label>Card Type</label>
-                        @Html.DropDownListFor(x => x.CardTypeId, (List<SelectListItem>)ViewBag.CardType, new {@class="form-control" })
+                        @Html.DropDownListFor(x => x.CardTypeId, (IEnumerable<SelectListItem>)ViewBag.sss, new {@class="form-control" })
                         <label>Card Number</label>
                         <input type="text" asp-for="CardNumber" class="form-control" />
                         <label>CV2</label>

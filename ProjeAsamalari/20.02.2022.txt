@@ -1,0 +1,3 @@
+Gerekli Düzenlemeler yapıldı. Kod iyileştirildi.
+
+Rezervasyonu veritabanına kaydetmek kaldı.

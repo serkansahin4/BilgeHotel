@@ -135,16 +135,17 @@
                    Day: day,
                    Hour: hour,
                    Minute: minute,
-                   Second: second
+                   Second: second,
+                   id:@roomId
                },
                success: function (data) {
+                   $("#checkOut_" +@roomId).empty()
                    $.each(data, function (index, item) {
-
-                     $("#checkOut_" +@roomId).append(`<option value="${item}">
+                       $("#checkOut_" +@roomId).append(`<option value="${item}">
                                        ${item}
                                   </option>`);
 
-            });
+                   });
 
 
               }

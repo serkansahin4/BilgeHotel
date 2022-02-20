@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+@model ConfirmationAPIVM
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Confirmation</title>
+</head>
+<body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+
+                <div class="card-header text-center bg-dark">
+                    <h2 class="text-warning">Doğrulama</h2>
+                </div>
+                <div class="card-body">
+                    @if (TempData["Verification"] != null)
+                    {
+                        <div class="alert alert-danger">@TempData["Verification"]</div>
+                    }
+                    <form asp-action="Confirmation" asp-controller="Reservation" method="post">
+                        <label>Güvenlik Kodu</label>
+                        <input type="text" asp-for="VerificationCode" />
+                        <button class="btn btn-success w-100">Onayla</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

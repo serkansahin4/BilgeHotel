@@ -39,7 +39,7 @@ namespace BilgeHotel.WebUI.Controllers
             _dateManagementExtension = dateManagementExtension;
             _packageService = packageService;
             _httpContextAccessor = httpContextAccessor;
-            
+
         }
         public IActionResult Index()
         {
@@ -70,18 +70,23 @@ namespace BilgeHotel.WebUI.Controllers
             List<DateTime> dateTimes = _dateManagementExtension.BaslangicTarihleri(dates);
 
             TempData["PaketTipi"] = _packageService.GetAll();
-            TempData["ReservationDates"] = JsonConvert.SerializeObject(_dateManagementExtension.BaslangicTarihleri(dates));
             TempData["ReservationGetir"] = _dateManagementExtension.BaslangicTarihleri(dates);
             ViewData["RoomId"] = id;
             return View();
         }
 
         [HttpGet]
-        public string GetOutDate(DateFormat dates)
+        public string GetOutDate(DateFormat dates, int id)
         {
             DateTime date = new DateTime(dates.Year, dates.Month, dates.Day, dates.Hour, dates.Minute, dates.Second);
-            List<DateTime> dateTimes = JsonConvert.DeserializeObject<List<DateTime>>(TempData["ReservationDates"] as string);
-            TempData["ReservationDates"] = null;
+            List<DateEntity> musaitZaman = _reservationDetailService.GetAll(id).ToList().Select(x => new DateEntity
+            {
+                Baslangic = x.CheckInDate,
+                Bitis = x.CheckOutDate
+            }).ToList();
+            List<DateTime> dateTimes = _dateManagementExtension.BaslangicTarihleri(musaitZaman);
+            //List<DateTime> dateTimes = JsonConvert.DeserializeObject<List<DateTime>>(TempData["ReservationDates"] as string);
+
             return JsonConvert.SerializeObject(_dateManagementExtension.BitisTarihleri(dateTimes, date));
         }
 
@@ -101,24 +106,25 @@ namespace BilgeHotel.WebUI.Controllers
 
         public IActionResult Pay()
         {
-            ReservationCreateVM reservations = TempData.Get<ReservationCreateVM>("ReservationDetail");
+            //ReservationCreateVM reservations = TempData.Get<ReservationCreateVM>("ReservationDetail");
 
-            double discount = _reservationDetailService.Discount(reservations.CheckInDate, reservations.CreatedDate, reservations.PackageId);
-            double discountedPrice = _reservationDetailService.DiscountedPrice(reservations.CheckInDate, reservations.CheckOutDate, discount, _roomService.PriceGetById(reservations.RoomId), _packageService.PriceGetById(reservations.PackageId));
-            TempData.Put("ReservationDetail", reservations);
-            ViewBag.Discount = discount;
-            ViewBag.DiscountedPrice = discountedPrice;
+            ////double discount = _reservationDetailService.Discount(reservations.CheckInDate, reservations.CreatedDate, reservations.PackageId);
+            ////double discountedPrice = _reservationDetailService.DiscountedPrice(reservations.CheckInDate, reservations.CheckOutDate, discount, _roomService.PriceGetById(reservations.RoomId), _packageService.PriceGetById(reservations.PackageId));
+            ////TempData.Put("ReservationDetail", reservations);
+            //ViewBag.Discount = discount;
+            //ViewBag.DiscountedPrice = discountedPrice;
             List<CardTypeVM> cardType = new List<CardTypeVM>
             {
             new CardTypeVM { CardTypeId=1, CardName="Ziraat Bankası" },
-            new CardTypeVM{ CardTypeId=2, CardName="Finans Bankası" },
-            new CardTypeVM{ CardTypeId=3, CardName="Garanti Bankası" }
+            new CardTypeVM{ CardTypeId=2, CardName="Finans Bankası" }
             };
-            List<SelectListItem> listItems = cardType.ToList().Select(x=>
-            new SelectListItem { 
-                Value=x.CardTypeId.ToString(), 
-                Text=x.CardName }).ToList();
-            ViewBag.CardType = listItems;
+            //List<SelectListItem> listItems = cardType.ToList().Select(x=>
+            //new SelectListItem { 
+            //    Value=x.CardTypeId.ToString(), 
+            //    Text=x.CardName }).ToList();
+
+            ViewBag.sss = new SelectList(cardType.ToList(), "CardTypeId", "CardName");
+
             return View();
         }
 
@@ -126,11 +132,15 @@ namespace BilgeHotel.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Pay(PayVM payVM)
         {
-            //1 Ziraat, 2 Finans, 3 Garanti
-
+            //1 Ziraat, 2 Finans
+            List<CardTypeVM> cardType = new List<CardTypeVM>
+            {
+            new CardTypeVM { CardTypeId=1, CardName="Ziraat Bankası" },
+            new CardTypeVM{ CardTypeId=2, CardName="Finans Bankası" }
+            };
             if (ModelState.IsValid)
             {
-
+                
                 ReservationCreateVM reservations = TempData.Get<ReservationCreateVM>("ReservationDetail");
                 double discount = _reservationDetailService.Discount(reservations.CheckInDate, reservations.CreatedDate, reservations.PackageId);
                 double discountedPrice = _reservationDetailService.DiscountedPrice(reservations.CheckInDate, reservations.CheckOutDate, discount, _roomService.PriceGetById(reservations.RoomId), _packageService.PriceGetById(reservations.PackageId));
@@ -148,22 +158,37 @@ namespace BilgeHotel.WebUI.Controllers
                 switch (payVM.CardTypeId)
                 {
                     case 1:
-                        HttpResponseMessage response = await _bankApi.Inıtıal().PostAsync("api/Ziraats/PayPost", data);
-                        
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        HttpResponseMessage ziraatPost = await _bankApi.Inıtıal().PostAsync("api/Ziraats/PayPost", data);
+
+                        if (ziraatPost.StatusCode == HttpStatusCode.OK)
                         {
-                            return RedirectToAction("Index", "Confirmation");
+                            return RedirectToAction("Confirmation");
                         }
                         else
                         {
-                            return View();
+                            
+                            ViewBag.sss = new SelectList(cardType.ToList(), "CardTypeId", "CardName");
+                            TempData["Pay"] = "Bilgiler Eşleşmiyor.";
+                            return View("Pay");
                         }
                     case 2:
-                        break;
-                    case 3:
-                        break;
+                        HttpResponseMessage finansPost = await _bankApi.Inıtıal().PostAsync("api/Ziraats/PayPost", data);
+
+                        if (finansPost.StatusCode == HttpStatusCode.OK)
+                        {
+                            return RedirectToAction("Confirmation");
+                        }
+                        else
+                        {
+                            
+                            ViewBag.sss = new SelectList(cardType.ToList(), "CardTypeId", "CardName");
+                            TempData["Pay"] = "Bilgiler Eşleşmiyor.";
+                            return View("Pay");
+                        }
                 }
-                return View();
+                
+                ViewBag.sss = new SelectList(cardType.ToList(), "CardTypeId", "CardName");
+                return View("Pay");
 
             }
             else
@@ -171,5 +196,44 @@ namespace BilgeHotel.WebUI.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet]
+        public IActionResult Confirmation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Confirmation(ConfirmationAPIVM confirmation)
+        {
+            ReservationCreateVM reservations = TempData.Get<ReservationCreateVM>("ReservationDetail");
+            double discount = _reservationDetailService.Discount(reservations.CheckInDate, reservations.CreatedDate, reservations.PackageId);
+            double discountedPrice = _reservationDetailService.DiscountedPrice(reservations.CheckInDate, reservations.CheckOutDate, discount, _roomService.PriceGetById(reservations.RoomId), _packageService.PriceGetById(reservations.PackageId));
+
+
+            //ÖDEME YAPMADAN ÖNCE HALA REZERVASYON YAPILMIŞMI YAPILMAMIŞMI KONTROL ET.
+
+            var json = JsonConvert.SerializeObject(confirmation.VerificationCode);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _bankApi.Inıtıal().PostAsync("api/Ziraats/GuidPost", data);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return RedirectToAction("ReservationComplete");
+            }
+            else
+            {
+                TempData["Verification"] = "Girilen Kod Doğru Değil.";
+                return View();
+            }
+
+        }
+
+        [HttpGet]
+        public IActionResult ReservationComplete()
+        {
+            string completeMessage = "Ödeme Gerçekleşti. Rezervasyon Oluşturuldu.";
+            return View("ReservationComplete", completeMessage);
+        }
+
     }
 }
