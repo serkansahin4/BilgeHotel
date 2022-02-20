@@ -106,22 +106,18 @@ namespace BilgeHotel.WebUI.Controllers
 
         public IActionResult Pay()
         {
-            //ReservationCreateVM reservations = TempData.Get<ReservationCreateVM>("ReservationDetail");
+            ReservationCreateVM reservations = TempData.Get<ReservationCreateVM>("ReservationDetail");
+            double discount = _reservationDetailService.Discount(reservations.CheckInDate, reservations.CreatedDate, reservations.PackageId);
+            double discountedPrice = _reservationDetailService.DiscountedPrice(reservations.CheckInDate, reservations.CheckOutDate, discount, _roomService.PriceGetById(reservations.RoomId), _packageService.PriceGetById(reservations.PackageId));
+            TempData.Put("ReservationDetail", reservations);
+            ViewBag.Discount = discount;
+            ViewBag.DiscountedPrice = discountedPrice;
 
-            ////double discount = _reservationDetailService.Discount(reservations.CheckInDate, reservations.CreatedDate, reservations.PackageId);
-            ////double discountedPrice = _reservationDetailService.DiscountedPrice(reservations.CheckInDate, reservations.CheckOutDate, discount, _roomService.PriceGetById(reservations.RoomId), _packageService.PriceGetById(reservations.PackageId));
-            ////TempData.Put("ReservationDetail", reservations);
-            //ViewBag.Discount = discount;
-            //ViewBag.DiscountedPrice = discountedPrice;
             List<CardTypeVM> cardType = new List<CardTypeVM>
             {
             new CardTypeVM { CardTypeId=1, CardName="Ziraat Bankası" },
             new CardTypeVM{ CardTypeId=2, CardName="Finans Bankası" }
             };
-            //List<SelectListItem> listItems = cardType.ToList().Select(x=>
-            //new SelectListItem { 
-            //    Value=x.CardTypeId.ToString(), 
-            //    Text=x.CardName }).ToList();
 
             ViewBag.sss = new SelectList(cardType.ToList(), "CardTypeId", "CardName");
 

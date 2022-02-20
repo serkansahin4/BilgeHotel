@@ -1,3 +1,6 @@
 Gerekli Düzenlemeler yapıldı. Kod iyileştirildi.
 
+Tarih İşlemlerinde Bir problem olduğu fark edildi. Ve düzeltildi.
+
 Rezervasyonu veritabanına kaydetmek kaldı.
+
