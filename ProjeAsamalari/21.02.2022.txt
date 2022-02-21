@@ -1,2 +1,5 @@
 Bütün işlemler halloldu.
 Veritabanına veriler kaydedilmiyor.
+
+
++Veritabanına veriler kaydedildi. Problem Senkronizasyondan kaynaklıydı.

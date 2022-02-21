@@ -16,9 +16,10 @@ namespace BilgeHotel.Business.Concrete
         {
             _repository = repository;
         }
-        public void Add(Customer customer)
+        public async Task<bool> Add(Customer customer)
         {
-            _repository.Insert(customer);
+            await _repository.Insert(customer);
+            return true;
         }
     }
 }

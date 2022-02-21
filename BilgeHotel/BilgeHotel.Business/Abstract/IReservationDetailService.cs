@@ -11,7 +11,7 @@ namespace BilgeHotel.Business.Abstract
     public interface IReservationDetailService
     {
         List<ReservationDetail> GetAll(int roomId);
-        void Add(ReservationDetail reservationDetail);
+        Task<bool> Add(ReservationDetail reservationDetail);
 
         double Discount(DateTime checkInDate, DateTime createdDate, int packageId);
         double DiscountedPrice(DateTime checkInDate, DateTime checkOutDate, double discount, double roomPrice, double packetPrice);

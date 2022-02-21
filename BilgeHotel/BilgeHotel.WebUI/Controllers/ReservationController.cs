@@ -252,9 +252,9 @@ namespace BilgeHotel.WebUI.Controllers
             {
                 Guid reservationId = Guid.NewGuid();
                 //MÜŞTERİ KAYDET.
-                _customerService.Add(reservations.Customer);
+                await _customerService.Add(reservations.Customer);
                 //REZERVATİON KAYDET
-                _reservationService.Add(new Reservation { CustomerId=reservations.Customer.Id, Id= reservationId });
+                await _reservationService.Add(new Reservation { CustomerId=reservations.Customer.Id, Id= reservationId });
                 //Kart Bilgilerini Kaydet.
                 #region KartOluştur
 
@@ -272,10 +272,10 @@ namespace BilgeHotel.WebUI.Controllers
                 Guid cardId = Guid.NewGuid();
                 
                 #endregion
-                _cardService.Add(new Card { CardNumber = card.CardNumber, EndDate = card.EndDate, Cv2 = card.CV2, CardType = cardType,Id= cardId });
+                await _cardService.Add(new Card { CardNumber = card.CardNumber, EndDate = card.EndDate, Cv2 = card.CV2, CardType = cardType,Id= cardId });
                 
                 //KAYDEDİLEN REZERVATİONUN IDSI İLE REZERVATİON DETAİL OLUŞTUR.
-                _reservationDetailService.Add(new ReservationDetail { ReservationId = reservationId, CheckInDate =reservations.CheckInDate, CheckOutDate=reservations.CheckOutDate, CreatedDate=reservations.CreatedDate, PackageId=reservations.PackageId, RoomId=reservations.RoomId, Discount=discount, DiscountedPrice= discountedPrice, CardId= cardId });
+                await _reservationDetailService.Add(new ReservationDetail { ReservationId = reservationId, CheckInDate =reservations.CheckInDate, CheckOutDate=reservations.CheckOutDate, CreatedDate=reservations.CreatedDate, PackageId=reservations.PackageId, RoomId=reservations.RoomId, Discount=discount, DiscountedPrice= discountedPrice, CardId= cardId });
                 return RedirectToAction("ReservationComplete");
             }
             else

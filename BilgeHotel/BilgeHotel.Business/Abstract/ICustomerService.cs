@@ -9,6 +9,6 @@ namespace BilgeHotel.Business.Abstract
 {
     public interface ICustomerService
     {
-        void Add(Customer customer);
+        Task<bool> Add(Customer customer);
     }
 }

@@ -9,6 +9,6 @@ namespace BilgeHotel.Business.Abstract
 {
     public interface ICardService
     {
-        void Add(Card card);
+       Task<bool> Add(Card card);
     }
 }

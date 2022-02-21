@@ -10,6 +10,6 @@ namespace BilgeHotel.Business.Abstract
     public interface IReservationService
     {
         List<Reservation> ReservationsFindByRoomId(int roomId);
-        void Add(Reservation reservation);
+        Task<bool> Add(Reservation reservation);
     }
 }
