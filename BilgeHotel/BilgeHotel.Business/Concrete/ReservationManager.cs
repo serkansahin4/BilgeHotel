@@ -17,6 +17,11 @@ namespace BilgeHotel.Business.Concrete
             _repository = repository;
         }
 
+        public void Add(Reservation reservation)
+        {
+            _repository.Insert(reservation);
+        }
+
         public List<Reservation> ReservationsFindByRoomId(int roomId)
         {
             throw new NotImplementedException();

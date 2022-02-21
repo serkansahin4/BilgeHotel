@@ -34,6 +34,7 @@
       "BilgeHotel.WebUI/1.0.0": {
         "dependencies": {
           "BilgeHotel.Business": "1.0.0",
+          "BilgeHotel.CacheReservation": "1.0.0",
           "BilgeHotel.Core": "1.0.0",
           "BilgeHotel.IocContainer": "1.0.0",
           "BilgeHotel.ViewModels": "1.0.0",
@@ -2513,6 +2514,14 @@
         },
         "compile": {
           "BilgeHotel.Business.dll": {}
+        }
+      },
+      "BilgeHotel.CacheReservation/1.0.0": {
+        "runtime": {
+          "BilgeHotel.CacheReservation.dll": {}
+        },
+        "compile": {
+          "BilgeHotel.CacheReservation.dll": {}
         }
       },
       "BilgeHotel.Core/1.0.0": {
@@ -5627,6 +5636,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "BilgeHotel.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BilgeHotel.CacheReservation/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

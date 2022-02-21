@@ -44,6 +44,7 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new DepartmentMap());
             modelBuilder.ApplyConfiguration(new ShiftMap());
             modelBuilder.ApplyConfiguration(new ImageMap());
+            modelBuilder.ApplyConfiguration(new CardMap());
 
 
 
@@ -55,6 +56,7 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
 
             base.OnModelCreating(modelBuilder);
         }
+        public DbSet<Card> Cards { get; set; }
         public DbSet<Bed> Beds { get; set; }
 
         public DbSet<Customer> Customers { get; set; }

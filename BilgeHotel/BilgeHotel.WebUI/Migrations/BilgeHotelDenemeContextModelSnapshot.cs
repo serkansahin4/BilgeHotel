@@ -30,6 +30,9 @@ namespace BilgeHotel.WebUI.Migrations
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("CardId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("CheckInDate")
                         .HasColumnType("datetime2");
 
@@ -47,6 +50,8 @@ namespace BilgeHotel.WebUI.Migrations
 
                     b.HasKey("ReservationId", "PackageId", "RoomId");
 
+                    b.HasIndex("CardId");
+
                     b.HasIndex("PackageId");
 
                     b.HasIndex("RoomId");
@@ -56,12 +61,13 @@ namespace BilgeHotel.WebUI.Migrations
                     b.HasData(
                         new
                         {
-                            ReservationId = new Guid("a23f0fb2-1276-4126-89b7-885e14b220ed"),
+                            ReservationId = new Guid("4eaf1f16-f3f6-4f4a-9473-cff94638a00c"),
                             PackageId = 1,
                             RoomId = 101,
+                            CardId = new Guid("e13325ca-da4b-40e0-b2a9-179d8dafd9a8"),
                             CheckInDate = new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckOutDate = new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2022, 2, 12, 17, 9, 16, 606, DateTimeKind.Local).AddTicks(2013),
+                            CreatedDate = new DateTime(2022, 2, 21, 22, 25, 10, 656, DateTimeKind.Local).AddTicks(6321),
                             Discount = 22.0,
                             DiscountedPrice = 150m
                         });
@@ -152,7 +158,7 @@ namespace BilgeHotel.WebUI.Migrations
                         {
                             BedId = 2,
                             RoomTypeId = 7,
-                            Quantity = 2
+                            Quantity = 1
                         },
                         new
                         {
@@ -401,6 +407,47 @@ namespace BilgeHotel.WebUI.Migrations
                         {
                             Id = 2,
                             BedType = "Double"
+                        });
+                });
+
+            modelBuilder.Entity("BilgeHotel.Entities.Concrete.Card", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CardNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("CardType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Cv2")
+                        .IsRequired()
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
+
+                    b.Property<string>("EndDate")
+                        .IsRequired()
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cards");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e13325ca-da4b-40e0-b2a9-179d8dafd9a8"),
+                            CardNumber = "selam",
+                            CardType = "Ziraat",
+                            Cv2 = "ABC",
+                            EndDate = "02/05"
                         });
                 });
 
@@ -765,7 +812,7 @@ namespace BilgeHotel.WebUI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a23f0fb2-1276-4126-89b7-885e14b220ed"),
+                            Id = new Guid("4eaf1f16-f3f6-4f4a-9473-cff94638a00c"),
                             CustomerId = 1
                         });
                 });
@@ -1613,6 +1660,12 @@ namespace BilgeHotel.WebUI.Migrations
 
             modelBuilder.Entity("BilgeHotel.Entities.ComplexType.ReservationDetail", b =>
                 {
+                    b.HasOne("BilgeHotel.Entities.Concrete.Card", "Card")
+                        .WithMany("ReservationDetails")
+                        .HasForeignKey("CardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BilgeHotel.Entities.Concrete.Package", "Package")
                         .WithMany("ReservationDetails")
                         .HasForeignKey("PackageId")
@@ -1630,6 +1683,8 @@ namespace BilgeHotel.WebUI.Migrations
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Card");
 
                     b.Navigation("Package");
 
@@ -1783,6 +1838,11 @@ namespace BilgeHotel.WebUI.Migrations
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Bed", b =>
                 {
                     b.Navigation("RoomBeds");
+                });
+
+            modelBuilder.Entity("BilgeHotel.Entities.Concrete.Card", b =>
+                {
+                    b.Navigation("ReservationDetails");
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Customer", b =>

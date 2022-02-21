@@ -36,7 +36,10 @@ namespace BilgeHotel.IocContainer
             services.AddTransient<IReservationDetailService, ReservationDetailManager>();
             services.AddTransient<IDateManagementExtension, DateManagementExtension>();
             services.AddTransient<IPackageService, PackageManager>();
+            services.AddTransient<IReservationService, ReservationManager>();
+            services.AddTransient<ICardService, CardManager>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
         }
 
         public static void DbConfigurationAdd(this IServiceCollection services, IConfiguration configuration)

@@ -47,17 +47,23 @@ namespace BilgeHotel.DataAccess.EntityFramework
 
         public async Task<bool> Insert(T entity)
         {
-            try
-            {
+           
                 _dbSet.Add(entity);
                 await _context.SaveChangesAsync();
                 return true;
-            }
-            catch
-            {
+           
+            
+            //try
+            //{
+            //    _dbSet.Add(entity);
+            //    await _context.SaveChangesAsync();
+            //    return true;
+            //}
+            //catch
+            //{
 
-                return false;
-            }
+            //    return false;
+            //}
         }
 
         public async Task<bool> Update(T entity)

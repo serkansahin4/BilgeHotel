@@ -17,6 +17,7 @@ namespace BilgeHotel.Entities.ComplexType
         public Guid ReservationId { get; set; }
         public int RoomId { get; set; }
         public int PackageId { get; set; }
+        public Guid CardId { get; set; }
         public double? Discount { get; set; }
         public double? DiscountedPrice { get; set; }
         public DateTime CheckInDate { get; set; }
@@ -27,5 +28,6 @@ namespace BilgeHotel.Entities.ComplexType
         public virtual Reservation Reservation { get; set; }
         public virtual Package Package { get; set; }
         public virtual Room Room { get; set; }
+        public virtual Card Card { get; set; }
     }
 }

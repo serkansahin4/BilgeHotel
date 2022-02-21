@@ -20,40 +20,8 @@ namespace BilgeHotel.Business.Concrete
 
         public void Add(ReservationDetail reservationDetail)
         {
-//            o en az bir ay önce yapılan herşey dahil rezervasyonlarda % 18,
-//            o en az bir ay önce yapılan tam pansiyon rezervasyonlarda % 16,
-//            o en az 3 ay önce yapılan rezervasyonlarda % 23 indirim.
-
-            int different = (reservationDetail.CheckInDate - reservationDetail.CreatedDate).Days;
-            int reservationDay = (reservationDetail.CheckOutDate - reservationDetail.CheckInDate).Days;
-            if (different>90)
-            {
-                reservationDetail.Discount = 23;
-                reservationDetail.DiscountedPrice = ((reservationDetail.Package.Price+reservationDetail.Room.RoomType.Price)*reservationDay * 23) / 100;
-            }
-            else if(different>30)
-            {
-                switch (reservationDetail.PackageId)
-                {
-                    case 1:
-                        reservationDetail.Discount = 16;
-                        reservationDetail.DiscountedPrice = ((reservationDetail.Package.Price + reservationDetail.Room.RoomType.Price)*reservationDay * 16) / 100;
-                        break;
-                    case 2:
-                        reservationDetail.Discount = 18;
-                        reservationDetail.DiscountedPrice = ((reservationDetail.Package.Price + reservationDetail.Room.RoomType.Price)*reservationDay * 18) / 100;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                reservationDetail.Discount = 0;
-                reservationDetail.DiscountedPrice = (reservationDetail.Package.Price + reservationDetail.Room.RoomType.Price)*reservationDay;
-            }
-
             _repository.Insert(reservationDetail);
+            
         }
 
         

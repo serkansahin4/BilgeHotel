@@ -272,10 +272,13 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
                 new Reservation { Id = key, CustomerId = 1 }
                 );
             #endregion
-
+            #region Card
+            Guid cardıD = Guid.NewGuid();
+            builder.Entity<Card>().HasData(new Card { Id= cardıD, CardNumber="selam", CardType="Ziraat", EndDate="02/05", Cv2="ABC" });
+                #endregion
             #region ReservationDetail
             builder.Entity<ReservationDetail>().HasData(
-                new ReservationDetail { ReservationId = key, PackageId = 1,RoomId = 101, CheckInDate = new DateTime(2022, 4, 5, 14, 0, 0), CheckOutDate = new DateTime(2022, 4, 6, 10, 0, 0), CreatedDate = DateTime.Now, Discount = 22, DiscountedPrice = 150 }
+                new ReservationDetail { ReservationId = key, PackageId = 1,RoomId = 101, CheckInDate = new DateTime(2022, 4, 5, 14, 0, 0), CheckOutDate = new DateTime(2022, 4, 6, 10, 0, 0), CreatedDate = DateTime.Now, Discount = 22, DiscountedPrice = 150, CardId= cardıD }
                 );
             #endregion
 

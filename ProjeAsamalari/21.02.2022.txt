@@ -1,0 +1,2 @@
+Bütün işlemler halloldu.
+Veritabanına veriler kaydedilmiyor.

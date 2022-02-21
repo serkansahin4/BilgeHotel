@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BilgeHotel.WebUI.Migrations
 {
-    public partial class basla : Migration
+    public partial class aaa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,6 +18,21 @@ namespace BilgeHotel.WebUI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Beds", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cards",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CardType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CardNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Cv2 = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
+                    EndDate = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cards", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -336,6 +351,7 @@ namespace BilgeHotel.WebUI.Migrations
                     ReservationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     PackageId = table.Column<int>(type: "int", nullable: false),
+                    CardId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Discount = table.Column<double>(type: "float", nullable: true),
                     DiscountedPrice = table.Column<decimal>(type: "money", nullable: true),
                     CheckInDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -345,6 +361,12 @@ namespace BilgeHotel.WebUI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ReservationDetails", x => new { x.ReservationId, x.PackageId, x.RoomId });
+                    table.ForeignKey(
+                        name: "FK_ReservationDetails_Cards_CardId",
+                        column: x => x.CardId,
+                        principalTable: "Cards",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ReservationDetails_Packages_PackageId",
                         column: x => x.PackageId,
@@ -399,6 +421,11 @@ namespace BilgeHotel.WebUI.Migrations
                     { 1, "Tek Kişilik" },
                     { 2, "Double" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Cards",
+                columns: new[] { "Id", "CardNumber", "CardType", "Cv2", "EndDate" },
+                values: new object[] { new Guid("e13325ca-da4b-40e0-b2a9-179d8dafd9a8"), "selam", "Ziraat", "ABC", "02/05" });
 
             migrationBuilder.InsertData(
                 table: "Customers",
@@ -487,7 +514,7 @@ namespace BilgeHotel.WebUI.Migrations
             migrationBuilder.InsertData(
                 table: "Reservations",
                 columns: new[] { "Id", "CustomerId", "EmployeeId", "ExtraTotalPrice" },
-                values: new object[] { new Guid("a23f0fb2-1276-4126-89b7-885e14b220ed"), 1, null, null });
+                values: new object[] { new Guid("4eaf1f16-f3f6-4f4a-9473-cff94638a00c"), 1, null, null });
 
             migrationBuilder.InsertData(
                 table: "RoomBeds",
@@ -495,7 +522,7 @@ namespace BilgeHotel.WebUI.Migrations
                 values: new object[,]
                 {
                     { 1, 5, 3 },
-                    { 2, 7, 2 },
+                    { 2, 7, 1 },
                     { 1, 7, 2 },
                     { 2, 4, 1 },
                     { 1, 6, 1 },
@@ -658,8 +685,8 @@ namespace BilgeHotel.WebUI.Migrations
 
             migrationBuilder.InsertData(
                 table: "ReservationDetails",
-                columns: new[] { "PackageId", "ReservationId", "RoomId", "CheckInDate", "CheckOutDate", "CreatedDate", "Discount", "DiscountedPrice" },
-                values: new object[] { 1, new Guid("a23f0fb2-1276-4126-89b7-885e14b220ed"), 101, new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 12, 17, 9, 16, 606, DateTimeKind.Local).AddTicks(2013), 22.0, 150m });
+                columns: new[] { "PackageId", "ReservationId", "RoomId", "CardId", "CheckInDate", "CheckOutDate", "CreatedDate", "Discount", "DiscountedPrice" },
+                values: new object[] { 1, new Guid("4eaf1f16-f3f6-4f4a-9473-cff94638a00c"), 101, new Guid("e13325ca-da4b-40e0-b2a9-179d8dafd9a8"), new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 21, 22, 25, 10, 656, DateTimeKind.Local).AddTicks(6321), 22.0, 150m });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_DepartmentId",
@@ -675,6 +702,11 @@ namespace BilgeHotel.WebUI.Migrations
                 name: "IX_Images_RoomTypeId",
                 table: "Images",
                 column: "RoomTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReservationDetails_CardId",
+                table: "ReservationDetails",
+                column: "CardId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ReservationDetails_PackageId",
@@ -751,6 +783,9 @@ namespace BilgeHotel.WebUI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Shifts");
+
+            migrationBuilder.DropTable(
+                name: "Cards");
 
             migrationBuilder.DropTable(
                 name: "Packages");
