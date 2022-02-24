@@ -23,6 +23,7 @@
                 <a asp-action="Index" asp-controller="Konaklama" class="btn btn-danger float-lg-right">Anasayfaya Dön</a>
             </div>
         </div>
+
         <div class="row">
             <div class="col-lg-3  mt-2">
                 <div class="card">
@@ -49,6 +50,10 @@
         </div>
     </div>
 
+    <div style="width: 100%; ">
+        <ul id="absorbe" style="height: 150px; white-space: nowrap; overflow-x: scroll; "></ul>
+    </div>
+
     <script src="~/jquery/jquery.js"></script>
     <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
     <script>
@@ -62,6 +67,29 @@
                 }
             });
         });
+    </script>
+    @* Kur Bilgileri *@
+    <script>
+        var api_url = "https://finans.truncgil.com/today.json";
+        function Cek() {
+            $.ajax({
+                type: "json",
+                method: "get",
+                url: api_url,
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    for (let a in data) {
+                        var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                        var abd = data[a]
+                        $("#absorbe").append(`<li style="color:white;margin:5px; background-color:#${randomColor}; white-space:nowrap;float:left;">Tip : ${a} Alış : ${abd.Alış}Satış : ${abd.Satış}</li>`)
+                    }
+                }
+
+            })
+        }
+        Cek()
+
     </script>
 </body>
 </html>

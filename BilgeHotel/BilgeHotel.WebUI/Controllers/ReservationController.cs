@@ -57,7 +57,7 @@ namespace BilgeHotel.WebUI.Controllers
             RoomType roomType = _roomTypeService.Get(id);
             if (roomType != null)
             {
-                return View(_roomService.GetAll().Where(x => x.RoomTypeId == roomType.Id).ToList());
+                return View(_roomService.GetAllReady().Where(x => x.RoomTypeId == roomType.Id).ToList());
             }
 
             return View("Index");

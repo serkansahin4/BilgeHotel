@@ -9,7 +9,7 @@ namespace BilgeHotel.Business.Abstract
 {
     public interface IRoomService
     {
-        List<Room> GetAll();
+        List<Room> GetAllReady();
         double PriceGetById(int RoomName);
     }
 }
