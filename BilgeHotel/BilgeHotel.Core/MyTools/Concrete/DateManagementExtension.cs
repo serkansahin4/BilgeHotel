@@ -57,7 +57,7 @@ namespace BilgeHotel.Core.MyTools.Concrete
                 {
                     seciliTarih = seciliTarih.AddDays(1);
                     
-                    bitisTarihleri.Add(new DateTime(item.Year, item.Month, item.Day, 10, 0, 0));
+                    bitisTarihleri.Add(new DateTime(seciliTarih.Year, seciliTarih.Month, seciliTarih.Day, 10, 0, 0));
                     
                 }
                 

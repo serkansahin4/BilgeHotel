@@ -213,7 +213,9 @@ namespace BilgeHotel.WebUI.Controllers
             TempData.Put("ReservationDetail", reservations);
             //ÖDEME YAPMADAN ÖNCE HALA REZERVASYON YAPILMIŞMI YAPILMAMIŞMI KONTROL ET.
             ReservationCacheExtension extension = new ReservationCacheExtension();
-            bool kontrol = extension.CacheInAdd(new ReservationCacheDTO { CheckInDate = reservations.CheckInDate, CheckOutDate = reservations.CheckOutDate, RoomId = reservations.RoomId, ReservationIdentity = Guid.NewGuid() });
+            Guid cacheControl = Guid.NewGuid();
+            TempData["CacheControl"] = cacheControl;
+            bool kontrol = extension.CacheInAdd(new ReservationCacheDTO { CheckInDate = reservations.CheckInDate, CheckOutDate = reservations.CheckOutDate, RoomId = reservations.RoomId, ReservationIdentity = cacheControl });
             //kontrol True ise Ekleme Yapılacak.
             //kontrol False ise Böyle bir rezervasyon mevcuttur.
             if (kontrol == true)
@@ -276,6 +278,8 @@ namespace BilgeHotel.WebUI.Controllers
                 
                 //KAYDEDİLEN REZERVATİONUN IDSI İLE REZERVATİON DETAİL OLUŞTUR.
                 await _reservationDetailService.Add(new ReservationDetail { ReservationId = reservationId, CheckInDate =reservations.CheckInDate, CheckOutDate=reservations.CheckOutDate, CreatedDate=reservations.CreatedDate, PackageId=reservations.PackageId, RoomId=reservations.RoomId, Discount=discount, DiscountedPrice= discountedPrice, CardId= cardId });
+                ReservationCacheExtension extension = new ReservationCacheExtension();
+                extension.CacheInRemove((Guid)TempData["CacheControl"]);
                 return RedirectToAction("ReservationComplete");
             }
             else
