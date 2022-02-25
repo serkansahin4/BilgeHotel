@@ -39,6 +39,11 @@ namespace BilgeHotel.IocContainer
             services.AddTransient<IReservationService, ReservationManager>();
             services.AddTransient<ICardService, CardManager>();
             services.AddTransient<IExtraService, ExtraManager>();
+            services.AddTransient<IDepartmentService, DepartmentManager>();
+            services.AddTransient<IRoomViewService, RoomViewManager>();
+            services.AddTransient<IRoomSituationService, RoomSituationManager>();
+            services.AddTransient<IHotelExtraService, HotelExtraManager>();
+            
 
 
 

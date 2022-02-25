@@ -1,0 +1,7 @@
+Aradan geçen 4 gün araştırma ve geliştirme, algoritma üzerinde eksik olup olmadığını kontrol etmeye ayrıldı.
+
+1-WebUI katmanındaki işler bittikten sonra, WebAPI ile projeyi rollere göre dışarı açmak amaçlandı.
+2- İşlem görmeyecek tablolar üzerinde CRUD işlemleri API içerisine aktarıldı. Toplamda 10 Adet
+Tablonun İşlemi bitti.
+3- Geriye kalan kısımlarda Ara tablolar yada işlem görmesi gereken verilerin olacağı tablolar tamamlanacak.
+Rol bazlı erişim sağlanacak(bu rolleme Session ile yapılacak identity kullanılmayacak.)

@@ -16,9 +16,9 @@ namespace BilgeHotel.Business.Concrete
         {
             _repository = repository;
         }
-        public List<Room> GetAllReady()
+        public List<Room> GetAllReady(int roomTypeId)
         {
-            return _repository.GetAll(x=>x.RoomSituation.Id==1);
+            return _repository.GetAll(x=>x.RoomSituation.Id==1&&x.RoomTypeId==roomTypeId);
         }
 
         public double PriceGetById(int RoomName)

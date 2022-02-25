@@ -57,7 +57,7 @@ namespace BilgeHotel.WebUI.Controllers
             RoomType roomType = _roomTypeService.Get(id);
             if (roomType != null)
             {
-                return View(_roomService.GetAllReady().Where(x => x.RoomTypeId == roomType.Id).ToList());
+                return View(_roomService.GetAllReady(roomType.Id));
             }
 
             return View("Index");
@@ -66,8 +66,7 @@ namespace BilgeHotel.WebUI.Controllers
         [HttpGet]
         public IActionResult _ReservationCreatePartial(int id)
         {
-
-            List<DateEntity> dates = _reservationDetailService.GetAll(id).ToList().Select(x => new DateEntity
+            List<DateEntity> dates = _reservationDetailService.GetAll(id).Select(x => new DateEntity
             {
                 Baslangic = x.CheckInDate,
                 Bitis = x.CheckOutDate
@@ -125,7 +124,7 @@ namespace BilgeHotel.WebUI.Controllers
             new CardTypeVM{ CardTypeId=2, CardName="Finans Bankası" }
             };
 
-            ViewBag.sss = new SelectList(cardType.ToList(), "CardTypeId", "CardName");
+            ViewBag.sss = new SelectList(cardType, "CardTypeId", "CardName");
 
             return View();
         }
