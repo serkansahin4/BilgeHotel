@@ -24,8 +24,7 @@ namespace BilgeHotel.DataAccess.EntityFramework
         {
             try
             {
-                T entityDb = await _dbSet.FindAsync(entity);
-                _dbSet.Remove(entityDb);
+                _dbSet.Remove(entity);
                 await _context.SaveChangesAsync();
                 return true;
             }

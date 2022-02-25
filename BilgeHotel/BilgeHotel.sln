@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeHotel.Core", "BilgeHot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankaAPI", "BankaAPI\BankaAPI.csproj", "{65554097-3A1F-4F63-BF78-E5E3234035D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeHotel.CacheReservation", "BilgeHotel.CacheReservation\BilgeHotel.CacheReservation.csproj", "{685995CB-F75A-4D83-9136-6CDC241EB84D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeHotel.CacheReservation", "BilgeHotel.CacheReservation\BilgeHotel.CacheReservation.csproj", "{685995CB-F75A-4D83-9136-6CDC241EB84D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeHotel.WebApi", "BilgeHotel.WebApi\BilgeHotel.WebApi.csproj", "{C45400B5-7F18-48A2-AE39-F9C30EA7B7D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{685995CB-F75A-4D83-9136-6CDC241EB84D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{685995CB-F75A-4D83-9136-6CDC241EB84D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{685995CB-F75A-4D83-9136-6CDC241EB84D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C45400B5-7F18-48A2-AE39-F9C30EA7B7D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C45400B5-7F18-48A2-AE39-F9C30EA7B7D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C45400B5-7F18-48A2-AE39-F9C30EA7B7D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C45400B5-7F18-48A2-AE39-F9C30EA7B7D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

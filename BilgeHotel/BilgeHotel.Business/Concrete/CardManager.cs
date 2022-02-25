@@ -21,5 +21,22 @@ namespace BilgeHotel.Business.Concrete
             await _repository.Insert(card);
             return true;
         }
+
+        public async Task<bool> DeleteByIdAsync(Guid id)
+        {
+            Card card = _repository.Get(x => x.Id == id);
+            bool kontrol = await _repository.Delete(card);
+            return kontrol;
+        }
+
+        public List<Card> GetAll()
+        {
+            return _repository.GetAll();
+        }
+
+        public Card GetById(Guid id)
+        {
+            return _repository.Get(x => x.Id == id);
+        }
     }
 }

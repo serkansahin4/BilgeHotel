@@ -11,5 +11,10 @@ namespace BilgeHotel.Business.Abstract
     {
         List<Package> GetAll();
         double PriceGetById(int id);
+
+        Package GetById(int id);
+        Task<bool> AddAsync(Package package);
+        Task<bool> DeleteByIdAsync(int id);
+        Task<bool> UpdateAsync(Package package);
     }
 }

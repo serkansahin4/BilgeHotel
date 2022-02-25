@@ -38,13 +38,19 @@ namespace BilgeHotel.IocContainer
             services.AddTransient<IPackageService, PackageManager>();
             services.AddTransient<IReservationService, ReservationManager>();
             services.AddTransient<ICardService, CardManager>();
+            services.AddTransient<IExtraService, ExtraManager>();
+
+
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
             
         }
 
         public static void DbConfigurationAdd(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<BilgeHotelDenemeContext>(x => x.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), x => x.MigrationsAssembly("BilgeHotel.WebUI")).UseLazyLoadingProxies());
+            //, x => x.MigrationsAssembly("BilgeHotel.WebUI")
+            services.AddDbContext<BilgeHotelDenemeContext>(x => x.UseSqlServer(configuration.GetConnectionString("DefaultConnection")).UseLazyLoadingProxies());
 
         }
     }

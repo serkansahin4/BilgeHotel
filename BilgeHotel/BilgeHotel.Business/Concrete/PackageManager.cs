@@ -16,14 +16,39 @@ namespace BilgeHotel.Business.Concrete
         {
             _repository = repository;
         }
+
+        public double PriceGetById(int id)
+        {
+            return _repository.Get(x => x.Id == id).Price;
+        }
+
         public List<Package> GetAll()
         {
             return _repository.GetAll();
         }
 
-        public double PriceGetById(int id)
+        public async Task<bool> AddAsync(Package package)
         {
-            return _repository.Get(x => x.Id == id).Price;
+            bool kontrol = await _repository.Insert(package);
+            return kontrol;
+        }
+
+        public async Task<bool> DeleteByIdAsync(int id)
+        {
+            Package package = _repository.Get(x => x.Id == id);
+            bool kontrol = await _repository.Delete(package);
+            return kontrol;
+        }
+
+        public Package GetById(int id)
+        {
+            return _repository.Get(x => x.Id == id);
+        }
+
+        public async Task<bool> UpdateAsync(Package package)
+        {
+            bool kontrol = await _repository.Update(package);
+            return kontrol;
         }
     }
 }

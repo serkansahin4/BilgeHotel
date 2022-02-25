@@ -9,6 +9,16 @@ namespace BilgeHotel.Business.Abstract
 {
     public interface ICardService
     {
-       Task<bool> Add(Card card);
+        [Obsolete("Bu Metodu Kullanma, Tek başına card verisi bir anlam ifade etmiyor.")]
+        Task<bool> Add(Card card); //ReservationDetail oluşturulurken bir cart eklenmesi gerekiyor. Bu yüzden oluşturdum
+                                   //Ancak bu card bilgisi tek başına bir anlam ifade etmiyor.
+                                   //Bu yüzden ekleme metodu apide bulunmayacak.
+                                   //Proje geliştikce bunun farkına vardım. Bu yüzden kodlar gelişe gelişe ilerliyor
+                                   //Sonraki adımlarda yeni öğrendiğim şeyleri uygulayarak devam ediyorum.
+                                   //Başlangıçtan ne kadar uzaklaştığımı görebilmek için.
+        List<Card> GetAll();
+        Card GetById(Guid id);
+        Task<bool> DeleteByIdAsync(Guid id);
+
     }
 }

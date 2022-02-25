@@ -1891,7 +1891,10 @@
         "dependencies": {
           "BilgeHotel.Entities": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.10",
-          "Microsoft.EntityFrameworkCore.Relational": "5.0.10"
+          "Microsoft.EntityFrameworkCore.Abstractions": "5.0.10",
+          "Microsoft.EntityFrameworkCore.Proxies": "5.0.10",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.10",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.10"
         },
         "runtime": {
           "BilgeHotel.DataAccess.dll": {}

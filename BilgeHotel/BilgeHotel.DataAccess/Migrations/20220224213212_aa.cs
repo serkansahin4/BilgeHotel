@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BilgeHotel.WebUI.Migrations
+namespace BilgeHotel.DataAccess.Migrations
 {
-    public partial class aaa : Migration
+    public partial class aa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -425,7 +425,7 @@ namespace BilgeHotel.WebUI.Migrations
             migrationBuilder.InsertData(
                 table: "Cards",
                 columns: new[] { "Id", "CardNumber", "CardType", "Cv2", "EndDate" },
-                values: new object[] { new Guid("e13325ca-da4b-40e0-b2a9-179d8dafd9a8"), "selam", "Ziraat", "ABC", "02/05" });
+                values: new object[] { new Guid("af7e1bb6-c335-4206-90c0-d34589a1ed8f"), "selam", "Ziraat", "ABC", "02/05" });
 
             migrationBuilder.InsertData(
                 table: "Customers",
@@ -514,7 +514,7 @@ namespace BilgeHotel.WebUI.Migrations
             migrationBuilder.InsertData(
                 table: "Reservations",
                 columns: new[] { "Id", "CustomerId", "EmployeeId", "ExtraTotalPrice" },
-                values: new object[] { new Guid("4eaf1f16-f3f6-4f4a-9473-cff94638a00c"), 1, null, null });
+                values: new object[] { new Guid("1c638add-b777-4ff8-9cf1-6fff1a6763a7"), 1, null, null });
 
             migrationBuilder.InsertData(
                 table: "RoomBeds",
@@ -686,7 +686,7 @@ namespace BilgeHotel.WebUI.Migrations
             migrationBuilder.InsertData(
                 table: "ReservationDetails",
                 columns: new[] { "PackageId", "ReservationId", "RoomId", "CardId", "CheckInDate", "CheckOutDate", "CreatedDate", "Discount", "DiscountedPrice" },
-                values: new object[] { 1, new Guid("4eaf1f16-f3f6-4f4a-9473-cff94638a00c"), 101, new Guid("e13325ca-da4b-40e0-b2a9-179d8dafd9a8"), new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 21, 22, 25, 10, 656, DateTimeKind.Local).AddTicks(6321), 22.0, 150m });
+                values: new object[] { 1, new Guid("1c638add-b777-4ff8-9cf1-6fff1a6763a7"), 101, new Guid("af7e1bb6-c335-4206-90c0-d34589a1ed8f"), new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 25, 0, 32, 10, 677, DateTimeKind.Local).AddTicks(4291), 22.0, 150m });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_DepartmentId",
