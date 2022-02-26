@@ -21,9 +21,9 @@ namespace BilgeHotel.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get(string identity)
         {
-            Customer customer = _customerService.GetById(id);
+            Customer customer = _customerService.GetByIdentity(identity);
             if (customer != null)
             {
                 CustomerVM customerVM = new CustomerVM();
@@ -50,9 +50,9 @@ namespace BilgeHotel.WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string identity)
         {
-            bool kontrol = await _customerService.DeleteByIdAsync(id);
+            bool kontrol = await _customerService.DeleteByIdentityAsync(identity);
             if (kontrol == true)
             {
                 return Ok();

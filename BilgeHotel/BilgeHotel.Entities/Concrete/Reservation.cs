@@ -10,11 +10,17 @@ namespace BilgeHotel.Entities.Concrete
 {
     public class Reservation : IEntity
     {
+        public Reservation()
+        {
+            ReservationDetails = new List<ReservationDetail>();
+        }
+
         public Guid Id { get; set; }
         public int CustomerId { get; set; }
         public int? EmployeeId { get; set; }
         public double? ExtraTotalPrice { get; set; } //her extradan ne kadar ve kaç adet harcanmışsa
                                                      //Fiyatı Hesaplanıp toplam fiyatı buraya yazılacaktır.
+        public bool? Out { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
 

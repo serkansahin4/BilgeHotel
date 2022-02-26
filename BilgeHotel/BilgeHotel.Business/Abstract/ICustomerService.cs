@@ -13,7 +13,7 @@ namespace BilgeHotel.Business.Abstract
         Task<bool> Add(Customer customer);
 
         List<Customer> GetAll();
-        Customer GetById(int id);
-        Task<bool> DeleteByIdAsync(int id);
+        Customer GetByIdentity(string identity);
+        Task<bool> DeleteByIdentityAsync(string identity);
     }
 }

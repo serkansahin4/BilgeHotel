@@ -13,7 +13,6 @@ namespace BilgeHotel.Entities.ComplexType
         public int HotelExtraId { get; set; }
         public Guid ReservationId { get; set; }
         public Int16 Quantity { get; set; }
-        public double TotalPrice { get; set; }
 
         public virtual HotelExtra HotelExtra { get; set; }
         public virtual Reservation Reservation { get; set; }

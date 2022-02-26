@@ -1,5 +1,6 @@
 ﻿using BilgeHotel.Business.Abstract;
 using BilgeHotel.DataAccess.Abstract;
+using BilgeHotel.Entities.ComplexType;
 using BilgeHotel.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,32 @@ namespace BilgeHotel.Business.Concrete
             return true;
         }
 
-        public List<Reservation> ReservationsFindByRoomId(int roomId)
+        public double ReservationExtraPrice(Guid reservationId) //Önce Fiyatı Gör.
         {
-            throw new NotImplementedException();
+            double sumExtraPrice=0;
+            foreach (var item in _repository.Get(x => x.Id == reservationId).ReservationOutHotelExtras)
+            {
+                double extraPrice = item.HotelExtra.Price;
+                double quantity = item.Quantity;
+                sumExtraPrice = extraPrice * quantity;
+            }
+            return sumExtraPrice;
+        }
+
+        public async Task<bool> ReservationExtraPayment(Guid reservationId) //Sonra Çıkış Yap.
+        {
+            Reservation reservation = _repository.Get(x => x.Id == reservationId);
+            
+            if (reservation!=null)
+            {
+                reservation.Out = true;
+                await _repository.Update(reservation);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

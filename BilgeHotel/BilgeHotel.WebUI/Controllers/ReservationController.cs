@@ -278,7 +278,7 @@ namespace BilgeHotel.WebUI.Controllers
                 //KAYDEDİLEN REZERVATİONUN IDSI İLE REZERVATİON DETAİL OLUŞTUR.
                 await _reservationDetailService.Add(new ReservationDetail { ReservationId = reservationId, CheckInDate =reservations.CheckInDate, CheckOutDate=reservations.CheckOutDate, CreatedDate=reservations.CreatedDate, PackageId=reservations.PackageId, RoomId=reservations.RoomId, Discount=discount, DiscountedPrice= discountedPrice, CardId= cardId });
                 ReservationCacheExtension extension = new ReservationCacheExtension();
-                extension.CacheInRemove((Guid)TempData["CacheControl"]);
+                //extension.CacheInRemove((Guid)TempData["CacheControl"]); CACHEYİ 6 AYDA BİR TEMİZLEMEK GEREKİYOR.
                 return RedirectToAction("ReservationComplete");
             }
             else

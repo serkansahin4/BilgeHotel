@@ -1,0 +1,9 @@
+Api ile Rezervasyon oluşturma işlemleri tamamlandı. Çıkış yapacak müşterinin extraları hesaplandı.
+sorgulamaya müsait. ve veritabanına, müşterinin otelden çıkış yapıp yapmadığını kontrol eden bir kolon eklendi.
+
+GERİYE KALANLAR : 
+1- Reservation ve ReservationDetail üzerinde crud işlemleri düşünülecek ve yazılacak.
+2- Geri kalan tabloların crud işlemleri yapılacak ve yazılacak.
+3- Api ile resim ekleme işlemi öğrenilecek resimler tablosuna uygulanacak.
+4- Word belgesi okunacak yapılması gerekenler yapılacak.
+5- 

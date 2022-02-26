@@ -21,6 +21,5 @@ namespace BilgeHotel.WebUI.Models.ViewModels
         public DateTime CheckOutDate { get; set; }
         public DateTime CreatedDate { get; set; }
 
-        //public List<DateTime>  { get; set; }
     }
 }

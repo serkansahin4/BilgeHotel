@@ -22,9 +22,9 @@ namespace BilgeHotel.Business.Concrete
             return true;
         }
 
-        public async Task<bool> DeleteByIdAsync(int id)
+        public async Task<bool> DeleteByIdentityAsync(string identity)
         {
-            Customer customer = _repository.Get(x => x.Id == id);
+            Customer customer = _repository.Get(x => x.TcIdentityNo == identity);
             bool kontrol = await _repository.Delete(customer);
             return kontrol;
         }
@@ -34,9 +34,9 @@ namespace BilgeHotel.Business.Concrete
             return _repository.GetAll();
         }
 
-        public Customer GetById(int id)
+        public Customer GetByIdentity(string identity)
         {
-            return _repository.Get(x => x.Id == id);
+            return _repository.Get(x => x.TcIdentityNo == identity);
         }
     }
 }

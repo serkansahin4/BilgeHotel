@@ -35,7 +35,7 @@ namespace BilgeHotel.WebApi
                 .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
 
             services.IocConfiguration();
-            services.AddDbContext<BilgeHotelDenemeContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<BilgeHotelDenemeContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")).UseLazyLoadingProxies());
 
             services.AddControllers();
         }
