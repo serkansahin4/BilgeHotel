@@ -9,7 +9,15 @@ namespace BilgeHotel.Business.Abstract
 {
     public interface IRoomService
     {
-        List<Room> GetAllReady(int roomTypeId);
-        double PriceGetById(int RoomName);
+        List<Room> GetAllReady(int roomTypeId); //Oda Tipine göre(Kategorisine göre) hazır odalar gelecek.
+        double PriceGetById(int RoomName); //Oda Id sine göre odanın fiyatı gelecek(RoomType Üzerinden.)
+
+
+        List<Room> GetAll(); //Bütün Odalar Gelecek.
+        Room Get(int roomName);
+        Task<bool> AddAsync(Room room);
+        Task<bool> DeleteByIdAsync(int roomName);
+        Task<bool> UpdateAsync(Room room);
+
     }
 }

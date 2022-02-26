@@ -11,5 +11,9 @@ namespace BilgeHotel.Business.Abstract
     {
         List<RoomType> GetAll();
         RoomType Get(int id);
+
+        Task<bool> AddAsync(RoomType roomType);
+        Task<bool> DeleteByIdAsync(int id);
+        Task<bool> UpdateAsync(RoomType roomType);
     }
 }

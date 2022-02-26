@@ -25,5 +25,36 @@ namespace BilgeHotel.Business.Concrete
         {
             return _repository.Get(x => x.RoomName == RoomName).RoomType.Price;
         }
+
+
+
+        public async Task<bool> AddAsync(Room room)
+        {
+            bool kontrol = await _repository.Insert(room);
+            return kontrol;
+        }
+
+        public async Task<bool> DeleteByIdAsync(int roomName)
+        {
+            Room room = _repository.Get(x => x.RoomName == roomName);
+            bool kontrol = await _repository.Delete(room);
+            return kontrol;
+        }
+
+        public List<Room> GetAll()
+        {
+            return _repository.GetAll();
+        }
+
+        public Room Get(int roomName)
+        {
+            return _repository.Get(x => x.RoomName == roomName);
+        }
+
+        public async Task<bool> UpdateAsync(Room room)
+        {
+            bool kontrol = await _repository.Update(room);
+            return kontrol;
+        }
     }
 }
