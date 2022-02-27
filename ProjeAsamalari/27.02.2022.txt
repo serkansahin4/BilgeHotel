@@ -1,0 +1,12 @@
+Geriye Kalanlar
+
+1- Api ile image gönderme.
+2- Çalışanların mesaileri tablosu hakkında yapılacaklar.
+3- WebApi ile rolleme, token authorization, authentication.
+4- Dökümentasyonu okuyup, eklenmesi gereken metodları eklemek.
+
+Eksik 2 tablo
+
+İmage
+Mesai
+Kullanıcı giriş bilgilerini içeren tablo
