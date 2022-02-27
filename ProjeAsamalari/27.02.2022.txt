@@ -10,3 +10,10 @@ Eksik 2 tablo
 İmage
 Mesai
 Kullanıcı giriş bilgilerini içeren tablo
+
+
+
+GELİŞMELER
+
+image tablosuna dair herşey halledildi. Eklenen resimler statitk dosya ve veritabanına kaydedildi.
+image uzantıları kontrol edildi. ve silme fonksiyonuda içeren bir Extension classda metotlar toplandı.
