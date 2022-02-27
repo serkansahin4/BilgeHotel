@@ -32,7 +32,7 @@ namespace BilgeHotel.IocContainer
                                                                                      //New Instance
 
             services.AddTransient<IDateManagementExtension, DateManagementExtension>();
-            
+
 
 
 
@@ -59,7 +59,9 @@ namespace BilgeHotel.IocContainer
             services.AddTransient<IRoomSituationService, RoomSituationManager>();
             services.AddTransient<IReservationService, ReservationManager>();
             services.AddTransient<IReservationDetailService, ReservationDetailManager>();
-            
+
+            services.AddTransient<IImageService, ImageManager>();
+            services.AddTransient<IImageExtension, ImageExtension>();
 
 
 
