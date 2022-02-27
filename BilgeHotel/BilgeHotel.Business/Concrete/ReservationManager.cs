@@ -2,6 +2,7 @@
 using BilgeHotel.DataAccess.Abstract;
 using BilgeHotel.Entities.ComplexType;
 using BilgeHotel.Entities.Concrete;
+using BilgeHotel.Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,43 @@ namespace BilgeHotel.Business.Concrete
         public ReservationManager(IRepository<Reservation> repository)
         {
             _repository = repository;
+        }
+
+        public bool Control(List<ReservationControlDTO> reservationDTOs,DateTime CheckInDate, DateTime CheckOutDate, int roomId)
+        {
+            List<DateTime> dateTimes = new List<DateTime>();//Gelen Rezervasyon tarihlerini parçaladık.
+            DateTime itemDateBaslangic = CheckInDate;
+            DateTime itemDateBitis = CheckOutDate;
+            for (DateTime tarih = itemDateBaslangic; tarih <= itemDateBitis; tarih = tarih.AddDays(1))
+            {
+                dateTimes.Add(tarih);
+            }
+
+            List<DateTime> dateTimes1 = new List<DateTime>();//ReservationCaches içerisindeki
+                                                             //RoomıD Ye ait tarih aralıklarının
+                                                             //İçerisinde dönüp listeye atıyoruz.
+            foreach (ReservationControlDTO item in reservationDTOs.Where(x => x.roomId == roomId))
+            {
+
+                DateTime itemDateBaslangic1 = item.CheckInDate;
+                DateTime itemDateBitis1 = item.CheckOutDate;
+                for (DateTime tarih = itemDateBaslangic1; tarih <= itemDateBitis1; tarih = tarih.AddDays(1))
+                {
+                    dateTimes1.Add(tarih);
+                }
+            }
+            foreach (var item in dateTimes)
+            {
+                foreach (var items in dateTimes1)
+                {
+                    if (items == item)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
         }
 
         public async Task<bool> Add(Reservation reservation)
@@ -51,5 +89,9 @@ namespace BilgeHotel.Business.Concrete
                 return false;
             }
         }
+
+
+
+
     }
 }

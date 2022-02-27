@@ -8,6 +8,10 @@ namespace BilgeHotel.WebApi.Models.ViewModels
 {
     public class ReservationCreateVM
     {
+        public ReservationCreateVM()
+        {
+            CreatedDate = DateTime.Now;
+        }
         public Customer Customer { get; set; }
         public int EmployeeId { get; set; }
         public int RoomId { get; set; }
