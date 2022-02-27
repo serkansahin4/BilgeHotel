@@ -30,26 +30,43 @@ namespace BilgeHotel.IocContainer
                                                                                      //Ayağa Kaldırıldığı için Transient
                                                                                      //New Instance
                                                                                      //New Instance
+
+            services.AddTransient<IDateManagementExtension, DateManagementExtension>();
+            
+
+
+
+            services.AddTransient<ICustomerService, CustomerManager>();
+            services.AddTransient<IPackageService, PackageManager>();
+            services.AddTransient<ICardService, CardManager>();
+
+            services.AddTransient<IDepartmentService, DepartmentManager>();
+
+
+            services.AddTransient<IExtraService, ExtraManager>();
+            services.AddTransient<IEmployeeService, EmployeeManager>();
+
+
+            services.AddTransient<IHotelExtraService, HotelExtraManager>();
+
+            services.AddTransient<IReservationOutHotelExtraService, ReservationOutHotelExtraManager>();
+            services.AddTransient<IRoleService, RoleManager>();
+            services.AddTransient<IRoomBedService, RoomBedManager>();
             services.AddTransient<IRoomTypeService, RoomTypeManager>();
             services.AddTransient<IRoomService, RoomManager>();
-            services.AddTransient<ICustomerService, CustomerManager>();
-            services.AddTransient<IReservationDetailService, ReservationDetailManager>();
-            services.AddTransient<IDateManagementExtension, DateManagementExtension>();
-            services.AddTransient<IPackageService, PackageManager>();
-            services.AddTransient<IReservationService, ReservationManager>();
-            services.AddTransient<ICardService, CardManager>();
-            services.AddTransient<IExtraService, ExtraManager>();
-            services.AddTransient<IDepartmentService, DepartmentManager>();
+            services.AddTransient<IRoomTypeExtraService, RoomTypeExtraManager>();
             services.AddTransient<IRoomViewService, RoomViewManager>();
             services.AddTransient<IRoomSituationService, RoomSituationManager>();
-            services.AddTransient<IHotelExtraService, HotelExtraManager>();
+            services.AddTransient<IReservationService, ReservationManager>();
+            services.AddTransient<IReservationDetailService, ReservationDetailManager>();
             
 
 
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            
-            
+
+            //Images Gelicek.
+            //SHIFT gelicek
         }
 
         public static void DbConfigurationAdd(this IServiceCollection services, IConfiguration configuration)

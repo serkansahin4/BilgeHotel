@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BilgeHotel.DataAccess.Migrations
 {
-    public partial class abcc : Migration
+    public partial class abc : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -425,12 +425,17 @@ namespace BilgeHotel.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "Cards",
                 columns: new[] { "Id", "CardNumber", "CardType", "Cv2", "EndDate" },
-                values: new object[] { new Guid("3cd2d8e6-130e-4808-adfe-92a676c15caa"), "selam", "Ziraat", "ABC", "02/05" });
+                values: new object[] { new Guid("524165eb-6bca-406a-9fed-d5a2a8416942"), "selam", "Ziraat", "ABC", "02/05" });
 
             migrationBuilder.InsertData(
                 table: "Customers",
                 columns: new[] { "Id", "BirthDate", "Email", "FirstName", "LastName", "Phone", "TcIdentityNo" },
                 values: new object[] { 1, new DateTime(1999, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "serkana607@gmail.com", "Serkan", "Şahin", "25365485652", "64657172255" });
+
+            migrationBuilder.InsertData(
+                table: "Departments",
+                columns: new[] { "Id", "DepartmentName" },
+                values: new object[] { 1, "Bilişim" });
 
             migrationBuilder.InsertData(
                 table: "Extras",
@@ -445,6 +450,11 @@ namespace BilgeHotel.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "HotelExtras",
+                columns: new[] { "Id", "ExtraName", "Price" },
+                values: new object[] { 1, "Şarap", 150m });
+
+            migrationBuilder.InsertData(
                 table: "Packages",
                 columns: new[] { "Id", "PackageName", "Price" },
                 values: new object[,]
@@ -454,14 +464,19 @@ namespace BilgeHotel.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "RoleName" },
+                values: new object[] { 1, "Admin" });
+
+            migrationBuilder.InsertData(
                 table: "RoomSituations",
                 columns: new[] { "Id", "StatusName" },
                 values: new object[,]
                 {
-                    { 4, "Hazırlanıyor" },
-                    { 3, "Bakımda" },
+                    { 1, "Hazır" },
                     { 2, "Meşgul" },
-                    { 1, "Hazır" }
+                    { 3, "Bakımda" },
+                    { 4, "Hazırlanıyor" }
                 });
 
             migrationBuilder.InsertData(
@@ -489,18 +504,23 @@ namespace BilgeHotel.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Employees",
+                columns: new[] { "Id", "Adress", "DepartmentId", "FirstName", "LastName", "Phone", "RoleId", "Salary" },
+                values: new object[] { 1, "Sırasöğütler", 1, "Osman", "Şahin", "12345678955", 1, 500m });
+
+            migrationBuilder.InsertData(
                 table: "Images",
                 columns: new[] { "Id", "Path", "RoomTypeId" },
                 values: new object[,]
                 {
-                    { 11, "ABC.jpg", 6 },
+                    { 7, "ABC.jpg", 4 },
                     { 13, "ABC.jpg", 7 },
                     { 14, "resepsiyon.jpg", 7 },
                     { 4, "resepsiyon.jpg", 2 },
                     { 3, "ABC.jpg", 2 },
                     { 12, "resepsiyon.jpg", 6 },
+                    { 11, "ABC.jpg", 6 },
                     { 6, "resepsiyon.jpg", 3 },
-                    { 7, "ABC.jpg", 4 },
                     { 5, "ABC.jpg", 3 },
                     { 2, "resepsiyon.jpg", 1 },
                     { 1, "ABC.jpg", 1 },
@@ -514,7 +534,7 @@ namespace BilgeHotel.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "Reservations",
                 columns: new[] { "Id", "CustomerId", "EmployeeId", "ExtraTotalPrice", "Out" },
-                values: new object[] { new Guid("a99a3923-c406-4da0-a6d6-77346b44b37b"), 1, null, null, null });
+                values: new object[] { new Guid("fe47b5b6-b5b0-4b96-80cd-94ab8d34bca3"), 1, null, null, null });
 
             migrationBuilder.InsertData(
                 table: "RoomBeds",
@@ -526,11 +546,11 @@ namespace BilgeHotel.DataAccess.Migrations
                     { 1, 7, 2 },
                     { 2, 4, 1 },
                     { 1, 6, 1 },
+                    { 2, 6, 1 },
                     { 1, 1, 1 },
                     { 1, 3, 2 },
                     { 2, 8, 1 },
-                    { 2, 2, 1 },
-                    { 2, 6, 1 }
+                    { 2, 2, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -538,21 +558,20 @@ namespace BilgeHotel.DataAccess.Migrations
                 columns: new[] { "ExtraId", "RoomTypeId" },
                 values: new object[,]
                 {
-                    { 4, 7 },
                     { 5, 8 },
                     { 1, 6 },
                     { 2, 6 },
                     { 3, 6 },
                     { 4, 6 },
                     { 4, 8 },
+                    { 3, 7 },
                     { 3, 8 },
                     { 2, 8 },
                     { 1, 8 },
                     { 2, 7 },
                     { 5, 7 },
                     { 5, 6 },
-                    { 3, 7 },
-                    { 1, 7 }
+                    { 4, 7 }
                 });
 
             migrationBuilder.InsertData(
@@ -560,6 +579,7 @@ namespace BilgeHotel.DataAccess.Migrations
                 columns: new[] { "ExtraId", "RoomTypeId" },
                 values: new object[,]
                 {
+                    { 1, 7 },
                     { 4, 5 },
                     { 5, 5 },
                     { 1, 1 },
@@ -607,8 +627,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     { 400, 1, (short)50, 4, 1 },
                     { 407, 1, (short)50, 4, 1 },
                     { 116, 1, (short)50, 5, 1 },
-                    { 318, 1, (short)50, 6, 1 },
-                    { 118, 1, (short)50, 5, 1 }
+                    { 318, 1, (short)50, 6, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -616,6 +635,7 @@ namespace BilgeHotel.DataAccess.Migrations
                 columns: new[] { "RoomName", "RoomSituationId", "RoomSize", "RoomTypeId", "RoomViewId" },
                 values: new object[,]
                 {
+                    { 118, 1, (short)50, 5, 1 },
                     { 309, 1, (short)50, 4, 1 },
                     { 414, 1, (short)50, 7, 1 },
                     { 413, 1, (short)50, 7, 1 },
@@ -656,8 +676,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     { 307, 1, (short)50, 4, 1 },
                     { 207, 1, (short)50, 2, 1 },
                     { 209, 1, (short)50, 2, 1 },
-                    { 305, 1, (short)50, 4, 1 },
-                    { 304, 1, (short)50, 4, 1 }
+                    { 305, 1, (short)50, 4, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -665,6 +684,7 @@ namespace BilgeHotel.DataAccess.Migrations
                 columns: new[] { "RoomName", "RoomSituationId", "RoomSize", "RoomTypeId", "RoomViewId" },
                 values: new object[,]
                 {
+                    { 304, 1, (short)50, 4, 1 },
                     { 303, 1, (short)50, 4, 1 },
                     { 302, 1, (short)50, 4, 1 },
                     { 301, 1, (short)50, 4, 1 },
@@ -686,7 +706,12 @@ namespace BilgeHotel.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "ReservationDetails",
                 columns: new[] { "PackageId", "ReservationId", "RoomId", "CardId", "CheckInDate", "CheckOutDate", "CreatedDate", "Discount", "DiscountedPrice" },
-                values: new object[] { 1, new Guid("a99a3923-c406-4da0-a6d6-77346b44b37b"), 101, new Guid("3cd2d8e6-130e-4808-adfe-92a676c15caa"), new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 27, 16, 22, 36, 947, DateTimeKind.Local).AddTicks(2116), 22.0, 150m });
+                values: new object[] { 1, new Guid("fe47b5b6-b5b0-4b96-80cd-94ab8d34bca3"), 101, new Guid("524165eb-6bca-406a-9fed-d5a2a8416942"), new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 27, 16, 36, 46, 65, DateTimeKind.Local).AddTicks(886), 22.0, 150m });
+
+            migrationBuilder.InsertData(
+                table: "ReservationOutHotelExtras",
+                columns: new[] { "HotelExtraId", "ReservationId", "Quantity" },
+                values: new object[] { 1, new Guid("fe47b5b6-b5b0-4b96-80cd-94ab8d34bca3"), (short)5 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_DepartmentId",

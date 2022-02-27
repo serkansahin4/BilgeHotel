@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BilgeHotel.DataAccess.Migrations
 {
     [DbContext(typeof(BilgeHotelDenemeContext))]
-    [Migration("20220227132237_abcc")]
-    partial class abcc
+    [Migration("20220227133647_abc")]
+    partial class abc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,13 +63,13 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            ReservationId = new Guid("a99a3923-c406-4da0-a6d6-77346b44b37b"),
+                            ReservationId = new Guid("fe47b5b6-b5b0-4b96-80cd-94ab8d34bca3"),
                             PackageId = 1,
                             RoomId = 101,
-                            CardId = new Guid("3cd2d8e6-130e-4808-adfe-92a676c15caa"),
+                            CardId = new Guid("524165eb-6bca-406a-9fed-d5a2a8416942"),
                             CheckInDate = new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckOutDate = new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2022, 2, 27, 16, 22, 36, 947, DateTimeKind.Local).AddTicks(2116),
+                            CreatedDate = new DateTime(2022, 2, 27, 16, 36, 46, 65, DateTimeKind.Local).AddTicks(886),
                             Discount = 22.0,
                             DiscountedPrice = 150m
                         });
@@ -91,6 +91,14 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasIndex("ReservationId");
 
                     b.ToTable("ReservationOutHotelExtras");
+
+                    b.HasData(
+                        new
+                        {
+                            HotelExtraId = 1,
+                            ReservationId = new Guid("fe47b5b6-b5b0-4b96-80cd-94ab8d34bca3"),
+                            Quantity = (short)5
+                        });
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.ComplexType.RoomBed", b =>
@@ -442,7 +450,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3cd2d8e6-130e-4808-adfe-92a676c15caa"),
+                            Id = new Guid("524165eb-6bca-406a-9fed-d5a2a8416942"),
                             CardNumber = "selam",
                             CardType = "Ziraat",
                             Cv2 = "ABC",
@@ -519,6 +527,13 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Departments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DepartmentName = "Bilişim"
+                        });
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Employee", b =>
@@ -565,6 +580,19 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Adress = "Sırasöğütler",
+                            DepartmentId = 1,
+                            FirstName = "Osman",
+                            LastName = "Şahin",
+                            Phone = "12345678955",
+                            RoleId = 1,
+                            Salary = 500m
+                        });
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Extra", b =>
@@ -629,6 +657,14 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("HotelExtras");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ExtraName = "Şarap",
+                            Price = 150m
+                        });
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Image", b =>
@@ -814,7 +850,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a99a3923-c406-4da0-a6d6-77346b44b37b"),
+                            Id = new Guid("fe47b5b6-b5b0-4b96-80cd-94ab8d34bca3"),
                             CustomerId = 1
                         });
                 });
@@ -834,6 +870,13 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            RoleName = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Room", b =>
