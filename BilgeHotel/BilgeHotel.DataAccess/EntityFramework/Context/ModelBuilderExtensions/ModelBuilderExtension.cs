@@ -266,10 +266,39 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
                 );
             #endregion
 
+            #region Roles
+            builder.Entity<Role>().HasData(
+                new Role { Id=1, RoleName="Admin"}
+                );
+            #endregion
+            #region Department
+            builder.Entity<Department>().HasData(
+                new Department { Id=1, DepartmentName="Bilişim" }
+                );
+            #endregion
+
+            #region Employee
+            builder.Entity<Employee>().HasData(
+                new Employee { Id=1, Adress="Sırasöğütler", FirstName="Osman", LastName="Şahin", Phone="12345678955", RoleId=1, Salary=500, DepartmentId=1 }
+                );
+            #endregion
+
             #region Reservation
             Guid key = Guid.NewGuid();
             builder.Entity<Reservation>().HasData(
                 new Reservation { Id = key, CustomerId = 1 }
+                );
+            #endregion
+
+            #region HotelExtra
+            builder.Entity<HotelExtra>().HasData(
+                new HotelExtra { Id=1, ExtraName="Şarap", Price=150 }
+                );
+
+            #endregion
+            #region ReservationOutHotelExtra
+            builder.Entity<ReservationOutHotelExtra>().HasData(
+                new ReservationOutHotelExtra { HotelExtraId=1, ReservationId= key, Quantity=5 }
                 );
             #endregion
             #region Card

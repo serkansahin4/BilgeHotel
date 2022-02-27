@@ -31,6 +31,25 @@ namespace BilgeHotel.WebApi.Controllers
             _reservationDetailService = reservationDetailService;
         }
 
+        [HttpGet("ControlGet/{dTO}")]
+        public IActionResult ControlGet([FromBody] ReservationControlDTO dTO)
+        {
+           
+            DateTime checkInDate = new DateTime(dTO.CheckInDate.Year, dTO.CheckInDate.Month, dTO.CheckInDate.Day, 14, 0, 0);   //Kullanıcıdan gelen saat salise ve saniyeyi
+            DateTime checkOutDate = new DateTime(dTO.CheckOutDate.Year, dTO.CheckOutDate.Month, dTO.CheckOutDate.Day, 10, 0, 0); //Düzeltmek zorundayız.
+            
+            List<ReservationControlDTO> reservations = _reservationDetailService.GetAll(dTO.roomId).Select(x => new ReservationControlDTO
+            {
+                CheckInDate = x.CheckInDate,
+                CheckOutDate = x.CheckOutDate,
+                roomId = x.RoomId
+            }).ToList();
+
+            bool reservationKontrol = _reservationService.Control(reservations, checkInDate, checkOutDate, dTO.roomId); //Veritabanında Reservasyon detaylar
+            return Ok(reservationKontrol);
+        }
+
+
         [HttpGet("{reservationId}")]
         public IActionResult ReservationOutHotelExtraPriceGet(Guid reservationId)
         {
@@ -59,10 +78,11 @@ namespace BilgeHotel.WebApi.Controllers
             DateTime checkInDate = new DateTime(createVM.CheckInDate.Year, createVM.CheckInDate.Month, createVM.CheckInDate.Day, 14, 0, 0);   //Kullanıcıdan gelen saat salise ve saniyeyi
             DateTime checkOutDate = new DateTime(createVM.CheckOutDate.Year, createVM.CheckOutDate.Month, createVM.CheckOutDate.Day, 10, 0, 0); //Düzeltmek zorundayız.
 
-            List<ReservationControlDTO> reservations =  _reservationDetailService.GetAll(createVM.RoomId).Select(x=>new ReservationControlDTO { 
-            CheckInDate=x.CheckInDate,
-            CheckOutDate=x.CheckOutDate,
-            roomId=x.RoomId
+            List<ReservationControlDTO> reservations = _reservationDetailService.GetAll(createVM.RoomId).Select(x => new ReservationControlDTO
+            {
+                CheckInDate = x.CheckInDate,
+                CheckOutDate = x.CheckOutDate,
+                roomId = x.RoomId
             }).ToList();
 
             bool reservationKontrol = _reservationService.Control(reservations, checkInDate, checkOutDate, createVM.RoomId); //Veritabanında Reservasyon detaylar
@@ -119,7 +139,7 @@ namespace BilgeHotel.WebApi.Controllers
                 return NotFound();
             }
 
-            
+
         }
     }
 }

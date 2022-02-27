@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BilgeHotel.Core\BilgeHotel.Core.csproj" />
     <ProjectReference Include="..\BilgeHotel.DataAccess\BilgeHotel.DataAccess.csproj" />
     <ProjectReference Include="..\BilgeHotel.Entities\BilgeHotel.Entities.csproj" />
   </ItemGroup>

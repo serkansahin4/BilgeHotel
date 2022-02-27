@@ -2656,6 +2656,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "BilgeHotel.Core": "1.0.0",
           "BilgeHotel.DataAccess": "1.0.0",
           "BilgeHotel.Entities": "1.0.0"
         },

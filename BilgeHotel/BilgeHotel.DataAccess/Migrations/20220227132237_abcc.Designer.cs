@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BilgeHotel.DataAccess.Migrations
 {
     [DbContext(typeof(BilgeHotelDenemeContext))]
-    [Migration("20220226162432_abc")]
-    partial class abc
+    [Migration("20220227132237_abcc")]
+    partial class abcc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,13 +63,13 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            ReservationId = new Guid("ca786c38-07ae-4ca1-9b6a-e0ea243d325d"),
+                            ReservationId = new Guid("a99a3923-c406-4da0-a6d6-77346b44b37b"),
                             PackageId = 1,
                             RoomId = 101,
-                            CardId = new Guid("4ab2f3d9-edb1-47b7-aa7b-8f90ea1b0b10"),
+                            CardId = new Guid("3cd2d8e6-130e-4808-adfe-92a676c15caa"),
                             CheckInDate = new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckOutDate = new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2022, 2, 26, 19, 24, 31, 190, DateTimeKind.Local).AddTicks(2993),
+                            CreatedDate = new DateTime(2022, 2, 27, 16, 22, 36, 947, DateTimeKind.Local).AddTicks(2116),
                             Discount = 22.0,
                             DiscountedPrice = 150m
                         });
@@ -85,9 +85,6 @@ namespace BilgeHotel.DataAccess.Migrations
 
                     b.Property<short>("Quantity")
                         .HasColumnType("smallint");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("money");
 
                     b.HasKey("HotelExtraId", "ReservationId");
 
@@ -445,7 +442,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4ab2f3d9-edb1-47b7-aa7b-8f90ea1b0b10"),
+                            Id = new Guid("3cd2d8e6-130e-4808-adfe-92a676c15caa"),
                             CardNumber = "selam",
                             CardType = "Ziraat",
                             Cv2 = "ABC",
@@ -817,7 +814,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ca786c38-07ae-4ca1-9b6a-e0ea243d325d"),
+                            Id = new Guid("a99a3923-c406-4da0-a6d6-77346b44b37b"),
                             CustomerId = 1
                         });
                 });

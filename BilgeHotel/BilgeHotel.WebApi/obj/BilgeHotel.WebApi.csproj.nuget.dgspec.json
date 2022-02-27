@@ -33,6 +33,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\Serkan\\Desktop\\Bitirme Projem\\BilgeHotel\\BilgeHotel.Core\\BilgeHotel.Core.csproj": {
+                "projectPath": "C:\\Users\\Serkan\\Desktop\\Bitirme Projem\\BilgeHotel\\BilgeHotel.Core\\BilgeHotel.Core.csproj"
+              },
               "C:\\Users\\Serkan\\Desktop\\Bitirme Projem\\BilgeHotel\\BilgeHotel.DataAccess\\BilgeHotel.DataAccess.csproj": {
                 "projectPath": "C:\\Users\\Serkan\\Desktop\\Bitirme Projem\\BilgeHotel\\BilgeHotel.DataAccess\\BilgeHotel.DataAccess.csproj"
               },

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BilgeHotel.DataAccess.Migrations
 {
-    public partial class abc : Migration
+    public partial class abcc : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -394,8 +394,7 @@ namespace BilgeHotel.DataAccess.Migrations
                 {
                     HotelExtraId = table.Column<int>(type: "int", nullable: false),
                     ReservationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Quantity = table.Column<short>(type: "smallint", nullable: false),
-                    TotalPrice = table.Column<decimal>(type: "money", nullable: false)
+                    Quantity = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -426,7 +425,7 @@ namespace BilgeHotel.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "Cards",
                 columns: new[] { "Id", "CardNumber", "CardType", "Cv2", "EndDate" },
-                values: new object[] { new Guid("4ab2f3d9-edb1-47b7-aa7b-8f90ea1b0b10"), "selam", "Ziraat", "ABC", "02/05" });
+                values: new object[] { new Guid("3cd2d8e6-130e-4808-adfe-92a676c15caa"), "selam", "Ziraat", "ABC", "02/05" });
 
             migrationBuilder.InsertData(
                 table: "Customers",
@@ -515,7 +514,7 @@ namespace BilgeHotel.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "Reservations",
                 columns: new[] { "Id", "CustomerId", "EmployeeId", "ExtraTotalPrice", "Out" },
-                values: new object[] { new Guid("ca786c38-07ae-4ca1-9b6a-e0ea243d325d"), 1, null, null, null });
+                values: new object[] { new Guid("a99a3923-c406-4da0-a6d6-77346b44b37b"), 1, null, null, null });
 
             migrationBuilder.InsertData(
                 table: "RoomBeds",
@@ -687,7 +686,7 @@ namespace BilgeHotel.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "ReservationDetails",
                 columns: new[] { "PackageId", "ReservationId", "RoomId", "CardId", "CheckInDate", "CheckOutDate", "CreatedDate", "Discount", "DiscountedPrice" },
-                values: new object[] { 1, new Guid("ca786c38-07ae-4ca1-9b6a-e0ea243d325d"), 101, new Guid("4ab2f3d9-edb1-47b7-aa7b-8f90ea1b0b10"), new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 26, 19, 24, 31, 190, DateTimeKind.Local).AddTicks(2993), 22.0, 150m });
+                values: new object[] { 1, new Guid("a99a3923-c406-4da0-a6d6-77346b44b37b"), 101, new Guid("3cd2d8e6-130e-4808-adfe-92a676c15caa"), new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 27, 16, 22, 36, 947, DateTimeKind.Local).AddTicks(2116), 22.0, 150m });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_DepartmentId",
