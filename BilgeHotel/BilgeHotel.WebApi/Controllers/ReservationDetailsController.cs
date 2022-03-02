@@ -46,5 +46,7 @@ namespace BilgeHotel.WebApi.Controllers
             return Ok(_detailService.Get(reservationId));
         }
 
+
+
     }
 }

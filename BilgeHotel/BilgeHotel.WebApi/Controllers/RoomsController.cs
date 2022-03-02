@@ -27,6 +27,8 @@ namespace BilgeHotel.WebApi.Controllers
         }
 
 
+
+
         [HttpGet("GetAllReady/{roomTypeId}")]
         
         public IActionResult GetAllReady(int roomTypeId)
@@ -83,6 +85,7 @@ namespace BilgeHotel.WebApi.Controllers
         }
 
         [HttpPut]
+        [Route("[action]")]
         public async Task<IActionResult> Put([FromBody] RoomVM roomVM)
         {
             Room room = _roomService.Get(roomVM.RoomName);
@@ -108,6 +111,21 @@ namespace BilgeHotel.WebApi.Controllers
             }
 
         }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task<IActionResult> UpdateRoomSituation(int roomName,int situationId)
+        {
+            bool kontrol= await _roomService.RoomStatusUpdateAsync(roomName, situationId);
+            if (kontrol)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
         [HttpDelete("{roomName}")]
         public async Task<IActionResult> Delete(int roomName)
         {

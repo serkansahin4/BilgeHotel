@@ -18,7 +18,7 @@ namespace BilgeHotel.Business.Concrete
         }
         public List<Room> GetAllReady(int roomTypeId)
         {
-            return _repository.GetAll(x=>x.RoomSituation.Id==1&&x.RoomTypeId==roomTypeId);
+            return _repository.GetAll(x => x.RoomSituation.Id == 1 && x.RoomTypeId == roomTypeId);
         }
 
         public double PriceGetById(int RoomName)
@@ -26,7 +26,20 @@ namespace BilgeHotel.Business.Concrete
             return _repository.Get(x => x.RoomName == RoomName).RoomType.Price;
         }
 
-
+        public async Task<bool> RoomStatusUpdateAsync(int roomName,int roomSituation)
+        {
+            Room room = _repository.Get(x => x.RoomName == roomName);
+            if (room!=null)
+            {
+                room.RoomSituationId = roomSituation;
+                
+                return await _repository.Update(room);
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public async Task<bool> AddAsync(Room room)
         {

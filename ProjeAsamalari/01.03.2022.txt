@@ -1,0 +1,2 @@
+Çalışanlarla ilgili algoritma kuruldu.
+02.03.2022 de projeye entegre edilecek.

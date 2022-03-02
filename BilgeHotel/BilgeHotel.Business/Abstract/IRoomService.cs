@@ -12,6 +12,9 @@ namespace BilgeHotel.Business.Abstract
         List<Room> GetAllReady(int roomTypeId); //Oda Tipine göre(Kategorisine göre) hazır odalar gelecek.
         double PriceGetById(int RoomName); //Oda Id sine göre odanın fiyatı gelecek(RoomType Üzerinden.)
 
+        Task<bool> RoomStatusUpdateAsync(int roomName, int roomSituation); //ODA DURUMLARINI GÜNCELLEMEK.
+
+
 
         List<Room> GetAll(); //Bütün Odalar Gelecek.
         Room Get(int roomName);

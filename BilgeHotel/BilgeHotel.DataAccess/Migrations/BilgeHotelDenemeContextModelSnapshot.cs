@@ -61,13 +61,13 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            ReservationId = new Guid("fe47b5b6-b5b0-4b96-80cd-94ab8d34bca3"),
+                            ReservationId = new Guid("0131a44f-78b8-48fa-baa6-22f71263e872"),
                             PackageId = 1,
                             RoomId = 101,
-                            CardId = new Guid("524165eb-6bca-406a-9fed-d5a2a8416942"),
+                            CardId = new Guid("77205cfb-03b8-4886-96ff-5509396a381b"),
                             CheckInDate = new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckOutDate = new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2022, 2, 27, 16, 36, 46, 65, DateTimeKind.Local).AddTicks(886),
+                            CreatedDate = new DateTime(2022, 3, 1, 23, 26, 49, 354, DateTimeKind.Local).AddTicks(1508),
                             Discount = 22.0,
                             DiscountedPrice = 150m
                         });
@@ -94,7 +94,7 @@ namespace BilgeHotel.DataAccess.Migrations
                         new
                         {
                             HotelExtraId = 1,
-                            ReservationId = new Guid("fe47b5b6-b5b0-4b96-80cd-94ab8d34bca3"),
+                            ReservationId = new Guid("0131a44f-78b8-48fa-baa6-22f71263e872"),
                             Quantity = (short)5
                         });
                 });
@@ -448,7 +448,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("524165eb-6bca-406a-9fed-d5a2a8416942"),
+                            Id = new Guid("77205cfb-03b8-4886-96ff-5509396a381b"),
                             CardNumber = "selam",
                             CardType = "Ziraat",
                             Cv2 = "ABC",
@@ -848,7 +848,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fe47b5b6-b5b0-4b96-80cd-94ab8d34bca3"),
+                            Id = new Guid("0131a44f-78b8-48fa-baa6-22f71263e872"),
                             CustomerId = 1
                         });
                 });
