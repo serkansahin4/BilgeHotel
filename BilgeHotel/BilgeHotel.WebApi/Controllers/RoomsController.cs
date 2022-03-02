@@ -59,7 +59,7 @@ namespace BilgeHotel.WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            List<RoomVM> rooms = _roomService.GetAll().Select(x => new RoomVM { RoomName=x.RoomName,  RoomSituationId = x.RoomSituationId,  RoomSize = x.RoomSize, RoomTypeId=x.RoomSize, RoomViewId=x.RoomViewId }).ToList();
+            List<RoomVM> rooms = _roomService.GetAll().Select(x => new RoomVM { RoomName=x.RoomName,  RoomSituationId = x.RoomSituationId,  RoomSize = x.RoomSize, RoomTypeId=x.RoomTypeId, RoomViewId=x.RoomViewId }).ToList();
             return Ok(rooms);
         }
 
