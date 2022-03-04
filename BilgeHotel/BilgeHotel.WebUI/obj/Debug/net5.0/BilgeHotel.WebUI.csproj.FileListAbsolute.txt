@@ -143,7 +143,6 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.AssemblyInfoInputs.cache
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.AssemblyInfo.cs
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.csproj.CoreCompileInputs.cache
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.RazorAssemblyInfo.cache
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.RazorAssemblyInfo.cs
@@ -180,3 +179,4 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\Razor\Views\Reservation\ReservationComplete.cshtml.g.cs
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.CacheReservation.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\bin\Debug\net5.0\BilgeHotel.CacheReservation.pdb
+C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BilgeHotel.WebUI\obj\Debug\net5.0\BilgeHotel.WebUI.MvcApplicationPartsAssemblyInfo.cs

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BilgeHotel.DataAccess.Migrations
 {
     [DbContext(typeof(BilgeHotelDenemeContext))]
-    [Migration("20220301202650_aac")]
-    partial class aac
+    [Migration("20220304202807_abce")]
+    partial class abce
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,42 @@ namespace BilgeHotel.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("BilgeHotel.Entities.ComplexType.EmployeeJob", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DayId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShiftTimeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmployeeId");
+
+                    b.HasIndex("DayId");
+
+                    b.HasIndex("JobId");
+
+                    b.HasIndex("ShiftTimeId");
+
+                    b.ToTable("EmployeeJobs");
+
+                    b.HasData(
+                        new
+                        {
+                            EmployeeId = 1,
+                            DayId = 1,
+                            JobId = 1,
+                            ShiftTimeId = 1
+                        });
+                });
 
             modelBuilder.Entity("BilgeHotel.Entities.ComplexType.ReservationDetail", b =>
                 {
@@ -63,13 +99,13 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            ReservationId = new Guid("0131a44f-78b8-48fa-baa6-22f71263e872"),
+                            ReservationId = new Guid("af6a0c85-f4d7-4614-b8eb-593340f488de"),
                             PackageId = 1,
                             RoomId = 101,
-                            CardId = new Guid("77205cfb-03b8-4886-96ff-5509396a381b"),
+                            CardId = new Guid("c1710df5-c248-45c5-ac7e-ca7a1a8dfa6f"),
                             CheckInDate = new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckOutDate = new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2022, 3, 1, 23, 26, 49, 354, DateTimeKind.Local).AddTicks(1508),
+                            CreatedDate = new DateTime(2022, 3, 4, 23, 28, 6, 127, DateTimeKind.Local).AddTicks(9825),
                             Discount = 22.0,
                             DiscountedPrice = 150m
                         });
@@ -96,7 +132,7 @@ namespace BilgeHotel.DataAccess.Migrations
                         new
                         {
                             HotelExtraId = 1,
-                            ReservationId = new Guid("0131a44f-78b8-48fa-baa6-22f71263e872"),
+                            ReservationId = new Guid("af6a0c85-f4d7-4614-b8eb-593340f488de"),
                             Quantity = (short)5
                         });
                 });
@@ -450,7 +486,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("77205cfb-03b8-4886-96ff-5509396a381b"),
+                            Id = new Guid("c1710df5-c248-45c5-ac7e-ca7a1a8dfa6f"),
                             CardNumber = "selam",
                             CardType = "Ziraat",
                             Cv2 = "ABC",
@@ -512,6 +548,60 @@ namespace BilgeHotel.DataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BilgeHotel.Entities.Concrete.Day", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DayName")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Days");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DayName = "Pazartesi"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DayName = "Salı"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DayName = "Çarşamba"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DayName = "Perşembe"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DayName = "Cuma"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DayName = "Cumartesi"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DayName = "Pazar"
+                        });
+                });
+
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -539,9 +629,7 @@ namespace BilgeHotel.DataAccess.Migrations
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Employee", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Adress")
                         .IsRequired()
@@ -787,6 +875,30 @@ namespace BilgeHotel.DataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BilgeHotel.Entities.Concrete.Job", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("JobName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Jobs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            JobName = "Garson"
+                        });
+                });
+
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Package", b =>
                 {
                     b.Property<int>("Id")
@@ -850,7 +962,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0131a44f-78b8-48fa-baa6-22f71263e872"),
+                            Id = new Guid("af6a0c85-f4d7-4614-b8eb-593340f488de"),
                             CustomerId = 1
                         });
                 });
@@ -1681,13 +1793,13 @@ namespace BilgeHotel.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EmployeeJobId")
                         .HasColumnType("int");
 
-                    b.Property<short?>("ExtraShift")
-                        .HasColumnType("smallint");
-
-                    b.Property<DateTime?>("ShiftDate")
+                    b.Property<DateTime>("ExtraTimeStop")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("StartShift")
@@ -1698,9 +1810,73 @@ namespace BilgeHotel.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("EmployeeJobId");
 
                     b.ToTable("Shifts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2022, 3, 4, 23, 28, 6, 124, DateTimeKind.Local).AddTicks(8261),
+                            EmployeeJobId = 1,
+                            ExtraTimeStop = new DateTime(2022, 3, 4, 23, 28, 6, 126, DateTimeKind.Local).AddTicks(6558),
+                            StartShift = new DateTime(2022, 3, 4, 23, 28, 6, 126, DateTimeKind.Local).AddTicks(5253),
+                            StopShift = new DateTime(2022, 3, 4, 23, 28, 6, 126, DateTimeKind.Local).AddTicks(5752)
+                        });
+                });
+
+            modelBuilder.Entity("BilgeHotel.Entities.Concrete.ShiftTime", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("StopTime")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ShiftTimes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            StartTime = new TimeSpan(0, 0, 0, 0, 0),
+                            StopTime = new TimeSpan(0, 0, 0, 0, 0)
+                        });
+                });
+
+            modelBuilder.Entity("BilgeHotel.Entities.ComplexType.EmployeeJob", b =>
+                {
+                    b.HasOne("BilgeHotel.Entities.Concrete.Day", "Day")
+                        .WithMany("EmployeeJobs")
+                        .HasForeignKey("DayId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BilgeHotel.Entities.Concrete.Job", "Job")
+                        .WithMany("EmployeeJobs")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BilgeHotel.Entities.Concrete.ShiftTime", "ShiftTime")
+                        .WithMany("EmployeeJobs")
+                        .HasForeignKey("ShiftTimeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Day");
+
+                    b.Navigation("Job");
+
+                    b.Navigation("ShiftTime");
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.ComplexType.ReservationDetail", b =>
@@ -1801,6 +1977,12 @@ namespace BilgeHotel.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BilgeHotel.Entities.ComplexType.EmployeeJob", "EmployeeJob")
+                        .WithOne("Employee")
+                        .HasForeignKey("BilgeHotel.Entities.Concrete.Employee", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BilgeHotel.Entities.Concrete.Role", "Role")
                         .WithMany("Employees")
                         .HasForeignKey("RoleId")
@@ -1808,6 +1990,8 @@ namespace BilgeHotel.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Department");
+
+                    b.Navigation("EmployeeJob");
 
                     b.Navigation("Role");
                 });
@@ -1869,13 +2053,20 @@ namespace BilgeHotel.DataAccess.Migrations
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Shift", b =>
                 {
-                    b.HasOne("BilgeHotel.Entities.Concrete.Employee", "Employee")
+                    b.HasOne("BilgeHotel.Entities.ComplexType.EmployeeJob", "EmployeeJob")
                         .WithMany("Shifts")
-                        .HasForeignKey("EmployeeId")
+                        .HasForeignKey("EmployeeJobId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("EmployeeJob");
+                });
+
+            modelBuilder.Entity("BilgeHotel.Entities.ComplexType.EmployeeJob", b =>
+                {
                     b.Navigation("Employee");
+
+                    b.Navigation("Shifts");
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Bed", b =>
@@ -1893,6 +2084,11 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.Navigation("Reservations");
                 });
 
+            modelBuilder.Entity("BilgeHotel.Entities.Concrete.Day", b =>
+                {
+                    b.Navigation("EmployeeJobs");
+                });
+
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Department", b =>
                 {
                     b.Navigation("Employees");
@@ -1901,8 +2097,6 @@ namespace BilgeHotel.DataAccess.Migrations
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Employee", b =>
                 {
                     b.Navigation("Reservations");
-
-                    b.Navigation("Shifts");
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Extra", b =>
@@ -1913,6 +2107,11 @@ namespace BilgeHotel.DataAccess.Migrations
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.HotelExtra", b =>
                 {
                     b.Navigation("ReservationOutHotelExtras");
+                });
+
+            modelBuilder.Entity("BilgeHotel.Entities.Concrete.Job", b =>
+                {
+                    b.Navigation("EmployeeJobs");
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Package", b =>
@@ -1956,6 +2155,11 @@ namespace BilgeHotel.DataAccess.Migrations
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.RoomView", b =>
                 {
                     b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("BilgeHotel.Entities.Concrete.ShiftTime", b =>
+                {
+                    b.Navigation("EmployeeJobs");
                 });
 #pragma warning restore 612, 618
         }

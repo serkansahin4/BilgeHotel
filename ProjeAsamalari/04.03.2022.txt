@@ -1,0 +1,13 @@
+Çalışanlar üzerinde algoritma kurmakta zorlandım. Ancak sonunda bir algoritma kurmayı başardım.
+Ve yarın Yapacağım
+
+
+ÇÖZDÜM Adlı png deki tabloları oluştur.
+mapping işlemini yap.
+
+
+
+PNGDEKİ tablo hata verdi. Algoritmanın bozuk olduğu fark edildi.
+Profesyonel şekilde tablolar oluşturulamadı. Son çare olarak enum programcılığına dönüldü.
+
+

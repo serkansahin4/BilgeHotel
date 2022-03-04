@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BilgeHotel.DataAccess.Migrations
 {
-    public partial class aac : Migration
+    public partial class abce : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,6 +54,19 @@ namespace BilgeHotel.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Days",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DayName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Days", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Departments",
                 columns: table => new
                 {
@@ -91,6 +104,19 @@ namespace BilgeHotel.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HotelExtras", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Jobs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JobName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Jobs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -162,34 +188,17 @@ namespace BilgeHotel.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Employees",
+                name: "ShiftTimes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Phone = table.Column<string>(type: "nchar(11)", fixedLength: true, maxLength: 11, nullable: false),
-                    Adress = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Salary = table.Column<decimal>(type: "money", nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
-                    DepartmentId = table.Column<int>(type: "int", nullable: false)
+                    StartTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    StopTime = table.Column<TimeSpan>(type: "time", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Employees_Departments_DepartmentId",
-                        column: x => x.DepartmentId,
-                        principalTable: "Departments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Employees_Roles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Roles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                    table.PrimaryKey("PK_ShiftTimes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -296,6 +305,98 @@ namespace BilgeHotel.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EmployeeJobs",
+                columns: table => new
+                {
+                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JobId = table.Column<int>(type: "int", nullable: false),
+                    DayId = table.Column<int>(type: "int", nullable: false),
+                    ShiftTimeId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeJobs", x => x.EmployeeId);
+                    table.ForeignKey(
+                        name: "FK_EmployeeJobs_Days_DayId",
+                        column: x => x.DayId,
+                        principalTable: "Days",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EmployeeJobs_Jobs_JobId",
+                        column: x => x.JobId,
+                        principalTable: "Jobs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EmployeeJobs_ShiftTimes_ShiftTimeId",
+                        column: x => x.ShiftTimeId,
+                        principalTable: "ShiftTimes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Phone = table.Column<string>(type: "nchar(11)", fixedLength: true, maxLength: 11, nullable: false),
+                    Adress = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Salary = table.Column<decimal>(type: "money", nullable: false),
+                    RoleId = table.Column<int>(type: "int", nullable: false),
+                    DepartmentId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Employees_Departments_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalTable: "Departments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Employees_EmployeeJobs_Id",
+                        column: x => x.Id,
+                        principalTable: "EmployeeJobs",
+                        principalColumn: "EmployeeId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Employees_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Shifts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StartShift = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StopShift = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExtraTimeStop = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EmployeeJobId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Shifts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Shifts_EmployeeJobs_EmployeeJobId",
+                        column: x => x.EmployeeJobId,
+                        principalTable: "EmployeeJobs",
+                        principalColumn: "EmployeeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reservations",
                 columns: table => new
                 {
@@ -320,29 +421,6 @@ namespace BilgeHotel.DataAccess.Migrations
                         principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Shifts",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false),
-                    StartShift = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    StopShift = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ShiftDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ExtraShift = table.Column<short>(type: "smallint", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Shifts", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Shifts_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "Employees",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -425,12 +503,26 @@ namespace BilgeHotel.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "Cards",
                 columns: new[] { "Id", "CardNumber", "CardType", "Cv2", "EndDate" },
-                values: new object[] { new Guid("77205cfb-03b8-4886-96ff-5509396a381b"), "selam", "Ziraat", "ABC", "02/05" });
+                values: new object[] { new Guid("c1710df5-c248-45c5-ac7e-ca7a1a8dfa6f"), "selam", "Ziraat", "ABC", "02/05" });
 
             migrationBuilder.InsertData(
                 table: "Customers",
                 columns: new[] { "Id", "BirthDate", "Email", "FirstName", "LastName", "Phone", "TcIdentityNo" },
                 values: new object[] { 1, new DateTime(1999, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "serkana607@gmail.com", "Serkan", "Şahin", "25365485652", "64657172255" });
+
+            migrationBuilder.InsertData(
+                table: "Days",
+                columns: new[] { "Id", "DayName" },
+                values: new object[,]
+                {
+                    { 7, "Pazar" },
+                    { 6, "Cumartesi" },
+                    { 4, "Perşembe" },
+                    { 5, "Cuma" },
+                    { 2, "Salı" },
+                    { 1, "Pazartesi" },
+                    { 3, "Çarşamba" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Departments",
@@ -442,17 +534,22 @@ namespace BilgeHotel.DataAccess.Migrations
                 columns: new[] { "Id", "ExtraName" },
                 values: new object[,]
                 {
+                    { 5, "Minibar" },
                     { 1, "Klima" },
                     { 2, "Televizyon" },
                     { 3, "Saç Kurutma Makinesi" },
-                    { 4, "Kablosuz İnternet" },
-                    { 5, "Minibar" }
+                    { 4, "Kablosuz İnternet" }
                 });
 
             migrationBuilder.InsertData(
                 table: "HotelExtras",
                 columns: new[] { "Id", "ExtraName", "Price" },
                 values: new object[] { 1, "Şarap", 150m });
+
+            migrationBuilder.InsertData(
+                table: "Jobs",
+                columns: new[] { "Id", "JobName" },
+                values: new object[] { 1, "Garson" });
 
             migrationBuilder.InsertData(
                 table: "Packages",
@@ -484,14 +581,14 @@ namespace BilgeHotel.DataAccess.Migrations
                 columns: new[] { "Id", "Name", "Price", "RoomTypeName" },
                 values: new object[,]
                 {
-                    { 1, "Bekar Odası TekYat", 100m, "Tek Kişilik" },
+                    { 8, "Kral Dairesi DoubleYat", 1000m, "Kral Dairesi" },
+                    { 7, "Sülale Odası Sülalecek Yat", 750m, "Dört Kişilik" },
+                    { 6, "Aile Odası Çift Yanyana Cocuk AyrıYat", 350m, "Üç Kişilik" },
+                    { 5, "Aile Odası AyrıYat", 200m, "Üç Kişilik" },
                     { 2, "Bekar Odası DoubleYat", 100m, "Tek Kişilik" },
                     { 3, "Çift Odası AyrıYat", 200m, "İki Kişilik" },
-                    { 4, "Çift Odası ÇiftYat", 150m, "İki Kişilik" },
-                    { 5, "Aile Odası AyrıYat", 200m, "Üç Kişilik" },
-                    { 6, "Aile Odası Çift Yanyana Cocuk AyrıYat", 350m, "Üç Kişilik" },
-                    { 7, "Sülale Odası Sülalecek Yat", 750m, "Dört Kişilik" },
-                    { 8, "Kral Dairesi DoubleYat", 1000m, "Kral Dairesi" }
+                    { 1, "Bekar Odası TekYat", 100m, "Tek Kişilik" },
+                    { 4, "Çift Odası ÇiftYat", 150m, "İki Kişilik" }
                 });
 
             migrationBuilder.InsertData(
@@ -499,8 +596,213 @@ namespace BilgeHotel.DataAccess.Migrations
                 columns: new[] { "Id", "ViewName" },
                 values: new object[,]
                 {
-                    { 1, "Deniz" },
-                    { 2, "Duvar" }
+                    { 2, "Duvar" },
+                    { 1, "Deniz" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ShiftTimes",
+                columns: new[] { "Id", "StartTime", "StopTime" },
+                values: new object[] { 1, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0, 0, 0, 0, 0) });
+
+            migrationBuilder.InsertData(
+                table: "EmployeeJobs",
+                columns: new[] { "EmployeeId", "DayId", "JobId", "ShiftTimeId" },
+                values: new object[] { 1, 1, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Images",
+                columns: new[] { "Id", "Path", "RoomTypeId" },
+                values: new object[,]
+                {
+                    { 4, "resepsiyon.jpg", 2 },
+                    { 3, "ABC.jpg", 2 },
+                    { 7, "ABC.jpg", 4 },
+                    { 8, "resepsiyon.jpg", 4 },
+                    { 9, "ABC.jpg", 5 },
+                    { 10, "resepsiyon.jpg", 5 },
+                    { 6, "resepsiyon.jpg", 3 },
+                    { 11, "ABC.jpg", 6 },
+                    { 1, "ABC.jpg", 1 },
+                    { 12, "resepsiyon.jpg", 6 },
+                    { 13, "ABC.jpg", 7 },
+                    { 14, "resepsiyon.jpg", 7 },
+                    { 15, "ABC.jpg", 8 },
+                    { 16, "resepsiyon.jpg", 8 },
+                    { 2, "resepsiyon.jpg", 1 },
+                    { 5, "ABC.jpg", 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Reservations",
+                columns: new[] { "Id", "CustomerId", "EmployeeId", "ExtraTotalPrice", "Out" },
+                values: new object[] { new Guid("af6a0c85-f4d7-4614-b8eb-593340f488de"), 1, null, null, null });
+
+            migrationBuilder.InsertData(
+                table: "RoomBeds",
+                columns: new[] { "BedId", "RoomTypeId", "Quantity" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 1, 6, 1 },
+                    { 1, 3, 2 },
+                    { 2, 4, 1 },
+                    { 2, 6, 1 },
+                    { 2, 7, 1 },
+                    { 1, 7, 2 },
+                    { 2, 8, 1 },
+                    { 2, 2, 1 },
+                    { 1, 5, 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RoomTypeExtra",
+                columns: new[] { "ExtraId", "RoomTypeId" },
+                values: new object[,]
+                {
+                    { 3, 3 },
+                    { 4, 1 },
+                    { 1, 7 },
+                    { 2, 7 },
+                    { 3, 7 },
+                    { 3, 1 },
+                    { 5, 7 },
+                    { 2, 1 },
+                    { 1, 8 },
+                    { 2, 8 },
+                    { 4, 8 },
+                    { 5, 8 },
+                    { 1, 1 },
+                    { 2, 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RoomTypeExtra",
+                columns: new[] { "ExtraId", "RoomTypeId" },
+                values: new object[,]
+                {
+                    { 4, 7 },
+                    { 5, 6 },
+                    { 3, 8 },
+                    { 3, 6 },
+                    { 4, 3 },
+                    { 4, 6 },
+                    { 5, 3 },
+                    { 1, 4 },
+                    { 2, 4 },
+                    { 3, 4 },
+                    { 4, 4 },
+                    { 5, 4 },
+                    { 4, 2 },
+                    { 1, 3 },
+                    { 1, 5 },
+                    { 2, 5 },
+                    { 3, 5 },
+                    { 4, 5 },
+                    { 2, 6 },
+                    { 5, 5 },
+                    { 2, 2 },
+                    { 1, 2 },
+                    { 3, 2 },
+                    { 1, 6 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "RoomName", "RoomSituationId", "RoomSize", "RoomTypeId", "RoomViewId" },
+                values: new object[,]
+                {
+                    { 115, 1, (short)50, 5, 1 },
+                    { 114, 1, (short)50, 5, 1 },
+                    { 113, 1, (short)50, 5, 1 },
+                    { 112, 1, (short)50, 5, 1 },
+                    { 111, 1, (short)50, 5, 1 },
+                    { 110, 1, (short)50, 5, 1 },
+                    { 406, 1, (short)50, 4, 1 },
+                    { 408, 1, (short)50, 4, 1 },
+                    { 407, 1, (short)50, 4, 1 },
+                    { 405, 1, (short)50, 4, 1 },
+                    { 404, 1, (short)50, 4, 1 },
+                    { 403, 1, (short)50, 4, 1 },
+                    { 402, 1, (short)50, 4, 1 },
+                    { 116, 1, (short)50, 5, 1 },
+                    { 401, 1, (short)50, 4, 1 },
+                    { 409, 1, (short)50, 4, 1 },
+                    { 117, 1, (short)50, 5, 1 },
+                    { 317, 1, (short)50, 6, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "RoomName", "RoomSituationId", "RoomSize", "RoomTypeId", "RoomViewId" },
+                values: new object[,]
+                {
+                    { 119, 1, (short)50, 5, 1 },
+                    { 400, 1, (short)50, 4, 1 },
+                    { 415, 1, (short)50, 7, 1 },
+                    { 414, 1, (short)50, 7, 1 },
+                    { 413, 1, (short)50, 7, 1 },
+                    { 412, 1, (short)50, 7, 1 },
+                    { 411, 1, (short)50, 7, 1 },
+                    { 410, 1, (short)50, 7, 1 },
+                    { 118, 1, (short)50, 5, 1 },
+                    { 319, 1, (short)50, 6, 1 },
+                    { 316, 1, (short)50, 6, 1 },
+                    { 315, 1, (short)50, 6, 1 },
+                    { 314, 1, (short)50, 6, 1 },
+                    { 313, 1, (short)50, 6, 1 },
+                    { 312, 1, (short)50, 6, 1 },
+                    { 311, 1, (short)50, 6, 1 },
+                    { 310, 1, (short)50, 6, 1 },
+                    { 318, 1, (short)50, 6, 1 },
+                    { 309, 1, (short)50, 4, 1 },
+                    { 205, 1, (short)50, 2, 1 },
+                    { 307, 1, (short)50, 4, 1 },
+                    { 206, 1, (short)50, 2, 1 },
+                    { 204, 1, (short)50, 2, 1 },
+                    { 203, 1, (short)50, 2, 1 },
+                    { 202, 1, (short)50, 2, 1 },
+                    { 201, 1, (short)50, 2, 1 },
+                    { 200, 1, (short)50, 2, 1 },
+                    { 109, 1, (short)50, 1, 1 },
+                    { 207, 1, (short)50, 2, 1 },
+                    { 108, 1, (short)50, 1, 1 },
+                    { 420, 1, (short)750, 8, 1 },
+                    { 105, 1, (short)50, 1, 1 },
+                    { 104, 1, (short)50, 1, 1 },
+                    { 103, 1, (short)50, 1, 1 },
+                    { 102, 1, (short)50, 1, 1 },
+                    { 101, 1, (short)50, 1, 1 },
+                    { 100, 1, (short)50, 1, 1 },
+                    { 107, 1, (short)50, 1, 1 },
+                    { 308, 1, (short)50, 4, 1 },
+                    { 208, 1, (short)50, 2, 1 },
+                    { 210, 1, (short)50, 3, 1 },
+                    { 306, 1, (short)50, 4, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "RoomName", "RoomSituationId", "RoomSize", "RoomTypeId", "RoomViewId" },
+                values: new object[,]
+                {
+                    { 305, 1, (short)50, 4, 1 },
+                    { 304, 1, (short)50, 4, 1 },
+                    { 303, 1, (short)50, 4, 1 },
+                    { 302, 1, (short)50, 4, 1 },
+                    { 301, 1, (short)50, 4, 1 },
+                    { 300, 1, (short)50, 4, 1 },
+                    { 209, 1, (short)50, 2, 1 },
+                    { 219, 1, (short)50, 3, 1 },
+                    { 217, 1, (short)50, 3, 1 },
+                    { 216, 1, (short)50, 3, 1 },
+                    { 215, 1, (short)50, 3, 1 },
+                    { 214, 1, (short)50, 3, 1 },
+                    { 213, 1, (short)50, 3, 1 },
+                    { 212, 1, (short)50, 3, 1 },
+                    { 211, 1, (short)50, 3, 1 },
+                    { 218, 1, (short)50, 3, 1 },
+                    { 106, 1, (short)50, 1, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -509,209 +811,34 @@ namespace BilgeHotel.DataAccess.Migrations
                 values: new object[] { 1, "Sırasöğütler", 1, "Osman", "Şahin", "12345678955", 1, 500m });
 
             migrationBuilder.InsertData(
-                table: "Images",
-                columns: new[] { "Id", "Path", "RoomTypeId" },
-                values: new object[,]
-                {
-                    { 7, "ABC.jpg", 4 },
-                    { 13, "ABC.jpg", 7 },
-                    { 14, "resepsiyon.jpg", 7 },
-                    { 4, "resepsiyon.jpg", 2 },
-                    { 3, "ABC.jpg", 2 },
-                    { 12, "resepsiyon.jpg", 6 },
-                    { 11, "ABC.jpg", 6 },
-                    { 6, "resepsiyon.jpg", 3 },
-                    { 5, "ABC.jpg", 3 },
-                    { 2, "resepsiyon.jpg", 1 },
-                    { 1, "ABC.jpg", 1 },
-                    { 9, "ABC.jpg", 5 },
-                    { 15, "ABC.jpg", 8 },
-                    { 16, "resepsiyon.jpg", 8 },
-                    { 10, "resepsiyon.jpg", 5 },
-                    { 8, "resepsiyon.jpg", 4 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Reservations",
-                columns: new[] { "Id", "CustomerId", "EmployeeId", "ExtraTotalPrice", "Out" },
-                values: new object[] { new Guid("0131a44f-78b8-48fa-baa6-22f71263e872"), 1, null, null, null });
-
-            migrationBuilder.InsertData(
-                table: "RoomBeds",
-                columns: new[] { "BedId", "RoomTypeId", "Quantity" },
-                values: new object[,]
-                {
-                    { 1, 5, 3 },
-                    { 2, 7, 1 },
-                    { 1, 7, 2 },
-                    { 2, 4, 1 },
-                    { 1, 6, 1 },
-                    { 2, 6, 1 },
-                    { 1, 1, 1 },
-                    { 1, 3, 2 },
-                    { 2, 8, 1 },
-                    { 2, 2, 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "RoomTypeExtra",
-                columns: new[] { "ExtraId", "RoomTypeId" },
-                values: new object[,]
-                {
-                    { 5, 8 },
-                    { 1, 6 },
-                    { 2, 6 },
-                    { 3, 6 },
-                    { 4, 6 },
-                    { 4, 8 },
-                    { 3, 7 },
-                    { 3, 8 },
-                    { 2, 8 },
-                    { 1, 8 },
-                    { 2, 7 },
-                    { 5, 7 },
-                    { 5, 6 },
-                    { 4, 7 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "RoomTypeExtra",
-                columns: new[] { "ExtraId", "RoomTypeId" },
-                values: new object[,]
-                {
-                    { 1, 7 },
-                    { 4, 5 },
-                    { 5, 5 },
-                    { 1, 1 },
-                    { 2, 1 },
-                    { 3, 1 },
-                    { 1, 2 },
-                    { 2, 2 },
-                    { 3, 2 },
-                    { 4, 2 },
-                    { 1, 3 },
-                    { 2, 3 },
-                    { 3, 3 },
-                    { 4, 1 },
-                    { 5, 3 },
-                    { 4, 3 },
-                    { 2, 5 },
-                    { 5, 4 },
-                    { 4, 4 },
-                    { 1, 5 },
-                    { 2, 4 },
-                    { 1, 4 },
-                    { 3, 4 },
-                    { 3, 5 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Rooms",
-                columns: new[] { "RoomName", "RoomSituationId", "RoomSize", "RoomTypeId", "RoomViewId" },
-                values: new object[,]
-                {
-                    { 113, 1, (short)50, 5, 1 },
-                    { 408, 1, (short)50, 4, 1 },
-                    { 114, 1, (short)50, 5, 1 },
-                    { 112, 1, (short)50, 5, 1 },
-                    { 111, 1, (short)50, 5, 1 },
-                    { 110, 1, (short)50, 5, 1 },
-                    { 409, 1, (short)50, 4, 1 },
-                    { 404, 1, (short)50, 4, 1 },
-                    { 406, 1, (short)50, 4, 1 },
-                    { 405, 1, (short)50, 4, 1 },
-                    { 403, 1, (short)50, 4, 1 },
-                    { 402, 1, (short)50, 4, 1 },
-                    { 401, 1, (short)50, 4, 1 },
-                    { 115, 1, (short)50, 5, 1 },
-                    { 400, 1, (short)50, 4, 1 },
-                    { 407, 1, (short)50, 4, 1 },
-                    { 116, 1, (short)50, 5, 1 },
-                    { 318, 1, (short)50, 6, 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Rooms",
-                columns: new[] { "RoomName", "RoomSituationId", "RoomSize", "RoomTypeId", "RoomViewId" },
-                values: new object[,]
-                {
-                    { 118, 1, (short)50, 5, 1 },
-                    { 309, 1, (short)50, 4, 1 },
-                    { 414, 1, (short)50, 7, 1 },
-                    { 413, 1, (short)50, 7, 1 },
-                    { 412, 1, (short)50, 7, 1 },
-                    { 411, 1, (short)50, 7, 1 },
-                    { 410, 1, (short)50, 7, 1 },
-                    { 319, 1, (short)50, 6, 1 },
-                    { 117, 1, (short)50, 5, 1 },
-                    { 317, 1, (short)50, 6, 1 },
-                    { 315, 1, (short)50, 6, 1 },
-                    { 314, 1, (short)50, 6, 1 },
-                    { 313, 1, (short)50, 6, 1 },
-                    { 312, 1, (short)50, 6, 1 },
-                    { 311, 1, (short)50, 6, 1 },
-                    { 310, 1, (short)50, 6, 1 },
-                    { 119, 1, (short)50, 5, 1 },
-                    { 316, 1, (short)50, 6, 1 },
-                    { 308, 1, (short)50, 4, 1 },
-                    { 105, 1, (short)50, 1, 1 },
-                    { 306, 1, (short)50, 4, 1 },
-                    { 205, 1, (short)50, 2, 1 },
-                    { 204, 1, (short)50, 2, 1 },
-                    { 203, 1, (short)50, 2, 1 },
-                    { 202, 1, (short)50, 2, 1 },
-                    { 201, 1, (short)50, 2, 1 },
-                    { 200, 1, (short)50, 2, 1 },
-                    { 109, 1, (short)50, 1, 1 },
-                    { 206, 1, (short)50, 2, 1 },
-                    { 108, 1, (short)50, 1, 1 },
-                    { 106, 1, (short)50, 1, 1 },
-                    { 415, 1, (short)50, 7, 1 },
-                    { 104, 1, (short)50, 1, 1 },
-                    { 103, 1, (short)50, 1, 1 },
-                    { 102, 1, (short)50, 1, 1 },
-                    { 101, 1, (short)50, 1, 1 },
-                    { 100, 1, (short)50, 1, 1 },
-                    { 107, 1, (short)50, 1, 1 },
-                    { 307, 1, (short)50, 4, 1 },
-                    { 207, 1, (short)50, 2, 1 },
-                    { 209, 1, (short)50, 2, 1 },
-                    { 305, 1, (short)50, 4, 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Rooms",
-                columns: new[] { "RoomName", "RoomSituationId", "RoomSize", "RoomTypeId", "RoomViewId" },
-                values: new object[,]
-                {
-                    { 304, 1, (short)50, 4, 1 },
-                    { 303, 1, (short)50, 4, 1 },
-                    { 302, 1, (short)50, 4, 1 },
-                    { 301, 1, (short)50, 4, 1 },
-                    { 300, 1, (short)50, 4, 1 },
-                    { 219, 1, (short)50, 3, 1 },
-                    { 208, 1, (short)50, 2, 1 },
-                    { 218, 1, (short)50, 3, 1 },
-                    { 216, 1, (short)50, 3, 1 },
-                    { 215, 1, (short)50, 3, 1 },
-                    { 214, 1, (short)50, 3, 1 },
-                    { 213, 1, (short)50, 3, 1 },
-                    { 212, 1, (short)50, 3, 1 },
-                    { 211, 1, (short)50, 3, 1 },
-                    { 210, 1, (short)50, 3, 1 },
-                    { 217, 1, (short)50, 3, 1 },
-                    { 420, 1, (short)750, 8, 1 }
-                });
-
-            migrationBuilder.InsertData(
                 table: "ReservationDetails",
                 columns: new[] { "PackageId", "ReservationId", "RoomId", "CardId", "CheckInDate", "CheckOutDate", "CreatedDate", "Discount", "DiscountedPrice" },
-                values: new object[] { 1, new Guid("0131a44f-78b8-48fa-baa6-22f71263e872"), 101, new Guid("77205cfb-03b8-4886-96ff-5509396a381b"), new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 3, 1, 23, 26, 49, 354, DateTimeKind.Local).AddTicks(1508), 22.0, 150m });
+                values: new object[] { 1, new Guid("af6a0c85-f4d7-4614-b8eb-593340f488de"), 101, new Guid("c1710df5-c248-45c5-ac7e-ca7a1a8dfa6f"), new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 3, 4, 23, 28, 6, 127, DateTimeKind.Local).AddTicks(9825), 22.0, 150m });
 
             migrationBuilder.InsertData(
                 table: "ReservationOutHotelExtras",
                 columns: new[] { "HotelExtraId", "ReservationId", "Quantity" },
-                values: new object[] { 1, new Guid("0131a44f-78b8-48fa-baa6-22f71263e872"), (short)5 });
+                values: new object[] { 1, new Guid("af6a0c85-f4d7-4614-b8eb-593340f488de"), (short)5 });
+
+            migrationBuilder.InsertData(
+                table: "Shifts",
+                columns: new[] { "Id", "CreatedDate", "EmployeeJobId", "ExtraTimeStop", "StartShift", "StopShift" },
+                values: new object[] { 1, new DateTime(2022, 3, 4, 23, 28, 6, 124, DateTimeKind.Local).AddTicks(8261), 1, new DateTime(2022, 3, 4, 23, 28, 6, 126, DateTimeKind.Local).AddTicks(6558), new DateTime(2022, 3, 4, 23, 28, 6, 126, DateTimeKind.Local).AddTicks(5253), new DateTime(2022, 3, 4, 23, 28, 6, 126, DateTimeKind.Local).AddTicks(5752) });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeJobs_DayId",
+                table: "EmployeeJobs",
+                column: "DayId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeJobs_JobId",
+                table: "EmployeeJobs",
+                column: "JobId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeJobs_ShiftTimeId",
+                table: "EmployeeJobs",
+                column: "ShiftTimeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_DepartmentId",
@@ -784,9 +911,9 @@ namespace BilgeHotel.DataAccess.Migrations
                 column: "ExtraId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shifts_EmployeeId",
+                name: "IX_Shifts_EmployeeJobId",
                 table: "Shifts",
-                column: "EmployeeId");
+                column: "EmployeeJobId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -849,7 +976,19 @@ namespace BilgeHotel.DataAccess.Migrations
                 name: "Departments");
 
             migrationBuilder.DropTable(
+                name: "EmployeeJobs");
+
+            migrationBuilder.DropTable(
                 name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "Days");
+
+            migrationBuilder.DropTable(
+                name: "Jobs");
+
+            migrationBuilder.DropTable(
+                name: "ShiftTimes");
         }
     }
 }

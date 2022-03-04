@@ -30,6 +30,8 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new RoomBedMap());
             modelBuilder.ApplyConfiguration(new RoomTypeExtraMap());
 
+            modelBuilder.ApplyConfiguration(new EmployeeJobMap());
+
 
             //Concrete
             modelBuilder.ApplyConfiguration(new BedMap());
@@ -42,27 +44,49 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new CustomerMap());
             modelBuilder.ApplyConfiguration(new HotelExtraMap());
             modelBuilder.ApplyConfiguration(new DepartmentMap());
-            modelBuilder.ApplyConfiguration(new ShiftMap());
+            
             modelBuilder.ApplyConfiguration(new ImageMap());
             modelBuilder.ApplyConfiguration(new CardMap());
 
 
-
-            //İdentity İle tekrardan düzenlenecekler.
-            modelBuilder.ApplyConfiguration(new RoleMap());
+            modelBuilder.ApplyConfiguration(new ShiftMap());
+            
+            
             modelBuilder.ApplyConfiguration(new EmployeeMap());
+            modelBuilder.ApplyConfiguration(new JobMap());
+            modelBuilder.ApplyConfiguration(new ShiftTimeMap());
+            
+           
+            modelBuilder.ApplyConfiguration(new DayMap());
+            
+            
+
+
+            modelBuilder.ApplyConfiguration(new RoleMap());
+
 
             modelBuilder.Seed();
 
             base.OnModelCreating(modelBuilder);
         }
+        public DbSet<Shift> Shifts { get; set; }
+      
+        public DbSet<Day> Days { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<ShiftTime> ShiftTimes { get; set; }
+
+        public DbSet<EmployeeJob> EmployeeJobs { get; set; }
+
+
+
+
+
+
         public DbSet<Card> Cards { get; set; }
         public DbSet<Bed> Beds { get; set; }
-
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Department> Departments { get; set; }
-
-        public DbSet<Employee> Employees { get; set; }
         public DbSet<Extra> Extras { get; set; }
         public DbSet<HotelExtra> HotelExtras { get; set; }
         public DbSet<Package> Packages { get; set; }
@@ -73,7 +97,7 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context
         public DbSet<RoomSituation> RoomSituations { get; set; }
         public DbSet<RoomType> RoomTypes { get; set; }
         public DbSet<RoomView> RoomViews { get; set; }
-        public DbSet<Shift> Shifts { get; set; }
+       
         public DbSet<Image> Images { get; set; }
 
 

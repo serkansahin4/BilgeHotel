@@ -35,13 +35,13 @@ namespace BilgeHotel.IocContainer
 
 
 
-
+            
             services.AddTransient<ICustomerService, CustomerManager>();
             services.AddTransient<IPackageService, PackageManager>();
             services.AddTransient<ICardService, CardManager>();
-
+           
             services.AddTransient<IDepartmentService, DepartmentManager>();
-
+            
 
             services.AddTransient<IExtraService, ExtraManager>();
             services.AddTransient<IEmployeeService, EmployeeManager>();
@@ -63,6 +63,11 @@ namespace BilgeHotel.IocContainer
             services.AddTransient<IImageService, ImageManager>();
             services.AddTransient<IImageExtension, ImageExtension>();
 
+
+            services.AddTransient<IEmployeeJobService, EmployeeJobManager>();
+            services.AddTransient<IShiftTimeService, ShiftTimeManager>();
+            services.AddTransient<IShiftService, ShiftManager>();
+            services.AddTransient<IJobService, JobManager>();
 
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

@@ -20,6 +20,8 @@ namespace BilgeHotel.DataAccess.EntityFramework.Maps.Concrete
             builder.Property(x => x.Adress).HasMaxLength(150).IsRequired();
 
             builder.Property(x => x.Salary).HasColumnType("money");
+          
+     
         }
     }
 }
