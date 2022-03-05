@@ -21,6 +21,9 @@ namespace BilgeHotel.Entities.ComplexType
         public int ShiftTimeId { get; set; }
         public virtual ShiftTime ShiftTime { get; set; }
 
+        public int DepartmentId { get; set; }
+        public virtual Department Department { get; set; }
+
         public virtual ICollection<Shift> Shifts { get; set; }
     }
 }

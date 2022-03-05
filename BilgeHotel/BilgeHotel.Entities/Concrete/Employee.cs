@@ -21,8 +21,7 @@ namespace BilgeHotel.Entities.Concrete
 
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
-        public int DepartmentId { get; set; }
-        public virtual Department Department { get; set; }
+        
 
 
         public virtual EmployeeJob EmployeeJob { get; set; }

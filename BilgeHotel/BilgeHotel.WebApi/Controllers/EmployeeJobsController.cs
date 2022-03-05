@@ -21,6 +21,21 @@ namespace BilgeHotel.WebApi.Controllers
             _employeeJobService = service;
         }
 
+        //double GetEmployeeSalary(int employeeId)
+        [HttpGet("GetEmployeeSalary/{id}")]
+        public IActionResult GetEmployeeSalary(int id)
+        {
+            return Ok(_employeeJobService.GetEmployeeSalary(id));
+        }
+
+        //ShiftTime GetEmployeeShiftTime(int employeeId);
+
+        [HttpGet("GetEmployeeShiftTime/{id}")]
+        public IActionResult GetEmployeeShiftTime(int id)
+        {
+            return Ok(_employeeJobService.GetEmployeeShiftTime(id));
+        }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -36,6 +51,8 @@ namespace BilgeHotel.WebApi.Controllers
                 employeeJobVM.JobName = employeeJob.Job.JobName;
                 employeeJobVM.ShifTimeId = employeeJob.ShiftTimeId;
                 employeeJobVM.ShiftTime = employeeJob.ShiftTime.StartTime;
+                employeeJobVM.DepartmentId = employeeJob.DepartmentId;
+                employeeJobVM.DepartmentName = employeeJob.Department.DepartmentName;
                 return Ok(employeeJobVM);
             }
             else
@@ -47,7 +64,7 @@ namespace BilgeHotel.WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            List<EmployeeJobVM> employeeJobs = _employeeJobService.GetAll().Select(x => new EmployeeJobVM { EmployeeId = x.EmployeeId, EmployeeName = x.Employee.FirstName, DayId = x.DayId, DayName = x.Day.DayName, JobId = x.JobId, JobName = x.Job.JobName, ShifTimeId = x.ShiftTimeId, ShiftTime = x.ShiftTime.StartTime }).ToList();
+            List<EmployeeJobVM> employeeJobs = _employeeJobService.GetAll().Select(x => new EmployeeJobVM { EmployeeId = x.EmployeeId, EmployeeName = x.Employee.FirstName, DayId = x.DayId, DayName = x.Day.DayName, JobId = x.JobId, JobName = x.Job.JobName, ShifTimeId = x.ShiftTimeId, ShiftTime = x.ShiftTime.StartTime, DepartmentId=x.DepartmentId, DepartmentName=x.Department.DepartmentName }).ToList();
             return Ok(employeeJobs);
         }
 
@@ -61,6 +78,7 @@ namespace BilgeHotel.WebApi.Controllers
                     EmployeeId = employeeJobPostVM.EmployeeId,
                     JobId = employeeJobPostVM.JobId,
                     ShiftTimeId = employeeJobPostVM.ShiftTimeId,
+                    DepartmentId=employeeJobPostVM.DepartmentId
                 });
             if (kontrol == true)
             {
@@ -81,7 +99,7 @@ namespace BilgeHotel.WebApi.Controllers
                 employeeJob.DayId = employeeJobPostVM.DayId;
                 employeeJob.JobId = employeeJobPostVM.JobId;
                 employeeJob.ShiftTimeId = employeeJobPostVM.ShiftTimeId;
-                
+                employeeJob.DepartmentId = employeeJobPostVM.DepartmentId;
                 bool kontrol = await _employeeJobService.UpdateAsync(employeeJob);
                 if (kontrol == true)
                 {

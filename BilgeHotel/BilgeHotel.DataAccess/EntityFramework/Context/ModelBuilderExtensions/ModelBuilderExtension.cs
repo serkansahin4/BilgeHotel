@@ -268,12 +268,20 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
 
             #region Roles
             builder.Entity<Role>().HasData(
-                new Role { Id=1, RoleName="Admin"}
+                new Role { Id=1, RoleName="SatisDepartmaniYoneticisi"},
+                new Role { Id = 2, RoleName = "InsanKaynaklariYoneticisi" },
+                new Role { Id = 3, RoleName = "ITSorumlusu" },
+                new Role { Id = 4, RoleName = "ResepsiyonSefi" }
                 );
             #endregion
             #region Department
             builder.Entity<Department>().HasData(
-                new Department { Id=1, DepartmentName="Bilişim" }
+                new Department { Id=1, DepartmentName="Bilişim" },
+                new Department { Id = 2, DepartmentName = "SatisDepartmani" },
+                new Department { Id = 3, DepartmentName = "Resepsiyon" },
+                new Department { Id = 5, DepartmentName = "InsanKaynaklari" },
+                new Department { Id = 6, DepartmentName = "Mutfak" },
+                new Department { Id = 7, DepartmentName = "Elektrik" }
                 );
             #endregion
 
@@ -281,12 +289,17 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
 
             #region Job
             builder.Entity<Job>().HasData(
-                new Job { Id=1, JobName="Garson" }
+                new Job { Id=1, JobName="Resepsiyon Görevlisi" },
+                new Job { Id = 2, JobName = "Temizlik Görevlisi" },
+                new Job { Id = 3, JobName = "Aşçı" },
+                new Job { Id = 4, JobName = "Garson" },
+                new Job { Id = 5, JobName = "Elektrikci" },
+                new Job { Id = 6, JobName = "Bilgi İşlem Sorumlusu" }
                 );
             #endregion
             #region Employee
             builder.Entity<Employee>().HasData(
-                new Employee { Id=1,  Adress="Sırasöğütler", FirstName="Osman", LastName="Şahin", Phone="12345678955", RoleId=1, Salary=500, DepartmentId=1 }
+                new Employee { Id=1,  Adress="Sırasöğütler", FirstName="Osman", LastName="Şahin", Phone="12345678955", RoleId=1, Salary=500 }
                 );
             #endregion
 
@@ -309,7 +322,7 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
             #endregion
             #region EmployeeJob
             builder.Entity<EmployeeJob>().HasData(
-                new EmployeeJob { DayId=1, EmployeeId=1, JobId=1, ShiftTimeId=1 }
+                new EmployeeJob { DayId=1, EmployeeId=1, JobId=1, ShiftTimeId=1, DepartmentId=1 }
                 );
             #endregion
             #region Shifts

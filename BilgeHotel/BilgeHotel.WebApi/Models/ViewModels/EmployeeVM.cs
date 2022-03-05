@@ -15,7 +15,6 @@ namespace BilgeHotel.WebApi.Models.ViewModels
         public double Salary { get; set; }
         public int RoleId { get; set; }
         public string RoleName { get; set; }
-        public int DepartmentId { get; set; }
-        public string DepartmentName { get; set; }
+       
     }
 }

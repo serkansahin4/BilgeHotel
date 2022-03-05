@@ -35,8 +35,6 @@ namespace BilgeHotel.WebApi.Controllers
                 employeeVM.Salary = employee.Salary;
                 employeeVM.RoleId = employee.RoleId;
                 employeeVM.RoleName = employee.Role.RoleName;
-                employeeVM.DepartmentId = employee.DepartmentId;
-                employeeVM.DepartmentName = employee.Department.DepartmentName;
                 return Ok(employeeVM);
             }
             else
@@ -57,8 +55,7 @@ namespace BilgeHotel.WebApi.Controllers
                 Salary=x.Salary,
                 RoleId=x.RoleId,
                 RoleName=x.Role.RoleName,
-                DepartmentId=x.DepartmentId,
-                DepartmentName=x.Department.DepartmentName
+
 
             }).ToList();
             return Ok(employees);
@@ -76,7 +73,6 @@ namespace BilgeHotel.WebApi.Controllers
                      Adress=employeeVM.Adress,
                      Salary=employeeVM.Salary,
                      RoleId=employeeVM.RoleId,
-                     DepartmentId=employeeVM.DepartmentId
                 });
             if (kontrol == true)
             {
@@ -100,7 +96,6 @@ namespace BilgeHotel.WebApi.Controllers
                 employee.Adress = employeeVM.Adress;
                 employee.Salary = employeeVM.Salary;
                 employee.RoleId = employeeVM.RoleId;
-                employee.DepartmentId = employeeVM.DepartmentId;
                 bool kontrol = await _employeeService.UpdateAsync(employee);
                 if (kontrol == true)
                 {
