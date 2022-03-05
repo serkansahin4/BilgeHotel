@@ -61,7 +61,6 @@ namespace BilgeHotel.WebApi.Controllers
                     EmployeeId = employeeJobPostVM.EmployeeId,
                     JobId = employeeJobPostVM.JobId,
                     ShiftTimeId = employeeJobPostVM.ShiftTimeId,
-                    Shifts=new List<Shift> { new Shift { EmployeeJobId=employeeJobPostVM.EmployeeId,StartShift=employeeJobPostVM.Shift.StartShift, StopShift=employeeJobPostVM.Shift.StopShift, ExtraTimeStop=employeeJobPostVM.Shift.ExtraTimeStop } }
                 });
             if (kontrol == true)
             {

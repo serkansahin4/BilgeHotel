@@ -11,5 +11,6 @@ namespace BilgeHotel.Business.Abstract
     {
         List<Shift> GetAll(int employeeJobId);
         Shift Get(int shiftId);
+        Task<bool> AddAsync(Shift shift);
     }
 }

@@ -16,6 +16,12 @@ namespace BilgeHotel.Business.Concrete
         {
             _repository = repository;
         }
+
+        public async Task<bool> AddAsync(Shift shift)
+        {
+            return await _repository.Insert(shift);
+        }
+
         public Shift Get(int shiftId)
         {
             return _repository.Get(x => x.Id == shiftId);
