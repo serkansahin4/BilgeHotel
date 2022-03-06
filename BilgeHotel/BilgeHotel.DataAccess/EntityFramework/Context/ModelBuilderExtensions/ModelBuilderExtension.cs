@@ -299,7 +299,11 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
             #endregion
             #region Employee
             builder.Entity<Employee>().HasData(
-                new Employee { Id=1,  Adress="Sırasöğütler", FirstName="Osman", LastName="Şahin", Phone="12345678955", RoleId=1, Salary=500 }
+                new Employee { Id=1,  Adress="Sırasöğütler", FirstName="Osman", LastName="Şahin", Phone="12345678955", RoleId=1, Salary=500 },
+                new Employee { Id = 2, Adress = "Sırasöğütler", FirstName = "Murat", LastName = "Şahin", Phone = "12345678955", RoleId = 2, Salary = 100 },
+                new Employee { Id =3, Adress = "Sırasöğütler", FirstName = "Mehmet", LastName = "Şahin", Phone = "12345678955", RoleId = 3, Salary = 200 },
+                new Employee { Id = 4, Adress = "Sırasöğütler", FirstName = "Gaye", LastName = "Şahin", Phone = "12345678955", RoleId = 4, Salary = 200 }
+
                 );
             #endregion
 
@@ -317,17 +321,23 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
 
             #region ShiftTime
             builder.Entity<ShiftTime>().HasData(
-                new ShiftTime { Id = 1, StartTime = TimeSpan.Zero, StopTime = TimeSpan.Zero }
+                new ShiftTime { Id = 1, StartTime = new TimeSpan(0, 0, 0), StopTime = new TimeSpan(8, 0, 0) },
+                new ShiftTime { Id = 2, StartTime = new TimeSpan(8, 0, 0), StopTime = new TimeSpan(16, 0, 0) },
+                new ShiftTime { Id = 3, StartTime = new TimeSpan(16,0,0), StopTime = new TimeSpan(0,0,0) },
+                new ShiftTime { Id = 4, StartTime = new TimeSpan(8, 0, 0), StopTime = new TimeSpan(18, 0, 0) }
                 );
             #endregion
             #region EmployeeJob
             builder.Entity<EmployeeJob>().HasData(
-                new EmployeeJob { DayId=1, EmployeeId=1, JobId=1, ShiftTimeId=1, DepartmentId=1 }
+                new EmployeeJob { DayId=  1, EmployeeId=1, JobId=1, ShiftTimeId=1, DepartmentId=1 },
+                new EmployeeJob { DayId = 7, EmployeeId = 2, JobId = 5, ShiftTimeId = 4, DepartmentId = 7 },
+                new EmployeeJob { DayId = 7, EmployeeId = 3, JobId = 6, ShiftTimeId = 4, DepartmentId = 1 },
+                new EmployeeJob { DayId = 7, EmployeeId = 4, JobId = 1, ShiftTimeId = 1, DepartmentId = 3 }
                 );
             #endregion
             #region Shifts
             builder.Entity<Shift>().HasData(
-                new Shift { EmployeeJobId=1, StartShift=DateTime.Now, StopShift=DateTime.Now, Id=1, ExtraTimeStop=DateTime.Now }
+                new Shift { EmployeeJobId=4, StartShift=DateTime.Now, StopShift=DateTime.Now, Id=1, ExtraTimeStop=DateTime.Now }
                 );
             #endregion
 
@@ -340,7 +350,7 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
                 new Reservation { Id = key, CustomerId = 1 },
                 new Reservation { Id = key21, CustomerId = 1 },
                 new Reservation { Id = key23, CustomerId = 1 },
-                new Reservation { Id = key24, CustomerId = 1 }
+                new Reservation { Id = key24, CustomerId = 1, EmployeeId=4 }
                 );
             #endregion
 

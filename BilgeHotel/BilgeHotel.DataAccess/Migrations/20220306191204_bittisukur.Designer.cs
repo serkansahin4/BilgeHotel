@@ -4,14 +4,16 @@ using BilgeHotel.DataAccess.EntityFramework.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BilgeHotel.DataAccess.Migrations
 {
     [DbContext(typeof(BilgeHotelDenemeContext))]
-    partial class BilgeHotelDenemeContextModelSnapshot : ModelSnapshot
+    [Migration("20220306191204_bittisukur")]
+    partial class bittisukur
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
