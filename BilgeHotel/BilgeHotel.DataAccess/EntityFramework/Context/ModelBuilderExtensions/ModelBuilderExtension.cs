@@ -333,8 +333,14 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
 
             #region Reservation
             Guid key = Guid.NewGuid();
+            Guid key21 = Guid.NewGuid();
+            Guid key23 = Guid.NewGuid();
+            Guid key24 = Guid.NewGuid();
             builder.Entity<Reservation>().HasData(
-                new Reservation { Id = key, CustomerId = 1 }
+                new Reservation { Id = key, CustomerId = 1 },
+                new Reservation { Id = key21, CustomerId = 1 },
+                new Reservation { Id = key23, CustomerId = 1 },
+                new Reservation { Id = key24, CustomerId = 1 }
                 );
             #endregion
 
@@ -355,7 +361,11 @@ namespace BilgeHotel.DataAccess.EntityFramework.Context.ModelBuilderExtensions
                 #endregion
             #region ReservationDetail
             builder.Entity<ReservationDetail>().HasData(
-                new ReservationDetail { ReservationId = key, PackageId = 1,RoomId = 101, CheckInDate = new DateTime(2022, 4, 5, 14, 0, 0), CheckOutDate = new DateTime(2022, 4, 6, 10, 0, 0), CreatedDate = DateTime.Now, Discount = 22, DiscountedPrice = 150, CardId= cardıD }
+                new ReservationDetail { ReservationId = key, PackageId = 1,RoomId = 101, CheckInDate = new DateTime(2022, 4, 5, 14, 0, 0), CheckOutDate = new DateTime(2022, 4, 6, 10, 0, 0), CreatedDate = DateTime.Now, Discount = 22, DiscountedPrice = 150, CardId= cardıD },
+                  new ReservationDetail { ReservationId = key21, PackageId = 1, RoomId = 101, CheckInDate = new DateTime(2022, 3, 5, 14, 0, 0), CheckOutDate = new DateTime(2022, 3, 6, 10, 0, 0), CreatedDate = DateTime.Now, Discount = 22, DiscountedPrice = 150, CardId = cardıD },
+                 new ReservationDetail { ReservationId = key23, PackageId = 1, RoomId = 101, CheckInDate = new DateTime(2022, 3, 6, 14, 0, 0), CheckOutDate = new DateTime(2022, 3, 7, 10, 0, 0), CreatedDate = DateTime.Now, Discount = 22, DiscountedPrice = 150, CardId = cardıD },
+                 new ReservationDetail { ReservationId = key24, PackageId = 1, RoomId = 102, CheckInDate = new DateTime(2022, 3, 6, 14, 0, 0), CheckOutDate = new DateTime(2022, 3, 7, 10, 0, 0), CreatedDate = DateTime.Now, Discount = 22, DiscountedPrice = 150, CardId = cardıD }
+
                 );
             #endregion
 

@@ -15,6 +15,8 @@ using Microsoft.Identity.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace BilgeHotel.WebApi
@@ -37,7 +39,10 @@ namespace BilgeHotel.WebApi
             services.IocConfiguration();
             services.AddDbContext<BilgeHotelDenemeContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")).UseLazyLoadingProxies());
 
-            services.AddControllers();
+
+            services.AddControllers().AddJsonOptions(x => { x.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

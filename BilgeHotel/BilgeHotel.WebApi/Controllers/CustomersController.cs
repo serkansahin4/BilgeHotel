@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BilgeHotel.WebApi.Controllers
@@ -40,6 +41,12 @@ namespace BilgeHotel.WebApi.Controllers
             {
                 return NotFound();
             }
+        }
+        [HttpGet("CustomerReservationsGetAll")]
+        public IActionResult CustomerReservationsGetAll()
+        {
+            string serialization = JsonSerializer.Serialize(_customerService.CustomerReservationsGetAll());
+            return Ok(serialization);
         }
 
         [HttpGet]

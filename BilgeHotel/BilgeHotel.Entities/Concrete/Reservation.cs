@@ -10,11 +10,6 @@ namespace BilgeHotel.Entities.Concrete
 {
     public class Reservation : IEntity
     {
-        public Reservation()
-        {
-            ReservationDetails = new List<ReservationDetail>();
-        }
-
         public Guid Id { get; set; }
         public int CustomerId { get; set; }
         public int? EmployeeId { get; set; }
@@ -25,6 +20,6 @@ namespace BilgeHotel.Entities.Concrete
         public virtual Employee Employee { get; set; }
 
         public virtual List<ReservationOutHotelExtra> ReservationOutHotelExtras { get; set; }
-        public virtual List<ReservationDetail> ReservationDetails { get; set; }
+        public virtual ReservationDetail ReservationDetail { get; set; }
     }
 }

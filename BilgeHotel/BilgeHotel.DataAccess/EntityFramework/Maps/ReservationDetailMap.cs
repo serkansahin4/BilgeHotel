@@ -1,4 +1,5 @@
 ﻿using BilgeHotel.Entities.ComplexType;
+using BilgeHotel.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -14,9 +15,9 @@ namespace BilgeHotel.DataAccess.EntityFramework.Maps
         public void Configure(EntityTypeBuilder<ReservationDetail> builder)
         {
             builder.ToTable("ReservationDetails");
-            builder.HasKey(x => new { x.ReservationId, x.PackageId, x.RoomId });
+            builder.HasKey(x => x.ReservationId);
             builder.HasOne(x => x.Package).WithMany(x => x.ReservationDetails).HasForeignKey(x => x.PackageId).HasPrincipalKey(x => x.Id);
-            builder.HasOne(x => x.Reservation).WithMany(x => x.ReservationDetails).HasForeignKey(x => x.ReservationId).HasPrincipalKey(x => x.Id);
+            builder.HasOne<Reservation>(x => x.Reservation).WithOne(x => x.ReservationDetail).HasForeignKey<Reservation>(x => x.Id);
             builder.HasOne(x => x.Room).WithMany(x => x.ReservationDetails).HasForeignKey(x => x.RoomId).HasPrincipalKey(x => x.RoomName);
             builder.HasOne(x => x.Card).WithMany(x => x.ReservationDetails).HasForeignKey(x => x.CardId).HasPrincipalKey(x => x.Id);
 

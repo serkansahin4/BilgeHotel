@@ -11,7 +11,6 @@ C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BankaAPI\bin\Debug\net5.0\Micr
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BankaAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BankaAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BankaAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BankaAPI\obj\Debug\net5.0\BankaAPI.csproj.AssemblyReference.cache
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BankaAPI\obj\Debug\net5.0\BankaAPI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BankaAPI\obj\Debug\net5.0\BankaAPI.AssemblyInfoInputs.cache
 C:\Users\Serkan\Desktop\Bitirme Projem\BilgeHotel\BankaAPI\obj\Debug\net5.0\BankaAPI.AssemblyInfo.cs

@@ -1,4 +1,5 @@
 ﻿using BilgeHotel.Entities.Concrete;
+using BilgeHotel.Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace BilgeHotel.Business.Abstract
         List<Customer> GetAll();
         Customer GetByIdentity(string identity);
         Task<bool> DeleteByIdentityAsync(string identity);
+
+        List<CustomerReservationsGetDTO> CustomerReservationsGetAll();
     }
 }

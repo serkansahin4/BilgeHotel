@@ -116,7 +116,7 @@ namespace BilgeHotel.WebApi.Controllers
                     }
                     reservation.EmployeeId = createVM.EmployeeId;
 
-                    reservation.ReservationDetails.Add(new ReservationDetail { Discount = 1, DiscountedPrice = sumPrice, ReservationId = reservationId, CheckInDate = checkInDate, CheckOutDate = checkOutDate, CreatedDate = createVM.CreatedDate, PackageId = createVM.PackageId, RoomId = createVM.RoomId });
+                    reservation.ReservationDetail=new ReservationDetail { Discount = 1, DiscountedPrice = sumPrice, ReservationId = reservationId, CheckInDate = checkInDate, CheckOutDate = checkOutDate, CreatedDate = createVM.CreatedDate, PackageId = createVM.PackageId, RoomId = createVM.RoomId };
 
                     bool kontrol = await _reservationService.Add(reservation);
                     if (kontrol)

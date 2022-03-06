@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json;
+using BilgeHotel.Entities;
 
 namespace BilgeHotel.WebApi.Controllers
 {
@@ -18,6 +20,18 @@ namespace BilgeHotel.WebApi.Controllers
         public RoomsController(IRoomService service)
         {
             _roomService = service;
+        }
+
+        [HttpGet("TodayReadyRoom")]
+        public IActionResult TodayReadyRoom()
+        {
+            return Ok(_roomService.TodayReadyRoom().Select(x => new TodayReadyRoomVM { RoomName = x.RoomId, Hour = x.Hour, Minute = x.Minute, Second = x.Second, Situation = x.Situation.ToString() }));
+        }
+        [HttpGet("WhichRoomWhichCustomer")]
+        public IActionResult WhichRoomWhichCustomer()
+        {
+           string serialize =  JsonSerializer.Serialize(_roomService.WhichRoomWhichCustomer().AsEnumerable());
+            return Ok(serialize);
         }
 
         [HttpGet("PriceGetById/{roomName}")]

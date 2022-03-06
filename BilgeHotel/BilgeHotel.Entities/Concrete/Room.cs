@@ -10,6 +10,10 @@ namespace BilgeHotel.Entities.Concrete
 {
     public class Room : IEntity
     {
+        public Room()
+        {
+            ReservationDetails = new List<ReservationDetail>();
+        }
         public int RoomName { get; set; }
         public Int16 RoomSize { get; set; }
 

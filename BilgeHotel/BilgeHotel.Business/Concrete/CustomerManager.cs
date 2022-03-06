@@ -1,6 +1,7 @@
 ﻿using BilgeHotel.Business.Abstract;
 using BilgeHotel.DataAccess.Abstract;
 using BilgeHotel.Entities.Concrete;
+using BilgeHotel.Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,29 @@ namespace BilgeHotel.Business.Concrete
         {
             await _repository.Insert(customer);
             return true;
+        }
+
+        public List<CustomerReservationsGetDTO> CustomerReservationsGetAll()
+        {
+            List<CustomerReservationsGetDTO> getDTOs = new List<CustomerReservationsGetDTO>();
+            CustomerReservationsGetDTO getDTO;
+            List<Customer> customers = _repository.GetAll();
+            foreach (Customer item in customers)
+            {
+                getDTO = new CustomerReservationsGetDTO();
+                getDTO.CustomerId = item.Id;
+                getDTO.Email = item.Email;
+                getDTO.FirstName = item.FirstName;
+                getDTO.LastName = item.LastName;
+                foreach (Reservation reservation in item.Reservations)
+                {
+                    getDTO.reservationDates.Add( new ReservationDateDTO { CheckInDate = reservation.ReservationDetail.CheckInDate, CheckOutDate = reservation.ReservationDetail.CheckOutDate, RoomName = reservation.ReservationDetail.RoomId });
+                }
+                getDTOs.Add(getDTO);
+            }
+
+
+            return getDTOs;
         }
 
         public async Task<bool> DeleteByIdentityAsync(string identity)

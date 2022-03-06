@@ -16,7 +16,7 @@ namespace BilgeHotel.DataAccess.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
+                .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("BilgeHotel.Entities.ComplexType.EmployeeJob", b =>
@@ -64,13 +64,8 @@ namespace BilgeHotel.DataAccess.Migrations
             modelBuilder.Entity("BilgeHotel.Entities.ComplexType.ReservationDetail", b =>
                 {
                     b.Property<Guid>("ReservationId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("PackageId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomId")
-                        .HasColumnType("int");
 
                     b.Property<Guid?>("CardId")
                         .HasColumnType("uniqueidentifier");
@@ -90,7 +85,13 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.Property<decimal?>("DiscountedPrice")
                         .HasColumnType("money");
 
-                    b.HasKey("ReservationId", "PackageId", "RoomId");
+                    b.Property<int>("PackageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReservationId");
 
                     b.HasIndex("CardId");
 
@@ -103,15 +104,51 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            ReservationId = new Guid("f555b57a-d5a0-4532-84fc-b729c777ae6c"),
-                            PackageId = 1,
-                            RoomId = 101,
-                            CardId = new Guid("f7535bec-0744-4cce-ae3f-19d0a76064ae"),
+                            ReservationId = new Guid("81497a3d-50b2-4967-941f-7db761ecee7d"),
+                            CardId = new Guid("70dbb382-831f-42d3-add2-d4213b166eff"),
                             CheckInDate = new DateTime(2022, 4, 5, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckOutDate = new DateTime(2022, 4, 6, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2022, 3, 5, 21, 13, 7, 68, DateTimeKind.Local).AddTicks(139),
+                            CreatedDate = new DateTime(2022, 3, 6, 21, 51, 53, 610, DateTimeKind.Local).AddTicks(2246),
                             Discount = 22.0,
-                            DiscountedPrice = 150m
+                            DiscountedPrice = 150m,
+                            PackageId = 1,
+                            RoomId = 101
+                        },
+                        new
+                        {
+                            ReservationId = new Guid("af0d02b6-b378-4cd5-9350-051e246dc7e4"),
+                            CardId = new Guid("70dbb382-831f-42d3-add2-d4213b166eff"),
+                            CheckInDate = new DateTime(2022, 3, 5, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOutDate = new DateTime(2022, 3, 6, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2022, 3, 6, 21, 51, 53, 610, DateTimeKind.Local).AddTicks(5566),
+                            Discount = 22.0,
+                            DiscountedPrice = 150m,
+                            PackageId = 1,
+                            RoomId = 101
+                        },
+                        new
+                        {
+                            ReservationId = new Guid("45b599af-3e2a-4f4c-bf42-cc7909453d88"),
+                            CardId = new Guid("70dbb382-831f-42d3-add2-d4213b166eff"),
+                            CheckInDate = new DateTime(2022, 3, 6, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOutDate = new DateTime(2022, 3, 7, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2022, 3, 6, 21, 51, 53, 610, DateTimeKind.Local).AddTicks(5575),
+                            Discount = 22.0,
+                            DiscountedPrice = 150m,
+                            PackageId = 1,
+                            RoomId = 101
+                        },
+                        new
+                        {
+                            ReservationId = new Guid("9d7a522e-e382-4b7b-af81-fc798ab737b4"),
+                            CardId = new Guid("70dbb382-831f-42d3-add2-d4213b166eff"),
+                            CheckInDate = new DateTime(2022, 3, 6, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOutDate = new DateTime(2022, 3, 7, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2022, 3, 6, 21, 51, 53, 610, DateTimeKind.Local).AddTicks(5583),
+                            Discount = 22.0,
+                            DiscountedPrice = 150m,
+                            PackageId = 1,
+                            RoomId = 102
                         });
                 });
 
@@ -136,7 +173,7 @@ namespace BilgeHotel.DataAccess.Migrations
                         new
                         {
                             HotelExtraId = 1,
-                            ReservationId = new Guid("f555b57a-d5a0-4532-84fc-b729c777ae6c"),
+                            ReservationId = new Guid("81497a3d-50b2-4967-941f-7db761ecee7d"),
                             Quantity = (short)5
                         });
                 });
@@ -490,7 +527,7 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f7535bec-0744-4cce-ae3f-19d0a76064ae"),
+                            Id = new Guid("70dbb382-831f-42d3-add2-d4213b166eff"),
                             CardNumber = "selam",
                             CardType = "Ziraat",
                             Cv2 = "ABC",
@@ -627,6 +664,31 @@ namespace BilgeHotel.DataAccess.Migrations
                         {
                             Id = 1,
                             DepartmentName = "Bilişim"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DepartmentName = "SatisDepartmani"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DepartmentName = "Resepsiyon"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DepartmentName = "InsanKaynaklari"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DepartmentName = "Mutfak"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DepartmentName = "Elektrik"
                         });
                 });
 
@@ -893,7 +955,32 @@ namespace BilgeHotel.DataAccess.Migrations
                         new
                         {
                             Id = 1,
+                            JobName = "Resepsiyon Görevlisi"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            JobName = "Temizlik Görevlisi"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            JobName = "Aşçı"
+                        },
+                        new
+                        {
+                            Id = 4,
                             JobName = "Garson"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            JobName = "Elektrikci"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            JobName = "Bilgi İşlem Sorumlusu"
                         });
                 });
 
@@ -934,7 +1021,6 @@ namespace BilgeHotel.DataAccess.Migrations
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Reservation", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("CustomerId")
@@ -960,7 +1046,22 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f555b57a-d5a0-4532-84fc-b729c777ae6c"),
+                            Id = new Guid("81497a3d-50b2-4967-941f-7db761ecee7d"),
+                            CustomerId = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("af0d02b6-b378-4cd5-9350-051e246dc7e4"),
+                            CustomerId = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("45b599af-3e2a-4f4c-bf42-cc7909453d88"),
+                            CustomerId = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("9d7a522e-e382-4b7b-af81-fc798ab737b4"),
                             CustomerId = 1
                         });
                 });
@@ -985,7 +1086,22 @@ namespace BilgeHotel.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            RoleName = "Admin"
+                            RoleName = "SatisDepartmaniYoneticisi"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RoleName = "InsanKaynaklariYoneticisi"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RoleName = "ITSorumlusu"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            RoleName = "ResepsiyonSefi"
                         });
                 });
 
@@ -1816,11 +1932,11 @@ namespace BilgeHotel.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2022, 3, 5, 21, 13, 7, 64, DateTimeKind.Local).AddTicks(7964),
+                            CreatedDate = new DateTime(2022, 3, 6, 21, 51, 53, 604, DateTimeKind.Local).AddTicks(6868),
                             EmployeeJobId = 1,
-                            ExtraTimeStop = new DateTime(2022, 3, 5, 21, 13, 7, 66, DateTimeKind.Local).AddTicks(7296),
-                            StartShift = new DateTime(2022, 3, 5, 21, 13, 7, 66, DateTimeKind.Local).AddTicks(5997),
-                            StopShift = new DateTime(2022, 3, 5, 21, 13, 7, 66, DateTimeKind.Local).AddTicks(6489)
+                            ExtraTimeStop = new DateTime(2022, 3, 6, 21, 51, 53, 608, DateTimeKind.Local).AddTicks(3291),
+                            StartShift = new DateTime(2022, 3, 6, 21, 51, 53, 608, DateTimeKind.Local).AddTicks(1140),
+                            StopShift = new DateTime(2022, 3, 6, 21, 51, 53, 608, DateTimeKind.Local).AddTicks(1982)
                         });
                 });
 
@@ -1897,12 +2013,6 @@ namespace BilgeHotel.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BilgeHotel.Entities.Concrete.Reservation", "Reservation")
-                        .WithMany("ReservationDetails")
-                        .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BilgeHotel.Entities.Concrete.Room", "Room")
                         .WithMany("ReservationDetails")
                         .HasForeignKey("RoomId")
@@ -1912,8 +2022,6 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.Navigation("Card");
 
                     b.Navigation("Package");
-
-                    b.Navigation("Reservation");
 
                     b.Navigation("Room");
                 });
@@ -2017,9 +2125,17 @@ namespace BilgeHotel.DataAccess.Migrations
                         .WithMany("Reservations")
                         .HasForeignKey("EmployeeId");
 
+                    b.HasOne("BilgeHotel.Entities.ComplexType.ReservationDetail", "ReservationDetail")
+                        .WithOne("Reservation")
+                        .HasForeignKey("BilgeHotel.Entities.Concrete.Reservation", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Customer");
 
                     b.Navigation("Employee");
+
+                    b.Navigation("ReservationDetail");
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Room", b =>
@@ -2065,6 +2181,11 @@ namespace BilgeHotel.DataAccess.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("Shifts");
+                });
+
+            modelBuilder.Entity("BilgeHotel.Entities.ComplexType.ReservationDetail", b =>
+                {
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Bed", b =>
@@ -2119,8 +2240,6 @@ namespace BilgeHotel.DataAccess.Migrations
 
             modelBuilder.Entity("BilgeHotel.Entities.Concrete.Reservation", b =>
                 {
-                    b.Navigation("ReservationDetails");
-
                     b.Navigation("ReservationOutHotelExtras");
                 });
 
