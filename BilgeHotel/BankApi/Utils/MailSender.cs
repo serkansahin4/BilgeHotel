@@ -20,7 +20,7 @@ namespace BankApi.Utils
 
             //SmtpClient
             SmtpClient smtp = new SmtpClient();
-            smtp.Credentials = new NetworkCredential("bilgehoteldeneme@gmail.com", "123456+Bjk");
+            smtp.Credentials = new NetworkCredential("bilgehoteldeneme@gmail.com", "");
             smtp.Port = 587;
             smtp.Host = "smtp.gmail.com";
             smtp.EnableSsl = true;
